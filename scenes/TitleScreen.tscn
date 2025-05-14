@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/LabelButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/TitleScreen.gd" type="Script" id=2]
+[ext_resource path="res://fonts/m3x6.tres" type="DynamicFont" id=3]
+[ext_resource path="res://resources/ui_theme.tres" type="Theme" id=4]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource( 2 )
@@ -31,6 +33,19 @@ position = Vector2( 0, 198 )
 scale = Vector2( 2, 2 )
 buttonScale = 2
 buttonLabel = "Exit"
+
+[node name="TextContainer" type="Node2D" parent="."]
+position = Vector2( 774, 684 )
+scale = Vector2( 2, 2 )
+
+[node name="Label" type="Label" parent="TextContainer"]
+margin_right = 86.0
+margin_bottom = 14.0
+grow_horizontal = 0
+theme = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
+text = "Current version: v"
+align = 2
 
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_ExitButton_pressed"]
