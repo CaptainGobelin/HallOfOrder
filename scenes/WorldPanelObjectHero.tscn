@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/levelSelector.png" type="Texture" id=1]
+[ext_resource path="res://scripts/WorldPanelObjectHero.gd" type="Script" id=2]
+
+[node name="WorldPPanelObjectHero" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Body" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+hframes = 9
+vframes = 3
+frame = 9
+region_enabled = true
+region_rect = Rect2( 0, 0, 45, 18 )
+
+[node name="Color" type="Sprite" parent="Body"]
+texture = ExtResource( 1 )
+centered = false
+hframes = 9
+vframes = 3
+frame = 18
+region_enabled = true
+region_rect = Rect2( 0, 0, 45, 18 )
+__meta__ = {
+"_editor_description_": ""
+}

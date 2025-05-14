@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/LabelButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/TitleScreen.gd" type="Script" id=2]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Buttons" type="Node2D" parent="."]
+position = Vector2( 477, 369 )
+
+[node name="PlayButton" parent="Buttons" instance=ExtResource( 1 )]
+position = Vector2( 0, 9 )
+scale = Vector2( 2, 2 )
+buttonScale = 2
+buttonLabel = "Play"
+
+[node name="ProfileButton" parent="Buttons" instance=ExtResource( 1 )]
+position = Vector2( 0, 72 )
+scale = Vector2( 2, 2 )
+buttonScale = 2
+
+[node name="OptionsButton" parent="Buttons" instance=ExtResource( 1 )]
+position = Vector2( 0, 135 )
+scale = Vector2( 2, 2 )
+buttonScale = 2
+buttonLabel = "Options"
+
+[node name="ExitButton" parent="Buttons" instance=ExtResource( 1 )]
+position = Vector2( 0, 198 )
+scale = Vector2( 2, 2 )
+buttonScale = 2
+buttonLabel = "Exit"
+
+[connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_ExitButton_pressed"]

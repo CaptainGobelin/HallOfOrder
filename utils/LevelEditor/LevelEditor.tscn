@@ -1,0 +1,221 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://resources/board_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://utils/LevelEditor/EntityButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://utils/LevelEditor/LevelEditor.gd" type="Script" id=3]
+[ext_resource path="res://resources/ui_theme.tres" type="Theme" id=4]
+[ext_resource path="res://resources/ui_tileset.tres" type="TileSet" id=5]
+[ext_resource path="res://utils/LevelEditor/TurnOrder.tscn" type="PackedScene" id=6]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends TileMap
+
+var size = 10
+
+func clearPool():
+	for c in get_children():
+		c.queue_free()
+
+func addHero(heroType: int):
+	if get_child_count() >= size:
+		return
+	var entity = Utils.instanciate(get_parent().entityScene, self)
+	entity.setType(heroType)
+	entity.poolPos = get_child_count() - 1
+	entity.position = 9 * Vector2(get_child_count(), 1)
+	entity.get_node(\"Button\").connect(\"pressed\", self, \"removeHero\", [entity])
+
+func removeHero(hero: Node):
+	remove_child(hero)
+	hero.queue_free()
+	var i = 1
+	for c in get_children():
+		c.position.x = i * 9
+		i += 1
+
+func flush():
+	for c in get_children():
+		removeHero(c)
+"
+
+[node name="LevelEditor" type="Node2D" groups=["LevelEditor"]]
+script = ExtResource( 3 )
+
+[node name="Board" type="TileMap" parent="."]
+position = Vector2( 45, 90 )
+scale = Vector2( 5, 5 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 9, 9 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 393219, 1, 0, 4, 2, 0, 4, 3, 0, 196609, 4, 0, 196609, 5, 0, 196612, 6, 0, 393217, 7, 0, 393217, 8, 0, 196609, 9, 0, 196612, 10, 0, 196609, 11, 0, 393217, 12, 0, 393218, 65536, 0, 458755, 65537, 0, 589825, 65538, 0, 589825, 65539, 0, 589825, 65540, 0, 589826, 65541, 0, 589825, 65542, 0, 589825, 65543, 0, 589826, 65544, 0, 589827, 65545, 0, 589825, 65546, 0, 589826, 65547, 0, 589826, 65548, 0, 65541, 131072, 0, 458755, 131073, 0, 589827, 131074, 0, 589824, 131075, 0, 589825, 131076, 0, 589825, 131077, 0, 589826, 131078, 0, 589825, 131079, 0, 589824, 131080, 0, 589824, 131081, 0, 589824, 131082, 0, 589825, 131083, 0, 589825, 131084, 0, 262146, 196608, 0, 65536, 196609, 0, 589826, 196610, 0, 589827, 196611, 0, 589824, 196612, 0, 589824, 196613, 0, 589827, 196614, 0, 589824, 196615, 0, 589825, 196616, 0, 589824, 196617, 0, 589825, 196618, 0, 589826, 196619, 0, 589827, 196620, 0, 262146, 262144, 0, 458755, 262145, 0, 589825, 262146, 0, 589825, 262147, 0, 589824, 262148, 0, 589825, 262149, 0, 589826, 262150, 0, 589827, 262151, 0, 589826, 262152, 0, 589824, 262153, 0, 589827, 262154, 0, 589825, 262155, 0, 589826, 262156, 0, 65538, 327680, 0, 262147, 327681, 0, 589827, 327682, 0, 589826, 327683, 0, 589827, 327684, 0, 589825, 327685, 0, 589826, 327686, 0, 589827, 327687, 0, 589826, 327688, 0, 589827, 327689, 0, 589824, 327690, 0, 589827, 327691, 0, 589824, 327692, 0, 458754, 393216, 0, 65536, 393217, 0, 589825, 393218, 0, 589824, 393219, 0, 589825, 393220, 0, 589827, 393221, 0, 589825, 393222, 0, 589824, 393223, 0, 589826, 393224, 0, 589827, 393225, 0, 589827, 393226, 0, 589824, 393227, 0, 589826, 393228, 0, 262149, 458752, 0, 65536, 458753, 0, 589826, 458754, 0, 589826, 458755, 0, 589826, 458756, 0, 589824, 458757, 0, 589825, 458758, 0, 589824, 458759, 0, 589827, 458760, 0, 589824, 458761, 0, 589825, 458762, 0, 589824, 458763, 0, 589825, 458764, 0, 458757, 524288, 0, 524291, 524289, 0, 327684, 524290, 0, 327684, 524291, 0, 524289, 524292, 0, 131073, 524293, 0, 524292, 524294, 0, 131076, 524295, 0, 524292, 524296, 0, 524289, 524297, 0, 327684, 524298, 0, 131073, 524299, 0, 524289, 524300, 0, 327685 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="TextureButton" type="TextureButton" parent="Board"]
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 108.0
+margin_bottom = 72.0
+button_mask = 3
+
+[node name="Buttons" type="Node2D" parent="."]
+position = Vector2( 675, 90 )
+scale = Vector2( 5, 5 )
+
+[node name="EntityButton" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( -1.52588e-05, 1.90735e-05 )
+
+[node name="EntityButton2" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( 8.99998, 1.09139e-11 )
+heroType = 1
+
+[node name="EntityButton3" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( 18, 3.81471e-06 )
+heroType = 2
+
+[node name="EntityButton4" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( 27, 3.81471e-06 )
+heroType = 3
+
+[node name="EntityButton5" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( 36, 3.81471e-06 )
+heroType = 4
+
+[node name="EntityButton6" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( -1.52588e-05, 36 )
+category = 1
+
+[node name="EntityButton7" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( 8.99998, 36 )
+category = 1
+monsterType = 1
+
+[node name="EntityButton10" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( 18, 36 )
+category = 1
+monsterType = 3
+
+[node name="EntityButton8" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( -1.52588e-05, 54 )
+category = 2
+
+[node name="EntityButton9" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( 8.99998, 54 )
+category = 2
+sceneryType = 1
+
+[node name="Entities" type="Node2D" parent="."]
+position = Vector2( 90, 135 )
+scale = Vector2( 5, 5 )
+
+[node name="HeroPool" type="TileMap" parent="."]
+position = Vector2( 45, 585 )
+scale = Vector2( 5, 5 )
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 9, 9 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 1, 5, 0, 1, 6, 0, 1, 7, 0, 1, 8, 0, 1, 9, 0, 1, 10, 0, 1, 11, 0, 1, 12, 0, 2, 65536, 0, 65536, 65537, 0, 65537, 65538, 0, 65537, 65539, 0, 65537, 65540, 0, 65537, 65541, 0, 65537, 65542, 0, 65537, 65543, 0, 65537, 65544, 0, 65537, 65545, 0, 65537, 65546, 0, 65537, 65547, 0, 65537, 65548, 0, 65538, 131072, 0, 131072, 131073, 0, 131073, 131074, 0, 131073, 131075, 0, 131073, 131076, 0, 131073, 131077, 0, 131073, 131078, 0, 131073, 131079, 0, 131073, 131080, 0, 131073, 131081, 0, 131073, 131082, 0, 131073, 131083, 0, 131073, 131084, 0, 131074 )
+script = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="LevelOptions" type="OptionButton" parent="."]
+margin_left = 45.0
+margin_top = 23.0
+margin_right = 135.0
+margin_bottom = 68.0
+theme = ExtResource( 4 )
+text = "Objet 0"
+items = [ "Objet 0", null, false, 0, null ]
+selected = 0
+
+[node name="FloorOptions" type="OptionButton" parent="."]
+margin_left = 154.0
+margin_top = 23.0
+margin_right = 244.0
+margin_bottom = 68.0
+theme = ExtResource( 4 )
+text = "Objet 0"
+items = [ "Objet 0", null, false, 0, null ]
+selected = 0
+
+[node name="NewButton" type="Button" parent="."]
+margin_left = 290.0
+margin_top = 23.0
+margin_right = 380.0
+margin_bottom = 68.0
+text = "New"
+
+[node name="ExportButton" type="Button" parent="."]
+margin_left = 392.0
+margin_top = 23.0
+margin_right = 482.0
+margin_bottom = 68.0
+text = "Export"
+
+[node name="ImportButton" type="Button" parent="."]
+margin_left = 495.0
+margin_top = 23.0
+margin_right = 585.0
+margin_bottom = 68.0
+text = "Import"
+
+[node name="ExportConfirm" type="ConfirmationDialog" parent="."]
+margin_left = 360.0
+margin_top = 270.0
+margin_right = 560.0
+margin_bottom = 340.0
+window_title = "Are you sure?"
+dialog_text = "You are about to EXPORT"
+
+[node name="NewConfirm" type="ConfirmationDialog" parent="."]
+margin_left = 317.0
+margin_top = 270.0
+margin_right = 596.0
+margin_bottom = 340.0
+window_title = "Are you sure?"
+dialog_text = "You are about to DELETE the current level"
+
+[node name="ImportConfirm" type="ConfirmationDialog" parent="."]
+margin_left = 360.0
+margin_top = 270.0
+margin_right = 560.0
+margin_bottom = 340.0
+window_title = "Are you sure?"
+dialog_text = "You are about to IMPORT"
+
+[node name="NoDataDialog" type="AcceptDialog" parent="."]
+margin_left = 360.0
+margin_top = 270.0
+margin_right = 553.0
+margin_bottom = 328.0
+window_title = "Alerte !"
+dialog_text = "No data found for this level."
+
+[node name="CurrentSelection" type="Node2D" parent="."]
+position = Vector2( 710, 540 )
+scale = Vector2( 2.5, 2.5 )
+
+[node name="EntityButton" parent="CurrentSelection" instance=ExtResource( 2 )]
+position = Vector2( 18.4, 25.2 )
+scale = Vector2( 3, 3 )
+
+[node name="Label" type="Label" parent="CurrentSelection"]
+margin_right = 40.0
+margin_bottom = 14.0
+theme = ExtResource( 4 )
+text = "Selection"
+
+[node name="TurnOrder" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, 512 )
+scale = Vector2( 1.35, 1.35 )
+
+[connection signal="pressed" from="Board/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="NewButton" to="." method="_on_NewButton_pressed"]
+[connection signal="pressed" from="ExportButton" to="." method="_on_ExportButton_pressed"]
+[connection signal="pressed" from="ImportButton" to="." method="_on_ImportButton_pressed"]
+[connection signal="confirmed" from="ExportConfirm" to="." method="_on_ExportConfirm_confirmed"]
+[connection signal="confirmed" from="NewConfirm" to="." method="_on_NewConfirm_confirmed"]
+[connection signal="confirmed" from="ImportConfirm" to="." method="_on_ImportConfirm_confirmed"]

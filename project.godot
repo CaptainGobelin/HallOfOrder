@@ -1,0 +1,173 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "TileMap",
+"class": "Board",
+"language": "GDScript",
+"path": "res://scripts/Board.gd"
+}, {
+"base": "Node2D",
+"class": "CursorExctrator",
+"language": "GDScript",
+"path": "res://utils/CusrorExctractor/CursorExtractor.gd"
+}, {
+"base": "Timer",
+"class": "CustomTimer",
+"language": "GDScript",
+"path": "res://resources/CustomTimer.gd"
+}, {
+"base": "Node2D",
+"class": "Effect",
+"language": "GDScript",
+"path": "res://scripts/Effect.gd"
+}, {
+"base": "Node2D",
+"class": "Game",
+"language": "GDScript",
+"path": "res://scripts/Game.gd"
+}, {
+"base": "Node2D",
+"class": "Hero",
+"language": "GDScript",
+"path": "res://scripts/Hero.gd"
+}, {
+"base": "Node2D",
+"class": "Monster",
+"language": "GDScript",
+"path": "res://scripts/Monster.gd"
+}, {
+"base": "Node2D",
+"class": "Scenery",
+"language": "GDScript",
+"path": "res://scripts/Scenery.gd"
+}, {
+"base": "Node2D",
+"class": "TurnOrder",
+"language": "GDScript",
+"path": "res://scripts/TurnOrder.gd"
+}, {
+"base": "Node2D",
+"class": "TurnOrderObject",
+"language": "GDScript",
+"path": "res://scripts/TurnOrderObject.gd"
+}, {
+"base": "Node2D",
+"class": "Ui",
+"language": "GDScript",
+"path": "res://scripts/UI.gd"
+} ]
+_global_script_class_icons={
+"Board": "",
+"CursorExctrator": "",
+"CustomTimer": "",
+"Effect": "",
+"Game": "",
+"Hero": "",
+"Monster": "",
+"Scenery": "",
+"TurnOrder": "",
+"TurnOrderObject": "",
+"Ui": ""
+}
+
+[application]
+
+config/name="HallOfOrder2025"
+run/main_scene="res://scenes/Game.tscn"
+boot_splash/bg_color=Color( 0.141176, 0.192157, 0.215686, 1 )
+config/icon="res://icon.png"
+
+[autoload]
+
+Colors="*res://resources/Colors.gd"
+Data="*res://resources/Data.gd"
+Ref="*res://resources/Ref.gd"
+Utils="*res://resources/Utils.gd"
+Waiter="*res://resources/Waiter.gd"
+ScenesHandler="*res://resources/ScenesHandler.gd"
+ScreenHandler="*res://resources/ScreenHandler.gd"
+ButtonHandler="*res://resources/ButtonHandler.gd"
+MouseHandler="*res://resources/MouseHandler.gd"
+BattleHandler="*res://resources/BattleHandler.gd"
+Signals="*res://resources/Signals.gd"
+LevelLoader="*res://resources/LevelLoader.gd"
+LevelData="*res://data/level_data.gd"
+ProfileData="*res://resources/ProfileData.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
+
+[display]
+
+window/size/width=960
+window/size/height=720
+window/vsync/use_vsync=false
+mouse_cursor/custom_image="res://sprites/mouse_arrow.png"
+mouse_cursor/custom_image_hotspot=Vector2( 3, 3 )
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[global]
+
+sync=false
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input]
+
+left_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+right_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+2d/snapping/use_gpu_pixel_snap=true
+environment/default_clear_color=Color( 0.141176, 0.192157, 0.215686, 1 )
+environment/default_environment="res://default_env.tres"

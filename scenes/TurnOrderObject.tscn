@@ -1,0 +1,211 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sprites/ui.png" type="Texture" id=1]
+[ext_resource path="res://scripts/TurnOrderObject.gd" type="Script" id=2]
+[ext_resource path="res://sprites/chars.png" type="Texture" id=3]
+[ext_resource path="res://sprites/monsters.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Card:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "StartPos"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Card:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "SwapOneLeft"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Card:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15, 0.3, 0.35, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 1 ), Vector2( -18, 1 ), Vector2( -18, 0 ), Vector2( -17, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "SwapOneRight"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Card:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15, 0.3, 0.35, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( 0, 1 ), Vector2( 17, 1 ), Vector2( 18, 0 ), Vector2( 17, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "SwapTwoLeft"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Card:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15, 0.3, 0.35, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 0, 1 ), Vector2( -35, 1 ), Vector2( -35, 0 ), Vector2( -34, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "SwapTwoRight"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Card:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15, 0.3, 0.35, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( 0, 1 ), Vector2( 35, 1 ), Vector2( 35, 0 ), Vector2( 34, 0 ) ]
+}
+
+[node name="TurnOrderObject" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 2.0
+margin_right = 15.0
+margin_bottom = 18.0
+action_mode = 0
+
+[node name="Card" type="Sprite" parent="."]
+z_index = 1000
+z_as_relative = false
+texture = ExtResource( 1 )
+centered = false
+hframes = 3
+vframes = 8
+frame = 15
+
+[node name="Monster" type="Sprite" parent="Card"]
+visible = false
+position = Vector2( 4, 2 )
+texture = ExtResource( 4 )
+centered = false
+hframes = 3
+vframes = 6
+frame = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Hero" type="Sprite" parent="Card"]
+visible = false
+position = Vector2( 4, 2 )
+texture = ExtResource( 3 )
+centered = false
+offset = Vector2( -1, -1 )
+hframes = 3
+vframes = 6
+frame = 8
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Colors" type="Sprite" parent="Card/Hero"]
+texture = ExtResource( 3 )
+centered = false
+offset = Vector2( -1, -1 )
+hframes = 3
+vframes = 6
+frame = 17
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Slot" type="Sprite" parent="Card"]
+position = Vector2( 4, 2 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 6
+vframes = 16
+frame = 54
+
+[node name="Print" type="Sprite" parent="Card"]
+position = Vector2( 4, 9 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 6
+vframes = 16
+frame = 64
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Card"]
+visible = false
+margin_right = 18.0
+margin_bottom = 18.0
+text = "0"
+align = 1
+valign = 1
+
+[node name="Arrow" type="Sprite" parent="."]
+position = Vector2( 13, 4 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 6
+vframes = 16
+frame = 56
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 1.5
+anims/RESET = SubResource( 1 )
+anims/StartPos = SubResource( 4 )
+anims/SwapOneLeft = SubResource( 2 )
+anims/SwapOneRight = SubResource( 3 )
+anims/SwapTwoLeft = SubResource( 5 )
+anims/SwapTwoRight = SubResource( 6 )
+
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_TextureButton_mouse_exited"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

@@ -1,0 +1,34 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform float outLineSizeX  = 0.03030;
+uniform float outLineSizeY  = 0.01515;
+uniform vec4  outLineColor = vec4(0, 0, 0, 1.0);
+
+bool isAlpha(sampler2D tex, vec2 uv) {
+	vec4 tcol = texture(tex, uv);
+	vec4 tcol2 = texture(tex, uv + vec2(0.0, 33.0 * outLineSizeY));
+	return tcol.a == 0.0 && tcol2.a == 0.0;
+}
+
+void fragment() {
+	vec4 tcol = texture(TEXTURE, UV);
+	if (isAlpha(TEXTURE, UV)) {
+		if (
+			!isAlpha(TEXTURE, UV + vec2(0.0, outLineSizeY)) || 
+			!isAlpha(TEXTURE, UV + vec2(0.0, -outLineSizeY)) || 
+			!isAlpha(TEXTURE, UV + vec2(outLineSizeX, 0.0)) || 
+			!isAlpha(TEXTURE, UV + vec2(-outLineSizeX, 0.0)))
+			tcol = outLineColor;
+	}
+	COLOR = tcol;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/outLineSizeX = 0.0303
+shader_param/outLineSizeY = 0.01515
+shader_param/outLineColor = Plane( 0, 0, 0, 1 )
