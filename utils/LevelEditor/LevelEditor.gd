@@ -20,7 +20,7 @@ func loadLevel(world: int, level: int):
 		return
 	flush()
 	var lvl = LevelLoader.levels[String(world) + "_" + String(level)]
-	for i in range(lvl[LevelLoader.TURN_ORDER][LevelLoader.SIZE]):
+	for _i in range(lvl[LevelLoader.TURN_ORDER][LevelLoader.SIZE]):
 		$TurnOrder.addSlot()
 	for s in lvl[LevelLoader.TURN_ORDER][LevelLoader.SLOTS]:
 		$TurnOrder.get_node("Turns").get_child(s[LevelLoader.ORDER]).setContained(s[LevelLoader.TYPE])
