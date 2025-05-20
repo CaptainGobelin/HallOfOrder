@@ -60,7 +60,7 @@ func flushCurrentLevel():
 		Ref.sceneries.remove_child(s)
 		s.queue_free()
 
-func loadLevel(world: int, level: int) -> Vector2:
+func loadLevel(world: int, level: int):
 	while level >= Data.FLOOR_NB:
 		level -= Data.FLOOR_NB
 		world = (world + 1) % Data.LEVEL_NB
@@ -82,4 +82,4 @@ func loadLevel(world: int, level: int) -> Vector2:
 	Ref.ui.get_node("Title").setLevel(level + 1)
 	MouseHandler.normalMode()
 	ButtonHandler.normalMode()
-	return Vector2(world, level)
+	ProfileData.currentLevel = Vector2(world, level)

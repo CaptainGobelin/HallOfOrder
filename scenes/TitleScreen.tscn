@@ -9,7 +9,7 @@
 script = ExtResource( 2 )
 
 [node name="Buttons" type="Node2D" parent="."]
-position = Vector2( 477, 369 )
+position = Vector2( 480, 387 )
 
 [node name="PlayButton" parent="Buttons" instance=ExtResource( 1 )]
 position = Vector2( 0, 9 )
@@ -34,11 +34,11 @@ scale = Vector2( 2, 2 )
 buttonScale = 2
 buttonLabel = "Exit"
 
-[node name="TextContainer" type="Node2D" parent="."]
+[node name="VersionContainer" type="Node2D" parent="."]
 position = Vector2( 774, 684 )
 scale = Vector2( 2, 2 )
 
-[node name="Label" type="Label" parent="TextContainer"]
+[node name="Label" type="Label" parent="VersionContainer"]
 margin_right = 86.0
 margin_bottom = 14.0
 grow_horizontal = 0
@@ -47,5 +47,30 @@ custom_fonts/font = ExtResource( 3 )
 text = "Current version: v"
 align = 2
 
+[node name="AuthorContainer" type="Node2D" parent="."]
+position = Vector2( 18, 684 )
+scale = Vector2( 2, 2 )
+
+[node name="Label" type="Label" parent="AuthorContainer"]
+margin_right = 97.0
+margin_bottom = 14.0
+theme = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
+text = "A game by Jéeremy Morel"
+
+[node name="ProfileContainer" type="Node2D" parent="."]
+position = Vector2( 480, 675 )
+scale = Vector2( 2, 2 )
+
+[node name="Label" type="Label" parent="ProfileContainer"]
+margin_left = -117.0
+margin_right = 117.0
+margin_bottom = 23.0
+theme = ExtResource( 4 )
+text = "Profile: 123456789012345"
+align = 1
+valign = 1
+
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Buttons/ProfileButton" to="." method="_on_ProfileButton_pressed"]
 [connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_ExitButton_pressed"]

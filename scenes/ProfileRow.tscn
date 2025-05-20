@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/m3x6.tres" type="DynamicFont" id=1]
+[ext_resource path="res://resources/ui_theme.tres" type="Theme" id=2]
+[ext_resource path="res://scripts/ProfileRow.gd" type="Script" id=3]
+
+[node name="ProfileRow" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Back" type="ColorRect" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 175.0
+margin_bottom = 14.0
+color = Color( 0.247059, 0.313726, 0.247059, 1 )
+
+[node name="Focus" type="ColorRect" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 175.0
+margin_bottom = 14.0
+color = Color( 0.247059, 0.313726, 0.247059, 1 )
+
+[node name="Name" type="Label" parent="."]
+margin_left = 4.0
+margin_right = 118.0
+margin_bottom = 14.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "Toto"
+
+[node name="Progress" type="Label" parent="."]
+margin_left = 121.0
+margin_right = 175.0
+margin_bottom = 14.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "95%"
+align = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 175.0
+margin_bottom = 15.0
+
+[connection signal="focus_entered" from="TextureButton" to="." method="_on_TextureButton_focus_entered"]
+[connection signal="focus_exited" from="TextureButton" to="." method="_on_TextureButton_focus_exited"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_TextureButton_mouse_exited"]

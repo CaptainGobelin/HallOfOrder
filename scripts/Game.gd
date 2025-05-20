@@ -29,9 +29,9 @@ func _ready():
 			Utils.changeScene("res://scenes/TitleScreen.tscn")
 			return
 		1:
-			currentLevel = Vector2(world, level)
+			ProfileData.currentLevel = Vector2(world, level)
 		2:
-			currentLevel = Vector2(0, 0)
+			ProfileData.currentLevel = Vector2(0, 0)
 		3:
 			pass
 		4:
@@ -40,7 +40,7 @@ func _ready():
 		5:
 			Utils.changeScene("res://scenes/LevelSelector.tscn")
 			return
-	LevelLoader.loadLevel(currentLevel.x, currentLevel.y)
+	LevelLoader.loadLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y)
 
 func nextLevel():
-	currentLevel = LevelLoader.loadLevel(currentLevel.x, currentLevel.y + 1)
+	LevelLoader.loadLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y + 1)

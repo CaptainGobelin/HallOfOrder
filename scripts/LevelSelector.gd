@@ -17,7 +17,6 @@ func _ready():
 		label.position.y = 18
 		label.position.x = (558.0/(Data.BIOMES.keys().size()-1)) * count + 81
 		var panel = Utils.instanciate(panelScene, $Pannels)
-		panel.position = Vector2(13.5, 0)
 		panel.visible = (w == currentPannel)
 		panel.setWorld(w)
 		count += 1

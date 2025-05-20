@@ -78,3 +78,5 @@ visible = false
 position = Vector2( 765, 630 )
 scale = Vector2( 7.5, 7.5 )
 buttonIcon = 79
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
