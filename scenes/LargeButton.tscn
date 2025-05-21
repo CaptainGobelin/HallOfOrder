@@ -25,11 +25,13 @@ region = Rect2( 0, 72, 45, 9 )
 [node name="LargeButton" type="Node2D"]
 scale = Vector2( 3, 3 )
 script = ExtResource( 4 )
+isHandled = false
 buttonIcon = 47
 
 [node name="TextureButton" type="TextureButton" parent="."]
 margin_right = 45.0
 margin_bottom = 9.0
+keep_pressed_outside = true
 texture_normal = SubResource( 1 )
 texture_pressed = SubResource( 2 )
 texture_hover = SubResource( 3 )
