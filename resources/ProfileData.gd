@@ -109,7 +109,6 @@ func delete(filename: String):
 	return dir.remove(SAVE_PATH + filename + ".sav") == OK
 
 func getAllProfiles() -> Array:
-	print(OS.get_user_data_dir())
 	var result = []
 	var dir = Directory.new()
 	if dir.open(SAVE_PATH) != OK:

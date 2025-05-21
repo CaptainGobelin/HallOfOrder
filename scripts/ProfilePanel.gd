@@ -8,17 +8,7 @@ var currentFocus = null
 var toDelete = null
 
 func _ready():
-#	var data = [
-#		["Riri", 0],
-#		["Fifi", 10],
-#		["Loulou", 11],
-#		["Picsou", 100],
-#		["Riri", 0],
-#		["Fifi", 10],
-#		["Loulou", 11],
-#		["Picsou", 100]
-#	]
-#	fillData(data)
+	$Help/MenuBlock/Path.text = OS.get_user_data_dir()
 	fillData(ProfileData.getAllProfiles())
 	unfocus()
 	if ProfileData.profileMode == ProfileData.PRO_CREATE:
@@ -154,3 +144,15 @@ func _on_ConfirmDeleteButton_pressed():
 		ProfileData.saveSettings()
 	fillData(ProfileData.getAllProfiles())
 	_on_CancelDeleteButton_pressed()
+
+func _on_CopyButton_pressed():
+	OS.set_clipboard(OS.get_user_data_dir())
+
+func _on_ConfirmHelpButton_pressed():
+	$Choose.visible = true
+	$Help.visible = false
+
+func _on_HelpButton_pressed():
+	$Choose.visible = false
+	$Help.visible = true
+	unfocus()
