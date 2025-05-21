@@ -36,6 +36,15 @@ func init(size: int, pos: int):
 	currentShift = 0
 	initialPosition = global_position
 
+func colorize():
+	var color = Utils.getBiomeColor()
+	$Card.self_modulate = color
+	$Card/Hero.self_modulate = color
+	$Card/Monster.modulate = color
+	$Card/Slot.modulate = color
+	$Card/Print.modulate = color
+	$Arrow.modulate = color
+
 func unuse():
 	$TextureButton.visible = false
 	isActive = false

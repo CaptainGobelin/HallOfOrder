@@ -67,3 +67,6 @@ static func toRoman(number: int) -> String:
 static func strToFilename(s: String) -> String:
 	var result = (s + Time.get_datetime_string_from_system()).sha1_text()
 	return result.substr(0, 10)
+
+static func getBiomeColor() -> Color:
+	return Data.BIOMES[int(ProfileData.currentLevel.x)][Data.BI_COLOR]

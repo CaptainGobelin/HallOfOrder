@@ -15,6 +15,7 @@ var shouldReplay: bool = false
 static func addHero(heroType: int):
 	var hero = Utils.instanciate(Ref.game.heroScene, Ref.heroes)
 	hero.setType(heroType)
+	hero.colorize()
 	hero.placeOnPool()
 
 func _ready():
@@ -28,6 +29,10 @@ func setType(value: int):
 		return
 	$Body.frame  = value
 	$Body/Colors.frame  = value + 9
+
+func colorize():
+	var color = Utils.getBiomeColor()
+	$Body.self_modulate = color
 
 func placeOnBoard(cell: Vector2):
 	if not onBoard:

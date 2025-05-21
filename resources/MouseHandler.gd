@@ -47,7 +47,7 @@ func selectHeroMode(selectedNode):
 	selection = selectedNode
 	ButtonHandler.disableTurnButtons()
 	Ref.turnOrder.get_node("TextureButton").visible = false
-	Input.set_custom_mouse_cursor(getHeroCursor(selection.type, "M", "green"), Input.CURSOR_ARROW, Vector2(4, 4))
+	Input.set_custom_mouse_cursor(getHeroCursor(selection.type, "M"), Input.CURSOR_ARROW, Vector2(4, 4))
 	oldMousePos = get_viewport().get_mouse_position()
 	Ref.ui.get_node("Board").enableButton()
 	set_process_input(true)
@@ -93,8 +93,8 @@ func loadCursors():
 			heroCursors[info[2]][info[1]][info[0]] = load(path + file_name)
 			file_name = dir.get_next()
 
-func getHeroCursor(type: int, size: String, color: String):
-	return heroCursors[size][color][String(type)]
+func getHeroCursor(type: int, size: String):
+	return heroCursors[size][String(ProfileData.currentLevel.x)][String(type)]
 
 func placeHero(cell: Vector2):
 	assert(selection != null)

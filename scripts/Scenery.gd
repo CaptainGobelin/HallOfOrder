@@ -10,6 +10,7 @@ var initPos: Vector2 = Vector2(0, 0)
 static func addScenery(sceneryType: int, cell: Vector2):
 	var scenery = Utils.instanciate(Ref.game.sceneryScene, Ref.sceneries)
 	scenery.setType(sceneryType)
+	scenery.colorize()
 	scenery.placeOnBoard(cell)
 
 func _ready():
@@ -20,6 +21,11 @@ func setType(value: int):
 	if not has_node("Sprite"):
 		return
 	$Sprite.frame  = value
+
+func colorize():
+	var color = Utils.getBiomeColor()
+	$Sprite.self_modulate = color
+	$Effect.self_modulate = color
 
 func placeOnBoard(cell: Vector2):
 	$Sprite.visible = true

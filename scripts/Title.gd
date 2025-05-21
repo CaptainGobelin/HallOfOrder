@@ -7,6 +7,11 @@ export(int) var level = 1 setget setLevel
 func _ready():
 	drawTitle()
 
+func colorize():
+	var color = Utils.getBiomeColor()
+	$LeftLeaves.modulate = color
+	$RightLeaves.modulate = color
+
 func setTitle(value: String):
 	title = value
 	drawTitle()

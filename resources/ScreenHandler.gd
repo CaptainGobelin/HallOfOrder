@@ -1,15 +1,28 @@
 extends Node
 
 var texture: Texture = preload("res://sprites/pixel.png")
+var pixels: Dictionary = {}
 
 onready var viewport = get_viewport()
 var minimum_size = Vector2(1920, 1080)
 
 func _ready():
+	Signals.connect("change_scene", self, "decolorize")
 	var rid: RID = texture.get_rid()
 	VisualServer.black_bars_set_images(rid, rid, rid, rid)
 	viewport.connect("size_changed", self, "window_resize")
 	window_resize()
+	loadPixels()
+
+func colorize():
+	var rid: RID = pixels[int(ProfileData.currentLevel.x)].get_rid()
+	VisualServer.black_bars_set_images(rid, rid, rid, rid)
+	VisualServer.set_default_clear_color(Colors.shade6 * Utils.getBiomeColor())
+
+func decolorize():
+	var rid: RID = texture.get_rid()
+	VisualServer.black_bars_set_images(rid, rid, rid, rid)
+	VisualServer.set_default_clear_color(Colors.shade6)
 
 func window_resize():
 	var current_size = OS.get_window_size()
@@ -23,3 +36,6 @@ func window_resize():
 		new_size = Vector2(current_size.y*current_ar*scale, current_size.y*scale)
 	viewport.set_size_override(true, new_size)
 
+func loadPixels():
+	for biome in Data.BIOMES.keys():
+		pixels[biome] = load("res://sprites/pixel/" + String(biome) +".png")

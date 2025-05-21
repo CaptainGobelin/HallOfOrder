@@ -68,6 +68,7 @@ func loadLevel(world: int, level: int):
 	if not levels.has(lvlName):
 		return loadLevel(world, level + 1)
 	flushCurrentLevel()
+	ProfileData.currentLevel = Vector2(world, level)
 	var lvl = levels[lvlName]
 	Ref.turnOrder.init(lvl[TURN_ORDER][SIZE])
 	for s in lvl[TURN_ORDER][SLOTS]:
@@ -80,6 +81,7 @@ func loadLevel(world: int, level: int):
 		Scenery.addScenery(s[TYPE], s[POSITION])
 	Ref.ui.get_node("Title").setTitle(Data.BIOMES[world][Data.BI_NAME])
 	Ref.ui.get_node("Title").setLevel(level + 1)
+	Ref.ui.colorize()
+	ScreenHandler.colorize()
 	MouseHandler.normalMode()
 	ButtonHandler.normalMode()
-	ProfileData.currentLevel = Vector2(world, level)

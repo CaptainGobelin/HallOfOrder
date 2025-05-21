@@ -12,6 +12,7 @@ var isDying = false
 static func addMonster(monsterType: int, cell: Vector2):
 	var monster = Utils.instanciate(Ref.game.monsterScene, Ref.monsters)
 	monster.setType(monsterType)
+	monster.colorize()
 	monster.placeOnBoard(cell)
 
 static func getFakeMonster(monsterType: int) -> Monster:
@@ -27,6 +28,10 @@ func setType(value: int):
 	if not has_node("Body"):
 		return
 	$Body.frame = value
+
+func colorize():
+	var color = Utils.getBiomeColor()
+	$Body.self_modulate = color
 
 func placeOnBoard(cell: Vector2):
 	$Body.visible = true

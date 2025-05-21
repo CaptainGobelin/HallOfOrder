@@ -8,6 +8,10 @@ func _ready():
 	Ref.turnOrder = self
 	set_process_input(false)
 
+func colorize():
+	for c in $Objects.get_children():
+		c.colorize()
+
 func getHeroSlot(hero: Node):
 	for c in $Objects.get_children():
 		if c.isActive and c.contained == hero:
