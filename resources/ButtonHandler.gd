@@ -75,6 +75,14 @@ func buttonPressed(type: int):
 		Icons.DoubleSpeed:
 			Ref.ui.get_node("NormalSpeedButton").visible = true
 			Ref.ui.get_node("DoubleSpeedButton").visible = false
+		Icons.Fullscreen:
+			Ref.ui.get_node("FullscreenButton").visible = false
+			Ref.ui.get_node("SmallscreenButton").visible = true
+			OS.window_fullscreen = true
+		Icons.Smallscreen:
+			Ref.ui.get_node("FullscreenButton").visible = true
+			Ref.ui.get_node("SmallscreenButton").visible = false
+			OS.window_fullscreen = false
 		Icons.Roll:
 			Ref.ui.get_node("InfoBox").roll()
 		Icons.Unroll:

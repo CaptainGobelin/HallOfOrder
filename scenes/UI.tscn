@@ -58,29 +58,40 @@ position = Vector2( 639, 270 )
 scale = Vector2( 5, 5 )
 
 [node name="MenuButton" parent="." instance=ExtResource( 3 )]
-position = Vector2( 889, 664 )
+position = Vector2( 874, 664 )
 scale = Vector2( 5, 5 )
 buttonIcon = 80
 
 [node name="NormalSpeedButton" parent="." instance=ExtResource( 3 )]
-position = Vector2( 664, 664 )
+position = Vector2( 679, 664 )
 scale = Vector2( 5, 5 )
 buttonIcon = 81
 
 [node name="DoubleSpeedButton" parent="." instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 664, 664 )
+position = Vector2( 679, 664 )
 scale = Vector2( 5, 5 )
 buttonIcon = 82
 
 [node name="SoundButton" parent="." instance=ExtResource( 3 )]
-position = Vector2( 729, 664 )
+position = Vector2( 744, 664 )
 scale = Vector2( 5, 5 )
+buttonIcon = 78
 
 [node name="NoSoundButton" parent="." instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 729, 664 )
+position = Vector2( 744, 664 )
 scale = Vector2( 5, 5 )
-buttonIcon = 79
+
+[node name="FullscreenButton" parent="." instance=ExtResource( 3 )]
+position = Vector2( 809, 664 )
+scale = Vector2( 5, 5 )
+buttonIcon = 90
+
+[node name="SmallscreenButton" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 809, 664 )
+scale = Vector2( 5, 5 )
+buttonIcon = 91
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]

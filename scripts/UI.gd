@@ -17,6 +17,8 @@ func colorize():
 	$MenuButton.modulate = color
 	$NormalSpeedButton.modulate = color
 	$DoubleSpeedButton.modulate = color
+	$FullscreenButton.modulate = color
+	$SmallscreenButton.modulate = color
 	$SoundButton.modulate = color
 	$NoSoundButton.modulate = color
 	$Title.colorize()
