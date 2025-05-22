@@ -2,7 +2,8 @@ extends Node
 
 enum Types {Menu, Turn, Entity}
 enum Icons {Play = 41, Reset = 47, Stop = 53, Sound = 78, NoSound = 79, Menu = 80,
-	NormalSpeed = 81, DoubleSpeed = 82}
+	NormalSpeed = 81, DoubleSpeed = 82, Fullscreen = 90, Smallscreen = 91,
+	Unroll = 92, Roll = 93}
 
 var menuButtons: Array
 var turnButtons: Array
@@ -74,6 +75,10 @@ func buttonPressed(type: int):
 		Icons.DoubleSpeed:
 			Ref.ui.get_node("NormalSpeedButton").visible = true
 			Ref.ui.get_node("DoubleSpeedButton").visible = false
+		Icons.Roll:
+			Ref.ui.get_node("InfoBox").roll()
+		Icons.Unroll:
+			Ref.ui.get_node("InfoBox").unroll()
 		_:
 			print("Unknown button")
 

@@ -58,7 +58,7 @@ func placeOnPool(value: int = -1):
 	var p = Vector2(9, 9)
 	p.x *= poolPos % 5
 	p.y *= ceil(poolPos / 5)
-	position = p + Vector2(9, 13)
+	position = p
 
 func cancelPick():
 	$Body.visible = true

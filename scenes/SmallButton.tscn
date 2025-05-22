@@ -5,6 +5,7 @@
 
 [node name="SmallButton" type="Node2D"]
 script = ExtResource( 2 )
+buttonIcon = 79
 
 [node name="TextureButton" type="TextureButton" parent="."]
 margin_right = 9.0
@@ -15,7 +16,7 @@ texture = ExtResource( 1 )
 centered = false
 hframes = 6
 vframes = 16
-frame = 78
+frame = 79
 
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]
 [connection signal="mouse_exited" from="TextureButton" to="." method="_on_TextureButton_mouse_exited"]

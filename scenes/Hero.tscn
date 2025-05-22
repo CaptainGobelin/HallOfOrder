@@ -117,7 +117,6 @@ tracks/2/keys = {
 }
 
 [node name="Hero" type="Node2D" groups=["Entity", "Hero"]]
-position = Vector2( 9, 13 )
 script = ExtResource( 2 )
 type = 8
 
