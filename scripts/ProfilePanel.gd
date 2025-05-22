@@ -8,6 +8,7 @@ var currentFocus = null
 var toDelete = null
 
 func _ready():
+	position = Vector2(165, 99)
 	$Help/MenuBlock/Path.text = OS.get_user_data_dir()
 	fillData(ProfileData.getAllProfiles())
 	unfocus()
@@ -25,15 +26,15 @@ func _input(event):
 			return
 		rowStarter -= 1
 		for r in $Choose/Table/Rows.get_children():
-			r.setStarter(rowStarter, rowStarter + 7)
+			r.setStarter(rowStarter, rowStarter + 6)
 			$Choose/Table/MenuScroller.setArrows(rowStarter, maxElements)
 			$Choose/Table/TextureButton.visible = $Choose/Table/MenuScroller.isActive
 	elif event.is_action_pressed("ui_page_down"):
-		if rowStarter > maxElements - 8:
+		if rowStarter > maxElements - 7:
 			return
 		rowStarter += 1
 		for r in $Choose/Table/Rows.get_children():
-			r.setStarter(rowStarter, rowStarter + 7)
+			r.setStarter(rowStarter, rowStarter + 6)
 			$Choose/Table/MenuScroller.setArrows(rowStarter, maxElements)
 			$Choose/Table/TextureButton.visible = $Choose/Table/MenuScroller.isActive
 
@@ -52,15 +53,15 @@ func fillData(profiles: Array):
 		for p in profiles:
 			var r = Utils.instanciate(row, $Choose/Table/Rows)
 			r.setPosition(count)
-			r.setStarter(rowStarter, rowStarter + 7)
+			r.setStarter(rowStarter, rowStarter + 6)
 			r.setData(p[0], p[1], p[2])
 			r.connect("focus", self, "focus", [r])
 			r.connect("unfocus", self, "unfocus")
 			count += 1
-		if ($Choose/Table/Rows.get_child_count() <= 7):
+		if ($Choose/Table/Rows.get_child_count() <= 6):
 			maxElements = $Choose/Table/Rows.get_child_count()
 		else:
-			maxElements = $Choose/Table/Rows.get_child_count() + 4
+			maxElements = $Choose/Table/Rows.get_child_count() + 3
 	$Choose/Table/MenuScroller.setArrows(rowStarter, maxElements)
 	$Choose/Table/TextureButton.visible = $Choose/Table/MenuScroller.isActive
 
@@ -97,6 +98,7 @@ func _on_DeleteButton_pressed():
 	if currentFocus == null:
 		return
 	toDelete = currentFocus
+	$Delete/MenuBlock/Profile.text = toDelete.getName()
 	$Choose.visible = false
 	$Delete.visible = true
 

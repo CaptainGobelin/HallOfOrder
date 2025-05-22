@@ -12,6 +12,9 @@ func _ready():
 	$Back.color = Colors.shade5
 	$Focus.color = Colors.shade4
 
+func getName() -> String:
+	return $Name.text
+
 func setData(name: String, progress: int, file: String):
 	$Name.text = name
 	$Progress.text = String(progress) + "%"
@@ -25,7 +28,7 @@ func setStarter(starter: int, ender: int):
 		visible = false
 	else:
 		visible = true
-		position.y = (pos - starter) * 14
+		position.y = (pos - starter) * 20
 
 func _on_TextureButton_mouse_entered():
 	$Back.visible = true

@@ -9,95 +9,96 @@
 [ext_resource path="res://scripts/ProfilePanel.gd" type="Script" id=8]
 
 [node name="ProfilePanel" type="Node2D"]
-position = Vector2( 144, 90 )
-scale = Vector2( 3, 3 )
+scale = Vector2( 2, 2 )
 script = ExtResource( 8 )
 
 [node name="Choose" type="Node2D" parent="."]
 
 [node name="MenuBlock" parent="Choose" instance=ExtResource( 1 )]
-size = Vector2( 5, 4 )
+size = Vector2( 7, 5 )
 
 [node name="MenuHole" parent="Choose" instance=ExtResource( 2 )]
-position = Vector2( 15, 30 )
-size = Vector2( 4.333, 2.66 )
+position = Vector2( 18, 36 )
+size = Vector2( 6.2, 3.2 )
 
 [node name="CreateButton" parent="Choose" instance=ExtResource( 4 )]
-position = Vector2( 15, 152.667 )
-size = Vector2( 1.333, 0.5 )
+position = Vector2( 27, 189 )
+size = Vector2( 1.8, 0.6 )
 label = "New profile"
 
 [node name="DeleteButton" parent="Choose" instance=ExtResource( 4 )]
-position = Vector2( 82.6667, 152.333 )
-size = Vector2( 1.333, 0.5 )
+position = Vector2( 117, 189 )
+size = Vector2( 1.8, 0.6 )
 label = "Delete"
 
 [node name="SelectButton" parent="Choose" instance=ExtResource( 4 )]
-position = Vector2( 150, 152 )
-size = Vector2( 1.333, 0.5 )
+position = Vector2( 207, 189 )
+size = Vector2( 1.8, 0.6 )
 label = "Confirm"
 
 [node name="Title" type="Label" parent="Choose"]
-margin_left = 15.0
+margin_left = 18.0
 margin_top = 2.0
 margin_right = 225.0
-margin_bottom = 30.0
+margin_bottom = 36.0
 theme = ExtResource( 3 )
 text = "Choose Profile"
 valign = 1
 
 [node name="Table" type="Node2D" parent="Choose"]
-position = Vector2( 18, 33 )
+position = Vector2( 21, 39 )
 
 [node name="Header" type="Node2D" parent="Choose/Table"]
 
 [node name="NameHeader" parent="Choose/Table/Header" instance=ExtResource( 1 )]
 position = Vector2( -0.999996, -1 )
-size = Vector2( 2.667, 0.333 )
+size = Vector2( 4.115, 0.4 )
 
 [node name="Label" type="Label" parent="Choose/Table/Header/NameHeader"]
 margin_left = 4.0
-margin_right = 120.0
-margin_bottom = 15.0
+margin_right = 185.0
+margin_bottom = 17.0
 theme = ExtResource( 7 )
 text = "Name"
+valign = 1
 
 [node name="ProgressHeader" parent="Choose/Table/Header" instance=ExtResource( 1 )]
-position = Vector2( 119, -0.999992 )
-size = Vector2( 1.244, 0.333 )
+position = Vector2( 184, -1 )
+size = Vector2( 1.6, 0.4 )
 
 [node name="Label" type="Label" parent="Choose/Table/Header/ProgressHeader"]
-margin_left = 4.0
-margin_right = 52.0
-margin_bottom = 15.0
+margin_right = 72.0
+margin_bottom = 18.0
 theme = ExtResource( 7 )
 text = "Progress"
 align = 1
+valign = 1
 
 [node name="ArrowHeader" parent="Choose/Table/Header" instance=ExtResource( 1 )]
-position = Vector2( 175, -1 )
-size = Vector2( 0.333, 0.333 )
+position = Vector2( 256, -1 )
+size = Vector2( 0.4, 0.4 )
 
 [node name="MenuScroller" parent="Choose/Table" instance=ExtResource( 5 )]
-position = Vector2( 178, 23.6667 )
-length = 81
-elements = 7
+position = Vector2( 260.5, 26.5 )
+length = 103
 
 [node name="Rows" type="Node2D" parent="Choose/Table"]
-position = Vector2( -0.999998, 14 )
+position = Vector2( -0.999998, 17 )
 
 [node name="TextureButton" type="TextureButton" parent="Choose/Table"]
+visible = false
 margin_left = -1.0
-margin_top = 14.0
-margin_right = 190.0
-margin_bottom = 115.0
+margin_top = -1.5
+margin_right = 274.0
+margin_bottom = 138.5
 mouse_filter = 2
 
 [node name="NoProfile" type="Label" parent="Choose"]
-margin_left = 17.0
-margin_top = 32.0
-margin_right = 208.0
-margin_bottom = 148.0
+visible = false
+margin_left = 18.0
+margin_top = 36.0
+margin_right = 297.0
+margin_bottom = 180.0
 theme = ExtResource( 7 )
 text = "No existing profile found.
 Create a new one."
@@ -105,20 +106,20 @@ align = 1
 valign = 1
 
 [node name="WindowButtons" type="Node2D" parent="Choose"]
-position = Vector2( 189.333, 4 )
+position = Vector2( 268, 6.5 )
 
 [node name="HelpButton" parent="Choose/WindowButtons" instance=ExtResource( 4 )]
-size = Vector2( 0.333, 0.333 )
+size = Vector2( 0.4, 0.4 )
 label = "?"
 
 [node name="CloseButton" parent="Choose/WindowButtons" instance=ExtResource( 4 )]
-position = Vector2( 17, 0 )
-size = Vector2( 0.333, 0.333 )
+position = Vector2( 22.5, 0 )
+size = Vector2( 0.4, 0.4 )
 label = "X"
 
 [node name="Create" type="Node2D" parent="."]
 visible = false
-position = Vector2( 22.3333, 45 )
+position = Vector2( 54, 63 )
 
 [node name="MenuBlock" parent="Create" instance=ExtResource( 1 )]
 size = Vector2( 4, 2 )
@@ -128,8 +129,8 @@ position = Vector2( 7.66666, 30 )
 size = Vector2( 3.667, 0.5 )
 
 [node name="Label" type="Label" parent="Create"]
-margin_left = 8.0
-margin_right = 173.0
+margin_left = 9.0
+margin_right = 171.0
 margin_bottom = 30.0
 theme = ExtResource( 3 )
 text = "Choose a name"
@@ -137,13 +138,13 @@ align = 1
 valign = 1
 
 [node name="CancelButton" parent="Create" instance=ExtResource( 4 )]
-position = Vector2( 22.6667, 60 )
-size = Vector2( 1.333, 0.5 )
+position = Vector2( 22.5, 58.5 )
+size = Vector2( 1.4, 0.5 )
 label = "Cancel"
 
 [node name="ConfirmCreateButton" parent="Create" instance=ExtResource( 4 )]
-position = Vector2( 97.6667, 60 )
-size = Vector2( 1.333, 0.5 )
+position = Vector2( 94.5, 58.5 )
+size = Vector2( 1.4, 0.5 )
 label = "Confirm"
 
 [node name="LineEdit" type="LineEdit" parent="Create"]
@@ -159,68 +160,85 @@ caret_blink = true
 
 [node name="Delete" type="Node2D" parent="."]
 visible = false
-position = Vector2( 22.3333, 45 )
+position = Vector2( 54, 63 )
 
 [node name="MenuBlock" parent="Delete" instance=ExtResource( 1 )]
 size = Vector2( 4, 2 )
 
 [node name="Label" type="Label" parent="Delete/MenuBlock"]
-margin_left = 8.0
-margin_top = 15.0
-margin_right = 173.0
-margin_bottom = 45.0
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 171.0
+margin_bottom = 36.0
 theme = ExtResource( 7 )
 text = "Are you sure you want to delete this profile:"
 align = 1
 valign = 1
 autowrap = true
 
+[node name="Profile" type="Label" parent="Delete/MenuBlock"]
+margin_left = 9.0
+margin_top = 33.0
+margin_right = 171.0
+margin_bottom = 54.0
+theme = ExtResource( 7 )
+text = "Toto"
+align = 1
+valign = 1
+autowrap = true
+
 [node name="CancelDeleteButton" parent="Delete/MenuBlock" instance=ExtResource( 4 )]
-position = Vector2( 22.6667, 60 )
-size = Vector2( 1.333, 0.5 )
+position = Vector2( 22.6667, 58.5 )
+size = Vector2( 1.4, 0.5 )
 label = "Cancel"
 
 [node name="ConfirmDeleteButton" parent="Delete/MenuBlock" instance=ExtResource( 4 )]
-position = Vector2( 97.6667, 60 )
-size = Vector2( 1.333, 0.5 )
+position = Vector2( 94.5, 58.5 )
+size = Vector2( 1.4, 0.5 )
 label = "Confirm"
 
 [node name="Help" type="Node2D" parent="."]
 visible = false
-position = Vector2( 22.333, 45 )
+position = Vector2( 54, 63 )
 
 [node name="MenuBlock" parent="Help" instance=ExtResource( 1 )]
-size = Vector2( 4, 2 )
+position = Vector2( -3.8147e-06, -9 )
+size = Vector2( 4, 2.4 )
 
 [node name="Label" type="Label" parent="Help/MenuBlock"]
-margin_left = 8.0
-margin_right = 173.0
-margin_bottom = 30.0
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 171.0
+margin_bottom = 36.0
 theme = ExtResource( 7 )
 text = "Your save folder is located at:"
 align = 1
 valign = 1
 autowrap = true
+clip_text = true
 
 [node name="Path" type="Label" parent="Help/MenuBlock"]
-margin_left = 8.0
-margin_top = 15.0
-margin_right = 173.0
-margin_bottom = 60.0
+margin_left = 9.0
+margin_top = 36.0
+margin_right = 171.0
+margin_bottom = 72.0
 theme = ExtResource( 7 )
-text = "SAVE_PATH"
+text = "SAVE_PATH
+fdsfdsfd
+fsdf"
 align = 1
 valign = 1
 autowrap = true
+clip_text = true
 
 [node name="CopyButton" parent="Help/MenuBlock" instance=ExtResource( 4 )]
-position = Vector2( 22.667, 60 )
-size = Vector2( 1.333, 0.5 )
+position = Vector2( 22.5, 76.5 )
+size = Vector2( 1.4, 0.5 )
 label = "Copy"
 
 [node name="ConfirmHelpButton" parent="Help/MenuBlock" instance=ExtResource( 4 )]
-position = Vector2( 97.667, 60 )
-size = Vector2( 1.333, 0.5 )
+position = Vector2( 94.5, 76.5 )
+size = Vector2( 1.4, 0.5 )
 label = "Confirm"
 
 [connection signal="pressed" from="Choose/CreateButton" to="." method="_on_CreateButton_pressed"]
