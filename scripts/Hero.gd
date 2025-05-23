@@ -139,3 +139,13 @@ func reset():
 
 func restart():
 	placeOnPool(poolPos)
+
+func _on_TextureButton_mouse_entered():
+	match type:
+		Data.classes.Fighter:
+			Ref.ui.showTooltip(TooltipFactory.tooltips.Fighter)
+		Data.classes.Paladin:
+			Ref.ui.showTooltip(TooltipFactory.tooltips.Paladin)
+
+func _on_TextureButton_mouse_exited():
+	Ref.ui.hideTooltip()

@@ -10,6 +10,7 @@ const DIR_RIGHT = 1
 const DIR_DOWN = 2
 const DIR_LEFT = 3
 
+enum dirs {Up, Right, Down, Left}
 const DIRECTIONS = [Vector2(0, -1), Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0)]
 
 const CELL_SIZE = 9

@@ -150,4 +150,6 @@ anims/Death = SubResource( 4 )
 anims/Pin = SubResource( 3 )
 anims/RESET = SubResource( 2 )
 
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_TextureButton_mouse_exited"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

@@ -1,7 +1,15 @@
 extends Node2D
 
 func _ready():
+	hideTooltip()
 	unroll()
+
+func showTooltip(type: int):
+	$Tooltip/TooltipFactory.visible = true
+	$Tooltip/TooltipFactory.setType(type)
+
+func hideTooltip():
+	$Tooltip/TooltipFactory.visible = false
 
 func colorize():
 	var color = Utils.getBiomeColor()
@@ -10,6 +18,7 @@ func colorize():
 	$Sprite.modulate = color
 	$RollButton.modulate = color
 	$UnrollButton.modulate = color
+	$Tooltip/TooltipFactory.colorize()
 
 func roll():
 	$TileMap.visible = false

@@ -25,3 +25,9 @@ func colorize():
 	$HeroPool.colorize()
 	$InfoBox.colorize()
 	$TurnOrder.colorize()
+
+func showTooltip(type: int):
+	$InfoBox.showTooltip(type)
+
+func hideTooltip():
+	$InfoBox.hideTooltip()
