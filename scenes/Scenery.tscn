@@ -74,6 +74,10 @@ tracks/2/keys = {
 script = ExtResource( 2 )
 type = 1
 
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_right = 9.0
+margin_bottom = 9.0
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
@@ -88,8 +92,11 @@ centered = false
 offset = Vector2( 0, -3 )
 hframes = 3
 vframes = 6
-frame = 10
+frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
 anims/Spikes = SubResource( 2 )
+
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_TextureButton_mouse_exited"]

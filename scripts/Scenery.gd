@@ -57,3 +57,11 @@ func push(_dir: Vector2) -> bool:
 
 func die():
 	return
+
+func _on_TextureButton_mouse_entered():
+	match type:
+		Data.sceneries.Spikes:
+			Ref.ui.showTooltip(TooltipFactory.tooltips.Spikes)
+
+func _on_TextureButton_mouse_exited():
+	Ref.ui.hideTooltip()

@@ -69,3 +69,15 @@ func setScenery():
 func setPos(value: Vector2):
 	pos = value
 	position = pos * 9
+
+func crumble():
+	$AnimationPlayer.play("Crumble")
+
+func death():
+	$AnimationPlayer.play("Death")
+
+func spikes():
+	$AnimationPlayer.play("Spikes")
+
+func reset():
+	$AnimationPlayer.play("RESET")

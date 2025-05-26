@@ -2,7 +2,7 @@ tool
 extends Node2D
 class_name TooltipFactory
 
-enum tooltips {Fighter, Paladin}
+enum tooltips {Fighter, Paladin, Monk, Spikes}
 
 export(tooltips) var type = tooltips.Fighter setget setType
 export(Vector2) var size = Vector2(3,3) setget setSize
@@ -34,10 +34,20 @@ func setType(value: int):
 			setSize(Vector2(3, 3))
 			$AnimationPlayer.play("Fighter")
 		tooltips.Paladin:
-			$Labels/TopLabel.text = "The paladin hits all cells around him.qsd qsd qsd qsdqsdqsd qsd qsd qsd"
-			$Labels/BotLabel.text = "The paladin cannot die from any attack.qsd qs dqsd qsd qsd qsd qsd"
-			setSize(Vector2(3, 3))
+			$Labels/TopLabel.text = "The paladin hits all cells around him."
+			$Labels/BotLabel.text = "The paladin cannot die from any attack."
+			setSize(Vector2(4, 3))
 			$AnimationPlayer.play("Paladin")
+		tooltips.Monk:
+			$Labels/TopLabel.text = "The pushes all creatures around him."
+			$Labels/BotLabel.text = "Creatures will die if pushed against a wall."
+			setSize(Vector2(5, 3))
+			$AnimationPlayer.play("Monk")
+		tooltips.Spikes:
+			$Labels/TopLabel.text = ""
+			$Labels/BotLabel.text = "The spike trap kills any creature that stand on it."
+			setSize(Vector2(5, 3))
+			$AnimationPlayer.play("Spikes")
 
 func setSize(value: Vector2):
 	if value != size:
@@ -70,3 +80,7 @@ func setSize(value: Vector2):
 	if not $Labels/TopLabel.text.empty():
 		$Image.position.y += $Labels/TopLabel.rect_size.y * $Labels.scale.y
 		$Labels.position.y += $Labels/TopLabel.rect_size.y * $Labels.scale.y
+
+func reset():
+	for p in $Image/Puppets.get_children():
+		p.reset()
