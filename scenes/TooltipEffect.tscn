@@ -55,7 +55,6 @@ dir = 3
 visible = false
 texture = ExtResource( 1 )
 centered = false
-flip_h = true
 hframes = 6
 vframes = 5
 __meta__ = {

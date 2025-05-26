@@ -15,6 +15,7 @@ func _ready():
 func setType(value):
 	type = value
 	setCoord(coords)
+	setDir(dir)
 
 func setCoord(value):
 	coords = value
@@ -29,6 +30,12 @@ func setPos(value: Vector2):
 func setDir(value: int):
 	dir = value
 	if not has_node("Sprite"):
+		return
+	if not shouldFaceDirection():
+		$Sprite.flip_h = false
+		$Sprite.rotation_degrees = 0
+		$Sprite.position.x = 0
+		$Sprite.position.y = 0
 		return
 	match dir:
 		Data.DIR_LEFT: 
@@ -51,6 +58,10 @@ func setDir(value: int):
 			$Sprite.rotation_degrees = 0
 			$Sprite.position.x = 0
 			$Sprite.position.y = 0
+
+func shouldFaceDirection() -> bool:
+	if type == Data.effects.Fire: return true
+	return false
 
 func play():
 	$AnimationPlayer.play("Play")
