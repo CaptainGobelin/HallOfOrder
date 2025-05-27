@@ -150,6 +150,8 @@ func _on_TextureButton_mouse_entered():
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Monk)
 		Data.classes.Wizard:
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Wizard)
+		Data.classes.Barbarian:
+			Ref.ui.showTooltip(TooltipFactory.tooltips.Barbarian)
 
 func _on_TextureButton_mouse_exited():
 	Ref.ui.hideTooltip()
