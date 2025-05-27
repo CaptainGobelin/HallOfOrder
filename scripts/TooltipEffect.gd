@@ -15,7 +15,6 @@ func _ready():
 func setType(value):
 	type = value
 	setCoord(coords)
-	setDir(dir)
 
 func setCoord(value):
 	coords = value
@@ -60,10 +59,11 @@ func setDir(value: int):
 			$Sprite.position.y = 0
 
 func shouldFaceDirection() -> bool:
-	if type == Data.effects.Fire: return true
+	if type == Data.effects.Push: return true
 	return false
 
 func play():
+	setDir(dir)
 	$AnimationPlayer.play("Play")
 
 func stop():

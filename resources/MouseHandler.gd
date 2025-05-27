@@ -45,6 +45,7 @@ func selectHeroMode(selectedNode):
 			selection.cancelPick()
 	currentMode = SELECT_HERO_MODE
 	selection = selectedNode
+	Ref.ui.hideTooltip()
 	ButtonHandler.disableTurnButtons()
 	Ref.turnOrder.get_node("TextureButton").visible = false
 	Input.set_custom_mouse_cursor(getHeroCursor(selection.type, "M"), Input.CURSOR_ARROW, Vector2(4, 4))

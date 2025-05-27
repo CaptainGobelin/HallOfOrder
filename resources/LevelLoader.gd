@@ -82,6 +82,7 @@ func loadLevel(world: int, level: int):
 	Ref.ui.get_node("Title").setTitle(Data.BIOMES[world][Data.BI_NAME])
 	Ref.ui.get_node("Title").setLevel(level + 1)
 	Ref.ui.colorize()
+	Ref.ui.hideTooltip()
 	ScreenHandler.colorize()
 	MouseHandler.normalMode()
 	ButtonHandler.normalMode()

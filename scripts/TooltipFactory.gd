@@ -2,7 +2,7 @@ tool
 extends Node2D
 class_name TooltipFactory
 
-enum tooltips {Fighter, Paladin, Monk, Wizard, Spikes}
+enum tooltips {Fighter, Paladin, Monk, Wizard, Goblin, Skeleton, Slime, Spikes, Tuto}
 
 export(tooltips) var type = tooltips.Fighter setget setType
 export(Vector2) var size = Vector2(3,3) setget setSize
@@ -44,15 +44,35 @@ func setType(value: int):
 			setSize(Vector2(5, 3))
 			$AnimationPlayer.play("Monk")
 		tooltips.Wizard:
-			$Labels/TopLabel.text = "Wizard burns all creatures on his line."
+			$Labels/TopLabel.text = "The wizard burns all creatures on his line."
 			$Labels/BotLabel.text = "The fire is blocked by walls."
 			setSize(Vector2(5, 3))
 			$AnimationPlayer.play("Wizard")
+		tooltips.Goblin:
+			$Labels/TopLabel.text = ""
+			$Labels/BotLabel.text = "The goblin do not attack during his turn and don't have any special ability."
+			setSize(Vector2(3, 3))
+			$AnimationPlayer.play("Goblin")
+		tooltips.Skeleton:
+			$Labels/TopLabel.text = ""
+			$Labels/BotLabel.text = "The skeleton hits all cells around him."
+			setSize(Vector2(3, 3))
+			$AnimationPlayer.play("Skeleton")
+		tooltips.Slime:
+			$Labels/TopLabel.text = "The slime does not attack during its turn. But it take two hits to kill it."
+			$Labels/BotLabel.text = "It will still die if pushed against a wall or spikes."
+			setSize(Vector2(5, 3))
+			$AnimationPlayer.play("Slime")
 		tooltips.Spikes:
 			$Labels/TopLabel.text = ""
 			$Labels/BotLabel.text = "The spike trap kills any creature that stand on it."
 			setSize(Vector2(5, 3))
 			$AnimationPlayer.play("Spikes")
+		tooltips.Tuto:
+			$Labels/BotLabel.text = ""
+			$Labels/TopLabel.text = Data.getTutorial()
+			setSize(Vector2(0, 0))
+			$AnimationPlayer.play("Tuto")
 
 func setSize(value: Vector2):
 	if value != size:
@@ -70,8 +90,7 @@ func setSize(value: Vector2):
 		$Image/Board. update_bitmask_region(Vector2(0,0), size)
 		$Image/Shadow. update_bitmask_region(Vector2(0,0), size)
 	$Labels/BotLabel.margin_top = 5 + (9 * size.y) / $Labels.scale.y
-	$Labels.visible = false
-	yield(get_tree(), "idle_frame")
+	$Labels.visible = false # To force update of labels rect
 	$Labels.visible = true
 	var pannelSize = (9 * size.y) + 6
 	if not $Labels/BotLabel.text.empty():
@@ -87,5 +106,6 @@ func setSize(value: Vector2):
 		$Labels.position.y += $Labels/TopLabel.rect_size.y * $Labels.scale.y
 
 func reset():
+	$Image.visible = true
 	for p in $Image/Puppets.get_children():
 		p.reset()

@@ -94,3 +94,15 @@ func reset():
 
 func restart():
 	reset()
+
+func _on_TextureButton_mouse_entered():
+	match type:
+		Data.monsters.Goblin:
+			Ref.ui.showTooltip(TooltipFactory.tooltips.Goblin)
+		Data.monsters.Skeleton:
+			Ref.ui.showTooltip(TooltipFactory.tooltips.Skeleton)
+		Data.monsters.Slime:
+			Ref.ui.showTooltip(TooltipFactory.tooltips.Slime)
+
+func _on_TextureButton_mouse_exited():
+	Ref.ui.hideTooltip()
