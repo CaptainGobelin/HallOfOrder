@@ -20,6 +20,24 @@ var levels: Dictionary = {}
 
 var progress: int = 0
 
+#Settings
+var fullscreen: bool = false
+var screenSize: Vector2 = Vector2(960, 720)
+const LANG_ENGLISH = 0
+const LANG_FRENCH = 1
+var language: int = LANG_ENGLISH
+const CURSOR_S = 0
+const CURSOR_M = 1
+const CURSOR_L = 2
+var cursorSize = CURSOR_M
+const ANIM_NORMAL = 0
+const ANIM_FAST = 1
+var animSpeed: int = ANIM_NORMAL
+var dragHero: bool = false
+var musicVolume: int = 8
+var soundsVolume: int = 8
+var muted: bool = false
+
 func _ready():
 	loadSettings()
 	pass
@@ -50,7 +68,13 @@ func saveSettings() -> bool:
 	var file = File.new()
 	file.open(GENERAL_PATH, File.WRITE)
 	var settings = {
-		"lastProfile": lastProfile
+		"lastProfile": lastProfile,
+		"fullscreen": fullscreen,
+		"screenSize": vecToJson(screenSize),
+		"musicVolume": musicVolume,
+		"soundsVolume": soundsVolume,
+		"muted": muted,
+		"language": language,
 	}
 	file.store_var(settings, true)
 	file.close()
@@ -63,7 +87,14 @@ func loadSettings() -> bool:
 	file.open(GENERAL_PATH, File.READ)
 	var settings = file.get_var(true)
 	lastProfile = settings["lastProfile"]
+	fullscreen = settings["fullscreen"]
+	screenSize = jsonToVec(settings["screenSize"])
+	musicVolume = settings["musicVolume"]
+	soundsVolume = settings["soundsVolume"]
+	muted = settings["muted"]
+	language = settings["language"]
 	file.close()
+	Signals.allSettings()
 	return true
 
 func getLastUsername() -> String:
@@ -80,7 +111,10 @@ func save() -> bool:
 	var data = {
 		"username": username,
 		"currentLevel": [currentLevel.x, currentLevel.y],
-		"progress": progress
+		"progress": progress,
+		"animSpeed": animSpeed,
+		"cursorSize": cursorSize,
+		"dragHero": dragHero
 	}
 	file.store_var(data, true)
 	file.store_var(biomes, true)
@@ -142,6 +176,9 @@ func loadData(dict: Dictionary):
 	currentLevel.x = dict["currentLevel"][0]
 	currentLevel.y = dict["currentLevel"][1]
 	progress = dict["progress"]
+	animSpeed = dict["animSpeed"]
+	cursorSize = dict["cursorSize"]
+	dragHero = dict["dragHero"]
 
 func isUnlockedWorld(world: int) -> bool:
 	if not biomes.has(world):
@@ -157,3 +194,9 @@ func isDoneLevel(world: int, level: int) -> bool:
 	if not levels.has(String(world) + "_" + String(level)):
 		return false
 	return levels[String(world) + "_" + String(level)][LVL_DONE]
+
+func vecToJson(v: Vector2) -> Array:
+	return [v.x, v.y]
+
+func jsonToVec(array: Array) -> Vector2:
+	return Vector2(array[0], array[1])

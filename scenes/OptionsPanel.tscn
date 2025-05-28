@@ -1,0 +1,185 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/MenuBlock.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/MenuHole.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/ui_theme.tres" type="Theme" id=3]
+[ext_resource path="res://scenes/MenuButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/little_theme.tres" type="Theme" id=5]
+[ext_resource path="res://scripts/OptionsPanel.gd" type="Script" id=7]
+[ext_resource path="res://scenes/Slider.tscn" type="PackedScene" id=8]
+
+[node name="OptionsPanel" type="Node2D"]
+position = Vector2( 165, 36 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 7 )
+
+[node name="MenuBlock" parent="." instance=ExtResource( 1 )]
+size = Vector2( 7, 7.2 )
+
+[node name="Title" type="Label" parent="MenuBlock"]
+margin_left = 9.0
+margin_top = 2.0
+margin_right = 306.0
+margin_bottom = 27.0
+theme = ExtResource( 3 )
+text = "Options"
+align = 1
+valign = 1
+
+[node name="BackButton" parent="." instance=ExtResource( 4 )]
+position = Vector2( 117, 293.5 )
+size = Vector2( 1.8, 0.5 )
+label = "Back"
+
+[node name="Language" parent="." instance=ExtResource( 2 )]
+position = Vector2( 36, 27 )
+size = Vector2( 5.4, 0.6 )
+
+[node name="LanguageLabel" type="Label" parent="Language"]
+margin_left = 9.0
+margin_right = 117.0
+margin_bottom = 27.0
+theme = ExtResource( 5 )
+text = "Language"
+valign = 1
+
+[node name="LanguageOption" type="OptionButton" parent="Language"]
+margin_left = 133.0
+margin_top = 2.0
+margin_right = 241.0
+margin_bottom = 25.0
+theme = ExtResource( 5 )
+text = "Language"
+
+[node name="Graphics" parent="." instance=ExtResource( 2 )]
+position = Vector2( 36, 198 )
+size = Vector2( 5.4, 2 )
+
+[node name="ScreenSizeLabel" type="Label" parent="Graphics"]
+margin_left = 9.0
+margin_right = 117.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 9, 18 )
+theme = ExtResource( 5 )
+text = "Window size"
+valign = 1
+
+[node name="FullscreenLabel" type="Label" parent="Graphics"]
+margin_left = 9.0
+margin_top = 27.0
+margin_right = 117.0
+margin_bottom = 63.0
+theme = ExtResource( 5 )
+text = "Fullscreen"
+valign = 1
+
+[node name="ScreenSizeOption" type="OptionButton" parent="Graphics"]
+margin_left = 133.0
+margin_top = 2.0
+margin_right = 241.0
+margin_bottom = 25.0
+theme = ExtResource( 5 )
+
+[node name="FullscreenSlider" parent="Graphics" instance=ExtResource( 8 )]
+position = Vector2( 171, 32 )
+options = PoolStringArray( "No", "Yes" )
+
+[node name="ApplyButton" parent="Graphics" instance=ExtResource( 4 )]
+position = Vector2( 149, 56.5 )
+size = Vector2( 1.8, 0.5 )
+label = "Apply"
+
+[node name="Gameplay" parent="." instance=ExtResource( 2 )]
+position = Vector2( 36, 54 )
+size = Vector2( 5.4, 2 )
+
+[node name="CursorLabel" type="Label" parent="Gameplay"]
+margin_left = 9.0
+margin_right = 117.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 9, 18 )
+theme = ExtResource( 5 )
+text = "Cursor size"
+valign = 1
+
+[node name="CursorSlider" parent="Gameplay" instance=ExtResource( 8 )]
+position = Vector2( 143, 6 )
+size = 5
+options = PoolStringArray( "x0.5", "x1", "x2" )
+
+[node name="AnimSpeedLabel" type="Label" parent="Gameplay"]
+margin_left = 9.0
+margin_top = 27.0
+margin_right = 117.0
+margin_bottom = 63.0
+rect_pivot_offset = Vector2( 9, 18 )
+theme = ExtResource( 5 )
+text = "Animation speed"
+valign = 1
+
+[node name="AnimSpeedSlider" parent="Gameplay" instance=ExtResource( 8 )]
+position = Vector2( 162, 34 )
+size = 3
+
+[node name="DragLabel" type="Label" parent="Gameplay"]
+margin_left = 9.0
+margin_top = 54.0
+margin_right = 117.0
+margin_bottom = 90.0
+rect_pivot_offset = Vector2( 9, 18 )
+theme = ExtResource( 5 )
+text = "Hero selection"
+valign = 1
+
+[node name="DragSlider" parent="Gameplay" instance=ExtResource( 8 )]
+position = Vector2( 162, 61 )
+size = 3
+options = PoolStringArray( "Click", "Drag" )
+
+[node name="Sounds" parent="." instance=ExtResource( 2 )]
+position = Vector2( 36, 144 )
+size = Vector2( 5.4, 1.2 )
+
+[node name="MusicLabel" type="Label" parent="Sounds"]
+margin_left = 9.0
+margin_right = 117.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( 9, 18 )
+theme = ExtResource( 5 )
+text = "Music volume"
+valign = 1
+
+[node name="SoundsLabel" type="Label" parent="Sounds"]
+margin_left = 9.0
+margin_top = 27.0
+margin_right = 117.0
+margin_bottom = 54.0
+rect_pivot_offset = Vector2( 9, 18 )
+theme = ExtResource( 5 )
+text = "Sounds volume"
+valign = 1
+
+[node name="MusicSlider" type="HSlider" parent="Sounds"]
+margin_left = 139.0
+margin_right = 235.0
+margin_bottom = 27.0
+theme = ExtResource( 5 )
+theme_type_variation = "VolumeSlider"
+max_value = 12.0
+value = 8.0
+tick_count = 13
+
+[node name="SoundsSlider" type="HSlider" parent="Sounds"]
+margin_left = 139.0
+margin_top = 27.0
+margin_right = 235.0
+margin_bottom = 54.0
+theme = ExtResource( 5 )
+theme_type_variation = "VolumeSlider"
+max_value = 12.0
+value = 8.0
+tick_count = 13
+
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="valueChanged" from="Graphics/FullscreenSlider" to="." method="_on_FullscreenSlider_valueChanged"]
+[connection signal="pressed" from="Graphics/ApplyButton" to="." method="_on_ApplyButton_pressed"]

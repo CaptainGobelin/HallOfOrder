@@ -27,3 +27,6 @@ func _on_PlayButton_pressed():
 
 func _on_ProfileButton_pressed():
 	Utils.changeScene("res://scenes/ProfilePanel.tscn")
+
+func _on_OptionsButton_pressed():
+	Utils.changeScene("res://scenes/OptionsScreen.tscn")

@@ -1,6 +1,41 @@
-[gd_resource type="Theme" load_steps=5 format=2]
+[gd_resource type="Theme" load_steps=28 format=2]
 
 [ext_resource path="res://fonts/pixeloid.tres" type="DynamicFont" id=1]
+[ext_resource path="res://sprites/ux.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 9, 9 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 27, 0, 9, 9 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 9, 9 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 2 )
+region = Rect2( 9, 0, 9, 9 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 2 )
+region = Rect2( 18, 9, 9, 9 )
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 2 )
+region_rect = Rect2( 27, 9, 9, 9 )
+margin_left = 2.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -8,9 +43,102 @@
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 54, 18, 9, 12 )
+
+[sub_resource type="StyleBoxTexture" id=27]
+content_margin_left = 6.0
+content_margin_bottom = 0.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 36, 18, 18, 18 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=8]
+content_margin_left = 6.0
+content_margin_bottom = 0.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 18, 18, 18 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 3.0
+
+[sub_resource type="StreamTexture" id=9]
+
+[sub_resource type="StreamTexture" id=10]
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 2 )
+region_rect = Rect2( 36, 9, 9, 9 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 2 )
+region_rect = Rect2( 18, 18, 18, 18 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=21]
+texture = ExtResource( 2 )
+region_rect = Rect2( 45, 0, 9, 9 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 2.0
+margin_bottom = 2.0
+expand_margin_right = 1.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 2 )
+region_rect = Rect2( 54, 0, 9, 9 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 2.0
+margin_bottom = 2.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="StreamTexture" id=23]
+
+[sub_resource type="StreamTexture" id=24]
+
+[sub_resource type="StreamTexture" id=25]
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 2 )
+region = Rect2( 45, 9, 9, 9 )
+
 [resource]
 default_font = ExtResource( 1 )
-Label/colors/font_color = Color( 0.807843, 0.858824, 0.882353, 1 )
+CheckBox/icons/checked = SubResource( 13 )
+CheckBox/icons/checked_disabled = SubResource( 5 )
+CheckBox/icons/radio_checked = SubResource( 5 )
+CheckBox/icons/radio_checked_disabled = SubResource( 5 )
+CheckBox/icons/radio_unchecked = SubResource( 5 )
+CheckBox/icons/radio_unchecked_disabled = SubResource( 5 )
+CheckBox/icons/unchecked = SubResource( 5 )
+CheckBox/icons/unchecked_disabled = SubResource( 5 )
+CheckBox/styles/focus = SubResource( 6 )
+HSlider/icons/grabber = SubResource( 16 )
+HSlider/icons/grabber_disabled = SubResource( 16 )
+HSlider/icons/grabber_highlight = SubResource( 17 )
+HSlider/icons/tick = SubResource( 18 )
+HSlider/styles/grabber_area = SubResource( 19 )
+HSlider/styles/grabber_area_highlight = SubResource( 20 )
+HSlider/styles/slider = SubResource( 15 )
+Label/colors/font_color = Color( 1, 1, 1, 1 )
 LineEdit/colors/cursor_color = Color( 0.807843, 0.858824, 0.882353, 1 )
 LineEdit/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 LineEdit/colors/font_color_selected = Color( 0.141176, 0.192157, 0.215686, 1 )
@@ -18,3 +146,34 @@ LineEdit/colors/selection_color = Color( 0.329412, 0.388235, 0.254902, 1 )
 LineEdit/styles/focus = SubResource( 2 )
 LineEdit/styles/normal = SubResource( 1 )
 LineEdit/styles/read_only = SubResource( 3 )
+OptionButton/colors/font_color = Color( 0.807843, 0.858824, 0.882353, 1 )
+OptionButton/colors/font_color_disabled = Color( 0.329412, 0.388235, 0.254902, 1 )
+OptionButton/colors/font_color_focus = Color( 0.807843, 0.858824, 0.882353, 1 )
+OptionButton/colors/font_color_hover = Color( 0.807843, 0.858824, 0.882353, 1 )
+OptionButton/colors/font_color_pressed = Color( 0.807843, 0.858824, 0.882353, 1 )
+OptionButton/icons/arrow = SubResource( 7 )
+OptionButton/styles/disabled = SubResource( 27 )
+OptionButton/styles/focus = SubResource( 8 )
+OptionButton/styles/hover = SubResource( 8 )
+OptionButton/styles/normal = SubResource( 8 )
+OptionButton/styles/pressed = SubResource( 8 )
+PopupMenu/colors/font_color = Color( 0.807843, 0.858824, 0.882353, 1 )
+PopupMenu/colors/font_color_accel = Color( 0.807843, 0.858824, 0.882353, 1 )
+PopupMenu/colors/font_color_disabled = Color( 0.807843, 0.858824, 0.882353, 1 )
+PopupMenu/colors/font_color_hover = Color( 0.807843, 0.858824, 0.882353, 1 )
+PopupMenu/colors/font_color_separator = Color( 0.807843, 0.858824, 0.882353, 1 )
+PopupMenu/constants/hseparation = -4
+PopupMenu/icons/radio_checked = SubResource( 9 )
+PopupMenu/icons/radio_unchecked = SubResource( 10 )
+PopupMenu/styles/hover = SubResource( 12 )
+PopupMenu/styles/panel = SubResource( 11 )
+ProgressBar/styles/bg = SubResource( 21 )
+ProgressBar/styles/fg = SubResource( 22 )
+VolumeSlider/base_type = "HSlider"
+VolumeSlider/icons/grabber = SubResource( 23 )
+VolumeSlider/icons/grabber_disabled = SubResource( 24 )
+VolumeSlider/icons/grabber_highlight = SubResource( 25 )
+VolumeSlider/icons/tick = SubResource( 26 )
+VolumeSlider/styles/grabber_area = SubResource( 22 )
+VolumeSlider/styles/grabber_area_highlight = SubResource( 22 )
+VolumeSlider/styles/slider = SubResource( 21 )
