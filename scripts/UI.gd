@@ -8,10 +8,6 @@ func _ready():
 	toggleFullscreenButton()
 	toggleAnimSpeedButton()
 
-func _on_MenuButton_pressed():
-	#TODO this is a temp behavior
-	Utils.changeScene("res://scenes/TitleScreen.tscn")
-
 func colorize():
 	var color = Utils.getBiomeColor()
 	$Board.modulate = color

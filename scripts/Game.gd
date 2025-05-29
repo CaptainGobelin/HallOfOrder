@@ -44,3 +44,6 @@ func _ready():
 
 func nextLevel():
 	LevelLoader.loadLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y + 1)
+
+func pauseGame():
+	$PauseScreen.visible = true

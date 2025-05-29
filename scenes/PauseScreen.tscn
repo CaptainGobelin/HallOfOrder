@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/LabelButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/PauseScreen.gd" type="Script" id=2]
+[ext_resource path="res://scenes/OptionsPanel.tscn" type="PackedScene" id=3]
+
+[node name="PauseScreen" type="Node2D"]
+z_index = 1000
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 960.0
+margin_bottom = 720.0
+color = Color( 0.141176, 0.192157, 0.215686, 0.901961 )
+
+[node name="Buttons" type="Node2D" parent="."]
+position = Vector2( 48, 0 )
+
+[node name="ResumeButton" parent="Buttons" instance=ExtResource( 1 )]
+position = Vector2( 432, 216 )
+scale = Vector2( 2, 2 )
+buttonScale = 2
+buttonLabel = "Resume"
+
+[node name="LevelButton" parent="Buttons" instance=ExtResource( 1 )]
+position = Vector2( 432, 270 )
+scale = Vector2( 2, 2 )
+buttonScale = 2
+buttonLabel = "Level selection"
+
+[node name="OptionsButton" parent="Buttons" instance=ExtResource( 1 )]
+position = Vector2( 432, 324 )
+scale = Vector2( 2, 2 )
+buttonScale = 2
+buttonLabel = "Options"
+
+[node name="MenuButton" parent="Buttons" instance=ExtResource( 1 )]
+position = Vector2( 432, 378 )
+scale = Vector2( 2, 2 )
+buttonScale = 2
+buttonLabel = "Main menu"
+
+[node name="ExitButton" parent="Buttons" instance=ExtResource( 1 )]
+position = Vector2( 432, 432 )
+scale = Vector2( 2, 2 )
+buttonScale = 2
+buttonLabel = "Exit game"
+
+[node name="OptionsPanel" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[connection signal="pressed" from="Buttons/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="Buttons/LevelButton" to="." method="_on_LevelButton_pressed"]
+[connection signal="pressed" from="Buttons/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="Buttons/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="exit" from="OptionsPanel" to="." method="_on_OptionsPanel_exit"]

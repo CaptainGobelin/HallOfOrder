@@ -93,5 +93,3 @@ visible = false
 position = Vector2( 809, 664 )
 scale = Vector2( 5, 5 )
 buttonIcon = 91
-
-[connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
