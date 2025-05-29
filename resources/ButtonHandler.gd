@@ -70,19 +70,17 @@ func buttonPressed(type: int):
 			Ref.ui.get_node("NoSoundButton").visible = false
 			Ref.ui.get_node("SoundButton").visible = true
 		Icons.NormalSpeed:
-			Ref.ui.get_node("NormalSpeedButton").visible = false
-			Ref.ui.get_node("DoubleSpeedButton").visible = true
+			ProfileData.animSpeed = ProfileData.ANIM_FAST
+			Signals.emit_signal("animSpeed_changed")
 		Icons.DoubleSpeed:
-			Ref.ui.get_node("NormalSpeedButton").visible = true
-			Ref.ui.get_node("DoubleSpeedButton").visible = false
+			ProfileData.animSpeed = ProfileData.ANIM_NORMAL
+			Signals.emit_signal("animSpeed_changed")
 		Icons.Fullscreen:
-			Ref.ui.get_node("FullscreenButton").visible = false
-			Ref.ui.get_node("SmallscreenButton").visible = true
-			OS.window_fullscreen = true
+			ProfileData.fullscreen = false
+			Signals.emit_signal("fullscreen_changed")
 		Icons.Smallscreen:
-			Ref.ui.get_node("FullscreenButton").visible = true
-			Ref.ui.get_node("SmallscreenButton").visible = false
-			OS.window_fullscreen = false
+			ProfileData.fullscreen = true
+			Signals.emit_signal("fullscreen_changed")
 		Icons.Roll:
 			Ref.ui.get_node("InfoBox").roll()
 		Icons.Unroll:

@@ -12,12 +12,12 @@ func _ready():
 		if r == ProfileData.screenSize:
 			$Graphics/ScreenSizeOption.select(i)
 		i += 1
-	for _i in range(5):
-		$Language/LanguageOption.add_item("English")
+	$Language/LanguageOption.add_item("English")
 	loadOptions()
 
 func loadOptions():
 	$Gameplay/CursorSlider.setValue(ProfileData.cursorSize)
+	$Gameplay/AnimSpeedSlider.setValue(ProfileData.animSpeed)
 	$Graphics/FullscreenSlider.setValue(int(ProfileData.fullscreen))
 
 func saveOptions():
@@ -59,3 +59,9 @@ func _on_CursorSlider_valueChanged():
 	else:
 		ProfileData.cursorSize = ProfileData.CURSOR_L
 	Signals.cursorSizeChanged()
+
+func _on_AnimSpeedSlider_valueChanged():
+	if $Gameplay/AnimSpeedSlider.getValue() == 0:
+		ProfileData.animSpeed = ProfileData.ANIM_NORMAL
+	else:
+		ProfileData.animSpeed = ProfileData.ANIM_FAST

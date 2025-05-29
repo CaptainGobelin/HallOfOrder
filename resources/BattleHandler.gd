@@ -33,7 +33,8 @@ func playNext():
 		Monster.playAll(turn.contained.type)
 	endTurnEvents()
 	if not Waiter.isEmpty():
-		Waiter.add(CustomTimer.trigger(1.0))
+		if ProfileData.animSpeed == ProfileData.ANIM_NORMAL:
+			Waiter.add(CustomTimer.trigger(1.0))
 	Waiter.wait(funcref(self, "playNext"))
 
 func endTurnEvents():

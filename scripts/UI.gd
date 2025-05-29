@@ -3,6 +3,10 @@ class_name Ui
 
 func _ready():
 	Ref.ui = self
+	Signals.connect("fullscreen_changed", self, "toggleFullscreenButton")
+	Signals.connect("animSpeed_changed", self, "toggleAnimSpeedButton")
+	toggleFullscreenButton()
+	toggleAnimSpeedButton()
 
 func _on_MenuButton_pressed():
 	#TODO this is a temp behavior
@@ -31,3 +35,19 @@ func showTooltip(type: int):
 
 func hideTooltip():
 	$InfoBox.hideTooltip()
+
+func toggleFullscreenButton():
+	if ProfileData.fullscreen:
+		Ref.ui.get_node("FullscreenButton").visible = true
+		Ref.ui.get_node("SmallscreenButton").visible = false
+	else:
+		Ref.ui.get_node("FullscreenButton").visible = false
+		Ref.ui.get_node("SmallscreenButton").visible = true
+
+func toggleAnimSpeedButton():
+	if ProfileData.animSpeed == ProfileData.ANIM_NORMAL:
+		Ref.ui.get_node("NormalSpeedButton").visible = true
+		Ref.ui.get_node("DoubleSpeedButton").visible = false
+	else:
+		Ref.ui.get_node("NormalSpeedButton").visible = false
+		Ref.ui.get_node("DoubleSpeedButton").visible = true
