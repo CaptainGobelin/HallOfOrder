@@ -38,7 +38,6 @@ func setOptions(value: PoolStringArray):
 
 func _ready():
 	setOptions(options)
-	setValue(0)
 
 func setValue(value: int):
 	$HSlider.value = value

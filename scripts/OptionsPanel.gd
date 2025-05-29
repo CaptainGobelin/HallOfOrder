@@ -17,6 +17,7 @@ func _ready():
 	loadOptions()
 
 func loadOptions():
+	$Gameplay/CursorSlider.setValue(ProfileData.cursorSize)
 	$Graphics/FullscreenSlider.setValue(int(ProfileData.fullscreen))
 
 func saveOptions():
@@ -38,6 +39,7 @@ func _on_ApplyButton_pressed():
 	ProfileData.screenSize = screenOptions[$Graphics/ScreenSizeOption.selected]
 	Signals.fullscreenChanged()
 	Signals.screenSizeChanged()
+	ProfileData.saveSettings()
 
 func _on_FullscreenSlider_valueChanged():
 	if $Graphics/FullscreenSlider.getValue() == 1:
@@ -48,3 +50,12 @@ func _on_FullscreenSlider_valueChanged():
 		$Graphics/ScreenSizeLabel.add_color_override("font_color", Colors.white)
 		$Graphics/ScreenSizeOption.disabled = false
 		$Graphics/ScreenSizeOption.focus_mode = Control.FOCUS_ALL
+
+func _on_CursorSlider_valueChanged():
+	if $Gameplay/CursorSlider.getValue() == 0:
+		ProfileData.cursorSize = ProfileData.CURSOR_S
+	elif $Gameplay/CursorSlider.getValue() == 1:
+		ProfileData.cursorSize = ProfileData.CURSOR_M
+	else:
+		ProfileData.cursorSize = ProfileData.CURSOR_L
+	Signals.cursorSizeChanged()

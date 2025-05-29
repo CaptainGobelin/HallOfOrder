@@ -4,10 +4,21 @@ const NORMAL_MODE = 0
 const SELECT_HERO_MODE = 1
 const SELECT_TURN_MODE = 2
 
-onready var arrow = preload("res://sprites/mouse/arrow.png")
-onready var selected = preload("res://sprites/mouse/select.png")
-onready var handOpen = preload("res://sprites/mouse/hand_open.png")
-onready var handHold = preload("res://sprites/mouse/hand_hold.png")
+onready var arrows = {
+	ProfileData.CURSOR_S: preload("res://sprites/mouse/arrow_S.png"),
+	ProfileData.CURSOR_M: preload("res://sprites/mouse/arrow_M.png"),
+	ProfileData.CURSOR_L: preload("res://sprites/mouse/arrow_L.png"),
+}
+onready var handOpens = {
+	ProfileData.CURSOR_S: preload("res://sprites/mouse/hand_open_S.png"),
+	ProfileData.CURSOR_M: preload("res://sprites/mouse/hand_open_M.png"),
+	ProfileData.CURSOR_L: preload("res://sprites/mouse/hand_open_L.png"),
+}
+onready var handHolds = {
+	ProfileData.CURSOR_S: preload("res://sprites/mouse/hand_hold_S.png"),
+	ProfileData.CURSOR_M: preload("res://sprites/mouse/hand_hold_M.png"),
+	ProfileData.CURSOR_L: preload("res://sprites/mouse/hand_hold_L.png"),
+}
 
 var heroCursors: Dictionary = {}
 var selection = null
@@ -28,7 +39,7 @@ func resetScene():
 
 func normalMode():
 	currentMode = NORMAL_MODE
-	Input.set_custom_mouse_cursor(arrow, Input.CURSOR_ARROW, Vector2(4, 4))
+	Input.set_custom_mouse_cursor(arrows[ProfileData.cursorSize], Input.CURSOR_ARROW, Vector2(4, 4))
 	if selection != null:
 		selection.cancelPick()
 		selection = null
@@ -48,14 +59,14 @@ func selectHeroMode(selectedNode):
 	Ref.ui.hideTooltip()
 	ButtonHandler.disableTurnButtons()
 	Ref.turnOrder.get_node("TextureButton").visible = false
-	Input.set_custom_mouse_cursor(getHeroCursor(selection.type, "M"), Input.CURSOR_ARROW, Vector2(4, 4))
+	Input.set_custom_mouse_cursor(getHeroCursor(selection.type), Input.CURSOR_ARROW, Vector2(4, 4))
 	oldMousePos = get_viewport().get_mouse_position()
 	Ref.ui.get_node("Board").enableButton()
 	set_process_input(true)
 
 func selectTurnMode(selectedNode):
 	currentMode = SELECT_TURN_MODE
-	Input.set_custom_mouse_cursor(handHold, Input.CURSOR_ARROW, Vector2(4, 4))
+	Input.set_custom_mouse_cursor(handHolds[ProfileData.cursorSize], Input.CURSOR_ARROW, Vector2(4, 4))
 	selection = selectedNode
 	selection.get_node("Card").z_index = 2000
 	ButtonHandler.disableTurnButtons()
@@ -94,8 +105,12 @@ func loadCursors():
 			heroCursors[info[2]][info[1]][info[0]] = load(path + file_name)
 			file_name = dir.get_next()
 
-func getHeroCursor(type: int, size: String):
-	return heroCursors[size][String(ProfileData.currentLevel.x)][String(type)]
+func getHeroCursor(type: int):
+	if ProfileData.cursorSize == ProfileData.CURSOR_S:
+		return heroCursors["S"][String(ProfileData.currentLevel.x)][String(type)]
+	elif ProfileData.cursorSize == ProfileData.CURSOR_M:
+		return heroCursors["M"][String(ProfileData.currentLevel.x)][String(type)]
+	return heroCursors["L"][String(ProfileData.currentLevel.x)][String(type)]
 
 func placeHero(cell: Vector2):
 	assert(selection != null)
@@ -106,7 +121,7 @@ func placeHero(cell: Vector2):
 	normalMode()
 
 func handCursor():
-	Input.set_custom_mouse_cursor(handOpen, Input.CURSOR_ARROW, Vector2(4, 4))
+	Input.set_custom_mouse_cursor(handOpens[ProfileData.cursorSize], Input.CURSOR_ARROW, Vector2(4, 4))
 
 func arrowCursor():
-	Input.set_custom_mouse_cursor(arrow, Input.CURSOR_ARROW, Vector2(4, 4))
+	Input.set_custom_mouse_cursor(arrows[ProfileData.cursorSize], Input.CURSOR_ARROW, Vector2(4, 4))

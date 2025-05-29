@@ -40,7 +40,8 @@ var muted: bool = false
 
 func _ready():
 	loadSettings()
-	pass
+	loadProfile(lastProfile)
+	Signals.allSettings()
 
 func createProfile(name: String) -> bool:
 	username = name
@@ -52,7 +53,7 @@ func createProfile(name: String) -> bool:
 	lastProfile = saveFilename
 	if not saveSettings():
 		return false
-	return save()
+	return saveProfile()
 
 # Give progress in percent
 func getProgress(p: int = -1) -> int:
@@ -78,7 +79,7 @@ func saveSettings() -> bool:
 	}
 	file.store_var(settings, true)
 	file.close()
-	return true
+	return saveProfile()
 
 func loadSettings() -> bool:
 	var file = File.new()
@@ -94,7 +95,6 @@ func loadSettings() -> bool:
 	muted = settings["muted"]
 	language = settings["language"]
 	file.close()
-	Signals.allSettings()
 	return true
 
 func getLastUsername() -> String:
@@ -105,7 +105,7 @@ func getLastUsername() -> String:
 		return ""
 	return data[0]
 
-func save() -> bool:
+func saveProfile() -> bool:
 	var file = File.new()
 	file.open(SAVE_PATH + saveFilename + ".sav", File.WRITE)
 	var data = {
@@ -122,7 +122,7 @@ func save() -> bool:
 	file.close()
 	return true
 
-func load(filename: String):
+func loadProfile(filename: String):
 	var file = File.new()
 	if not file.file_exists(SAVE_PATH + filename + ".sav"):
 		return false

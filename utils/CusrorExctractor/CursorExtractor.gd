@@ -14,7 +14,9 @@ var classes = {
 }
 
 var sizes = {
-	"M": 4
+	"S": 3,
+	"M": 4,
+	"L": 6
 }
 
 var colors = {

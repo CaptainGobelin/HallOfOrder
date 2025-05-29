@@ -183,3 +183,4 @@ tick_count = 13
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="valueChanged" from="Graphics/FullscreenSlider" to="." method="_on_FullscreenSlider_valueChanged"]
 [connection signal="pressed" from="Graphics/ApplyButton" to="." method="_on_ApplyButton_pressed"]
+[connection signal="valueChanged" from="Gameplay/CursorSlider" to="." method="_on_CursorSlider_valueChanged"]
