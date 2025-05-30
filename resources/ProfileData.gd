@@ -46,13 +46,13 @@ func _ready():
 func createProfile(name: String) -> bool:
 	username = name
 	currentLevel = Vector2(0, 0)
-	biomes = {}
-	levels = {}
+	biomes = { 0: [true] }
+	levels = { "0_0": [true, false]}
 	progress = 0
+	animSpeed = ANIM_NORMAL
+	cursorSize = CURSOR_M
+	dragHero = false
 	saveFilename = Utils.strToFilename(name)
-	lastProfile = saveFilename
-	if not saveSettings():
-		return false
 	return saveProfile()
 
 # Give progress in percent
@@ -133,6 +133,7 @@ func loadProfile(filename: String):
 	file.close()
 	saveFilename = filename
 	lastProfile = saveFilename
+	saveSettings()
 	return true
 
 func delete(filename: String):
@@ -194,6 +195,29 @@ func isDoneLevel(world: int, level: int) -> bool:
 	if not levels.has(String(world) + "_" + String(level)):
 		return false
 	return levels[String(world) + "_" + String(level)][LVL_DONE]
+
+func completeLevel(world: int, level: int):
+	if not isDoneLevel(world, level):
+		progress += 1
+	levels[String(world) + "_" + String(level)] = [true, true]
+	if world == 0 and level <= 7:
+		if not levels.has(String(world) + "_" + String(level + 1)):
+			levels[String(world) + "_" + String(level + 1)] = [true, false]
+		else:
+			levels[String(world) + "_" + String(level + 1)][LVL_UNLOCK] = true
+	else:
+		for i in range(1, 4):
+			var l = level + i
+			var w = world
+			if l >= Data.FLOOR_NB:
+				w += 1
+				biomes[w] = [true]
+				l -= Data.FLOOR_NB
+			if not levels.has(String(w) + "_" + String(l)):
+				levels[String(w) + "_" + String(l)] = [true, false]
+			else:
+				levels[String(w) + "_" + String(l)][LVL_UNLOCK] = true
+	saveProfile()
 
 func vecToJson(v: Vector2) -> Array:
 	return [v.x, v.y]

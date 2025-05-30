@@ -31,6 +31,14 @@ func setEnclosed(value: bool):
 		$TextureButton.margin_left = $Label.margin_left
 		$TextureButton.margin_right = $Label.margin_right
 
+func disable():
+	$TextureButton.visible = false
+	$Label.add_color_override("font_color", Colors.shade3)
+
+func enable():
+	$TextureButton.visible = true
+	$Label.remove_color_override("font_color")
+
 func _on_TextureButton_pressed():
 	emit_signal("pressed")
 

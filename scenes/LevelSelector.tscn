@@ -49,7 +49,6 @@ tile_data = PoolIntArray( 327684, 1, 0, 327685, 1, 1, 327686, 1, 1, 327687, 1, 1
 [node name="LargeButton" parent="." instance=ExtResource( 5 )]
 position = Vector2( 360, 648 )
 scale = Vector2( 5, 5 )
-isHandled = false
 buttonScale = 5
 buttonLabel = "Menu"
 

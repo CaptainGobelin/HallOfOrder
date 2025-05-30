@@ -13,7 +13,11 @@ func _ready():
 		label.connect("pressed", self, "switchPannel", [w])
 		label.setScale(2)
 		label.setEnclosed(false)
-		label.setLabel(Data.BIOMES[w][Data.BI_NAME])
+		if ProfileData.isUnlockedWorld(w):
+			label.setLabel(Data.BIOMES[w][Data.BI_NAME])
+		else:
+			label.setLabel("?????")
+			label.disable()
 		label.position.y = 18
 		label.position.x = (558.0/(Data.BIOMES.keys().size()-1)) * count + 81
 		var panel = Utils.instanciate(panelScene, $Pannels)

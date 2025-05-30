@@ -89,9 +89,11 @@ func _on_CreateButton_pressed():
 func _on_SelectButton_pressed():
 	if currentFocus == null:
 		return
-	if not ProfileData.load(currentFocus.saveFile):
+	if not ProfileData.loadProfile(currentFocus.saveFile):
 		return
 	ProfileData.skipGamemode = true
+	ProfileData.lastProfile = ProfileData.saveFilename
+	ProfileData.saveSettings()
 	Utils.changeScene("res://scenes/LevelSelector.tscn")
 
 func _on_DeleteButton_pressed():
@@ -119,6 +121,8 @@ func _on_ConfirmCreateButton_pressed():
 	ProfileData.createProfile($Create/LineEdit.text)
 	if ProfileData.profileMode == ProfileData.PRO_CREATE:
 		ProfileData.skipGamemode = true
+		ProfileData.lastProfile = ProfileData.saveFilename
+		ProfileData.saveSettings()
 		Utils.changeScene("res://scenes/LevelSelector.tscn")
 	else:
 		fillData(ProfileData.getAllProfiles())

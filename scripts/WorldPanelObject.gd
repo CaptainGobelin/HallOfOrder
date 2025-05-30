@@ -37,6 +37,8 @@ func flush():
 func loadData():
 	if not LevelLoader.levels.has(String(world) + "_" + String(level)):
 		$TextureButton.disabled = true
+	elif not ProfileData.isUnlockedLevel(world, level):
+		$TextureButton.disabled = true
 	else:
 		var lvl = LevelLoader.levels[String(world) + "_" + String(level)]
 		for h in lvl[LevelLoader.HEROES]:
@@ -45,6 +47,7 @@ func loadData():
 			addMonster(m[LevelLoader.POSITION])
 		for s in lvl[LevelLoader.SCENERIES]:
 			addMonster(s[LevelLoader.POSITION], true)
+		$Cup.visible = ProfileData.isDoneLevel(world, level)
 	$Label.text = Utils.toRoman(level + 1)
 	setColor()
 

@@ -15,6 +15,7 @@ func playBattle():
 func playNext():
 	if toPlay.empty():
 		if checkWin():
+			ProfileData.completeLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y)
 			Ref.game.nextLevel()
 		else:
 			stopBattle()
