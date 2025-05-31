@@ -12,6 +12,12 @@ func _ready():
 	$Light.color = Colors.shade3
 	$Shadow.color = Colors.shade5
 
+func colorize():
+	var color = Utils.getBiomeColor()
+	$Light.self_modulate = color
+	$Shadow.self_modulate = color
+	$Block.self_modulate = color
+
 func setSize(v: Vector2):
 	size = v
 	if not has_node("Block"):

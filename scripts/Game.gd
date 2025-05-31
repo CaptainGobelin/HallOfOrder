@@ -47,3 +47,6 @@ func nextLevel():
 
 func pauseGame():
 	$PauseScreen.visible = true
+
+func colorize():
+	$PauseScreen.colorize()

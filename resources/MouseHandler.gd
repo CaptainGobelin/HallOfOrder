@@ -68,7 +68,7 @@ func selectTurnMode(selectedNode):
 	currentMode = SELECT_TURN_MODE
 	Input.set_custom_mouse_cursor(handHolds[ProfileData.cursorSize], Input.CURSOR_ARROW, Vector2(4, 4))
 	selection = selectedNode
-	selection.get_node("Card").z_index = 2000
+	selection.get_node("Card").z_index = 2
 	ButtonHandler.disableTurnButtons()
 	Ref.turnOrder.get_node("TextureButton").visible = true
 	oldMousePos = get_viewport().get_mouse_position()

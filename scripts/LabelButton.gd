@@ -12,6 +12,10 @@ var world: int
 func _ready():
 	_on_TextureButton_mouse_exited()
 
+func colorize():
+	var color = Utils.getBiomeColor()
+	$Back.modulate = color
+
 func setScale(value: int):
 	buttonScale = value
 	scale = Vector2(value, value)
@@ -33,7 +37,7 @@ func setEnclosed(value: bool):
 
 func disable():
 	$TextureButton.visible = false
-	$Label.add_color_override("font_color", Colors.shade3)
+	$Label.add_color_override("font_color", Colors.shade3 * Utils.getBiomeColor())
 
 func enable():
 	$TextureButton.visible = true

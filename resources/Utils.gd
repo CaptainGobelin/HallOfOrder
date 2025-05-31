@@ -69,4 +69,6 @@ static func strToFilename(s: String) -> String:
 	return result.substr(0, 10)
 
 static func getBiomeColor() -> Color:
+	if Ref.game == null:
+		return Color.white
 	return Data.BIOMES[int(ProfileData.currentLevel.x)][Data.BI_COLOR]

@@ -6,6 +6,10 @@ signal valueChanged
 export(int) var size = 4 setget setSize
 export(PoolStringArray) var options = PoolStringArray(["Label 1", "Label 2"]) setget setOptions
 
+func colorize():
+	$HSlider.modulate = Utils.getBiomeColor()
+	_on_HSlider_value_changed(int($HSlider.value))
+
 func setSize(value: int):
 	size = value
 	if not has_node("HSlider"):
@@ -51,6 +55,6 @@ func _on_HSlider_mouse_exited():
 
 func _on_HSlider_value_changed(_value):
 	for l in $Labels.get_children():
-		l.add_color_override("font_color", Colors.shade3)
+		l.add_color_override("font_color", Colors.shade3 * Utils.getBiomeColor())
 	$Labels.get_child(int($HSlider.value)).add_color_override("font_color", Colors.white)
 	emit_signal("valueChanged")

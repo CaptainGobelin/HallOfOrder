@@ -1,5 +1,6 @@
 extends Node
 
+var isIngame: bool = false
 var skipGamemode: bool = false
 
 const PRO_CHOOSE = 0

@@ -8,12 +8,31 @@ func _ready():
 	screenOptions = OptionsHandler.getResolutionOptions()
 	var i = 0
 	for r in screenOptions:
-		$Graphics/ScreenSizeOption.add_item(vectorToStr(r), i)
+		$Graphics/ScreenSizeChoice.addChoice(vectorToStr(r))
 		if r == ProfileData.screenSize:
-			$Graphics/ScreenSizeOption.select(i)
+			$Graphics/ScreenSizeChoice.select(i)
 		i += 1
-	$Language/LanguageOption.add_item("English")
+	$Language/LanguageChoice.addChoice("English")
+	$Language/LanguageChoice.select(0)
 	loadOptions()
+
+func colorize():
+	var color = Utils.getBiomeColor()
+	$MenuBlock.colorize()
+	$BackButton.colorize()
+	$Language.colorize()
+	$Language/LanguageChoice.colorize()
+	$Graphics.colorize()
+	$Graphics/ApplyButton.colorize()
+	$Graphics/ScreenSizeChoice.colorize()
+	$Graphics/FullscreenSlider.colorize()
+	$Gameplay.colorize()
+	$Gameplay/CursorSlider.colorize()
+	$Gameplay/AnimSpeedSlider.colorize()
+	$Gameplay/DragSlider.colorize()
+	$Sounds.colorize()
+	$Sounds/MusicSlider.modulate = color
+	$Sounds/SoundsSlider.modulate = color
 
 func loadOptions():
 	$Gameplay/CursorSlider.setValue(ProfileData.cursorSize)
@@ -36,7 +55,7 @@ func _on_BackButton_pressed():
 
 func _on_ApplyButton_pressed():
 	ProfileData.fullscreen = $Graphics/FullscreenSlider.getValue() == 1
-	ProfileData.screenSize = screenOptions[$Graphics/ScreenSizeOption.selected]
+	ProfileData.screenSize = screenOptions[$Graphics/ScreenSizeChoice.getSelected()]
 	Signals.fullscreenChanged()
 	Signals.screenSizeChanged()
 	ProfileData.saveSettings()
@@ -44,12 +63,12 @@ func _on_ApplyButton_pressed():
 func _on_FullscreenSlider_valueChanged():
 	if $Graphics/FullscreenSlider.getValue() == 1:
 		$Graphics/ScreenSizeLabel.add_color_override("font_color", Colors.shade3)
-		$Graphics/ScreenSizeOption.disabled = true
-		$Graphics/ScreenSizeOption.focus_mode = Control.FOCUS_NONE
+		$Graphics/ScreenSizeLabel.modulate = Utils.getBiomeColor()
+		$Graphics/ScreenSizeChoice.disable()
 	else:
 		$Graphics/ScreenSizeLabel.add_color_override("font_color", Colors.white)
-		$Graphics/ScreenSizeOption.disabled = false
-		$Graphics/ScreenSizeOption.focus_mode = Control.FOCUS_ALL
+		$Graphics/ScreenSizeLabel.modulate = Color.white
+		$Graphics/ScreenSizeChoice.enable()
 
 func _on_CursorSlider_valueChanged():
 	if $Gameplay/CursorSlider.getValue() == 0:

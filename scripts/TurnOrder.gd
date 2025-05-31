@@ -41,7 +41,7 @@ func fillSpace(entity, i: int):
 		c.get_node("Card/Hero").visible = false
 		c.get_node("Card/Monster").visible = true
 		c.setMonsterType(entity.type)
-		c.get_node("Card").z_index -= 1
+		c.get_node("Card").z_index = -1
 		c.get_node("Card/Slot").visible = false
 		c.isLocked = true
 		c._on_TextureButton_mouse_exited()

@@ -25,6 +25,7 @@ func colorize():
 	$HeroPool.colorize()
 	$InfoBox.colorize()
 	$TurnOrder.colorize()
+	Ref.game.colorize()
 
 func showTooltip(type: int):
 	$InfoBox.showTooltip(type)

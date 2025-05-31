@@ -24,10 +24,10 @@ func applyScreenSize():
 	OS.window_position.y = max(0, OS.window_position.y)
 
 func getResolutionOptions() -> PoolVector2Array:
-	var maxSize = OS.get_screen_size() - (OS.get_real_window_size() - OS.window_size)
+	var maxSize = OS.get_screen_size()
 	var result = [Vector2(480, 360)]
 	var factor = 2
-	while maxSize.x >= (480 * factor) and maxSize.y >= (360 * factor): 
+	while maxSize.x > (480 * factor) and maxSize.y > (360 * factor): 
 		result.append(Vector2(480 * factor, 360 * factor))
 		factor += 1
 	return result

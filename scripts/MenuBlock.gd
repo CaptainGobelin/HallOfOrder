@@ -13,3 +13,9 @@ func setSize(v: Vector2):
 	$Shadow.margin_bottom = v.y * 45
 	$Block.margin_right = v.x * 45 - 2
 	$Block.margin_bottom = v.y * 45 - 2
+
+func colorize():
+	var color = Utils.getBiomeColor()
+	$Light.self_modulate = color
+	$Shadow.self_modulate = color
+	$Block.self_modulate = color

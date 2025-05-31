@@ -3,6 +3,12 @@ extends Node2D
 func _ready():
 	visible = false
 
+func colorize():
+	$ColorRect.modulate = Utils.getBiomeColor()
+	$OptionsPanel.colorize()
+	for b in $Buttons.get_children():
+		b.colorize()
+
 func _on_OptionsPanel_exit():
 	$OptionsPanel.visible = false
 	$Buttons.visible = true

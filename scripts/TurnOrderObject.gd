@@ -84,7 +84,7 @@ func hide():
 
 func cancelPick():
 	$TextureButton.visible = true
-	$Card.z_index = 1000
+	$Card.z_index = 1
 	ButtonHandler.enableTurnButtons()
 	_on_TextureButton_mouse_exited()
 	$Card.position = Vector2(0, 0)

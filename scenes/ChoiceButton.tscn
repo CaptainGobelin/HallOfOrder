@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/ChoiceButton.gd" type="Script" id=1]
+[ext_resource path="res://resources/little_theme.tres" type="Theme" id=2]
+
+[node name="ChoiceButton" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Options" type="OptionButton" parent="."]
+margin_right = 108.0
+margin_bottom = 23.0
+theme = ExtResource( 2 )
+clip_text = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 7.0
+margin_right = 108.0
+margin_bottom = 23.0
+theme = ExtResource( 2 )
+text = "Selected"
+valign = 1
+
+[node name="Labels" type="Node2D" parent="."]
+position = Vector2( 18, 27 )
+z_index = 1
+
+[connection signal="item_selected" from="Options" to="." method="_on_Options_item_selected"]
+[connection signal="toggled" from="Options" to="." method="_on_Options_toggled"]
