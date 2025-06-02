@@ -1,27 +1,45 @@
 extends Node
 
 #TODO indentation
-func dict_to_string(dict: Dictionary) -> String:
-	var result: String = "{"
+func dict_to_string(dict: Dictionary, tabs: int = 0) -> String:
+	var result: String = "{\n"
 	for k in dict.keys():
-		result += thing_to_string(String(k)) + ": " + thing_to_string(dict[k]) + ", "
+		for _t in range(tabs + 1):
+			result += '\t'
+		result += thing_to_string(String(k), 0) + ": " + thing_to_string(dict[k], tabs+1) + ",\n"
+	for _t in range(tabs):
+		result += '\t'
 	return result + "}"
 
-func thing_to_string(t) -> String:
+func thing_to_string(t, tabs: int) -> String:
 	if t is Dictionary:
-		return dict_to_string(t)
+		return dict_to_string(t, tabs)
 	if t is String:
 		return '"' + t + '"'
 	if t is Vector2:
-		return "Vector2(" + thing_to_string(t.x) + ", " + thing_to_string(t.y) + ")"
+		return "Vector2(" + thing_to_string(t.x, 0) + ", " + thing_to_string(t.y, 0) + ")"
 	if t is Array:
+		if t.empty():
+			return "[]"
 		var i = 0
 		var result = "["
 		for e in t:
 			if i > 0:
-				result += ", "
-			result += thing_to_string(e)
+				if e is Dictionary:
+					result += ", "
+				else:
+					result += ",\n"
+			else:
+				if not e is Dictionary:
+					result += '\n'
+			if not e is Dictionary:
+				for _t in range(tabs+1):
+					result += '\t'
+			result += thing_to_string(e, tabs+1)
 			i += 1
+		result += "\n"
+		for _t in range(tabs):
+			result += '\t'
 		return result + "]"
 	return String(t)
 

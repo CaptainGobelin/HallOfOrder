@@ -24,6 +24,10 @@ func _ready():
 		panel.visible = (w == currentPannel)
 		panel.setWorld(w)
 		count += 1
+	if ProfileData.currentLevel.x != currentPannel:
+		$Pannels.get_child(currentPannel).visible = false
+		currentPannel = ProfileData.currentLevel.x
+		$Pannels.get_child(currentPannel).get_node("AnimationPlayer").play("RESET")
 
 func switchPannel(next: int):
 	if next == currentPannel:

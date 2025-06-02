@@ -135,7 +135,7 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
@@ -147,7 +147,7 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
@@ -159,8 +159,44 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Scenery:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Effect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Effect:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -205,6 +241,7 @@ tracks/2/keys = {
 
 [node name="TooltipPuppet" type="Node2D"]
 script = ExtResource( 1 )
+category = 2
 heroType = 1
 
 [node name="Monster" type="Sprite" parent="."]
@@ -219,6 +256,7 @@ __meta__ = {
 }
 
 [node name="Hero" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 centered = false
 offset = Vector2( -1, -1 )
@@ -241,7 +279,6 @@ __meta__ = {
 }
 
 [node name="Scenery" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 4 )
 centered = false
 hframes = 3

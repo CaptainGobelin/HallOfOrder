@@ -15,6 +15,7 @@ func colorize():
 	$Monster.self_modulate = color
 	$Hero.self_modulate = color
 	$Scenery.self_modulate = color
+	$Effect.self_modulate = color
 
 func setCategory(value: int):
 	category = value

@@ -22,7 +22,12 @@ func playNext():
 			ProfileData.completeLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y)
 			Ref.game.nextLevel()
 		else:
-			stopBattle()
+			Waiter.flush()
+			for m in Ref.monsters.get_children():
+				if not m.isDead:
+					m.get_node("AnimationPlayer").play("Crumble")
+					Waiter.add(CustomTimer.trigger(1.0))
+			Waiter.wait(funcref(self, "stopBattle"))
 		return
 	var slot = toPlay.pop_front()
 	var turn = Ref.turnOrder.getSpace(slot)

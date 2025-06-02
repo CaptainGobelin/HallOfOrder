@@ -72,15 +72,19 @@ func buttonPressed(type: int):
 		Icons.NormalSpeed:
 			ProfileData.animSpeed = ProfileData.ANIM_FAST
 			Signals.emit_signal("animSpeed_changed")
+			ProfileData.saveProfile()
 		Icons.DoubleSpeed:
 			ProfileData.animSpeed = ProfileData.ANIM_NORMAL
 			Signals.emit_signal("animSpeed_changed")
+			ProfileData.saveProfile()
 		Icons.Fullscreen:
 			ProfileData.fullscreen = false
 			Signals.emit_signal("fullscreen_changed")
+			ProfileData.saveSettings()
 		Icons.Smallscreen:
 			ProfileData.fullscreen = true
 			Signals.emit_signal("fullscreen_changed")
+			ProfileData.saveSettings()
 		Icons.Roll:
 			Ref.ui.get_node("InfoBox").roll()
 		Icons.Unroll:
