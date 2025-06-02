@@ -18,6 +18,16 @@ func getHeroSlot(hero: Node):
 			return c.posInList
 	return null
 
+func getTurnOrderObjectByEntity(entity: Node):
+	if entity is Hero:
+		for c in $Objects.get_children():
+			if c.isActive and c.contained == entity:
+				return c
+	elif entity is Monster:
+		for c in $Objects.get_children():
+			if c.isActive and c.contained != null and c.contained.type == entity.type:
+				return c
+
 func setMonsterTurn(type: int, space: int):
 	fillSpace(Monster.getFakeMonster(type), space)
 

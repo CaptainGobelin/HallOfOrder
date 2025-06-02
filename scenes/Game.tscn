@@ -7,7 +7,8 @@
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
 gameMode = 0
-level = 14
+world = 1
+level = 3
 
 [node name="UI" parent="." instance=ExtResource( 1 )]
 

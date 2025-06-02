@@ -8,6 +8,7 @@ var pos: Vector2 = Vector2(0, 0)
 var initPos: Vector2 = Vector2(0, 0)
 var isDead = false
 var isDying = false
+var isFake: bool = false
 
 static func addMonster(monsterType: int, cell: Vector2):
 	var monster = Utils.instanciate(Ref.game.monsterScene, Ref.monsters)
@@ -18,10 +19,13 @@ static func addMonster(monsterType: int, cell: Vector2):
 static func getFakeMonster(monsterType: int) -> Monster:
 	var monster = Utils.createFake(Ref.game.monsterScene)
 	monster.setType(monsterType)
+	monster.isFake = true
 	return monster
 
 func _ready():
 	ButtonHandler.register(self, ButtonHandler.Types.Entity)
+	$Body.set_material($Body.get_material().duplicate())
+	$Body.material.set_shader_param("outLineColor", Colors.transparent)
 
 func setType(value: int):
 	type = value
@@ -82,6 +86,7 @@ func push(dir: Vector2) -> bool:
 		if entity.is_in_group("Scenery"):
 			result = result or entity.activate(self)
 	setPos(pos + dir)
+	$AnimationPlayer.play("Crumble")
 	return result
 
 func reset():
@@ -95,6 +100,17 @@ func reset():
 func restart():
 	reset()
 
+func outline(value: bool = true):
+	if isFake:
+		for m in Ref.monsters.get_children():
+			if m.type == type:
+				m.outline(value)
+		return
+	if value:
+		$Body.material.set_shader_param("outLineColor", Colors.red)
+	else:
+		$Body.material.set_shader_param("outLineColor", Colors.transparent)
+
 func _on_TextureButton_mouse_entered():
 	match type:
 		Data.monsters.Goblin:
@@ -103,6 +119,12 @@ func _on_TextureButton_mouse_entered():
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Skeleton)
 		Data.monsters.Slime:
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Slime)
+	var slot = Ref.turnOrder.getTurnOrderObjectByEntity(self)
+	if slot != null:
+		slot.outline()
 
 func _on_TextureButton_mouse_exited():
 	Ref.ui.hideTooltip()
+	var slot = Ref.turnOrder.getTurnOrderObjectByEntity(self)
+	if slot != null:
+		slot.outline(false)

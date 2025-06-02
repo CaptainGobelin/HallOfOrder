@@ -5,10 +5,10 @@ const CARD_NORMAL = 15
 const CARD_HOVER = 16
 const SLOT_NORMAL = 54
 const SLOT_HOVER = 55
-const PRINT_CHAR_NORMAL = 64
-const PRINT_CHAR_HOVER = 65
-const PRINT_SKULL_NORMAL = 70
-const PRINT_SKULL_HOVER = 71
+const PRINT_CHAR_NORMAL = 88
+const PRINT_CHAR_HOVER = 89
+const PRINT_SKULL_NORMAL = 94
+const PRINT_SKULL_HOVER = 95
 
 onready var animator = $AnimationPlayer
 
@@ -26,6 +26,7 @@ func _ready():
 	hide()
 	initialPosition = global_position
 	ButtonHandler.register(self, ButtonHandler.Types.Turn)
+	outline(false)
 
 func init(size: int, pos: int):
 	setPos(size, pos)
@@ -60,6 +61,7 @@ func freeSlot():
 	$Card/Hero.visible = false
 	$Card/Monster.visible = false
 	$Card/Slot.visible = true
+	outline(false)
 
 func setPos(size: int, pos: int):
 	isLast = pos == (size-1)
@@ -101,6 +103,8 @@ func _on_TextureButton_mouse_entered():
 	else:
 		$Card/Print.frame = PRINT_CHAR_HOVER
 		MouseHandler.handCursor()
+	if contained != null:
+		contained.outline()
 
 func _on_TextureButton_mouse_exited():
 	$Card.frame = CARD_NORMAL
@@ -111,6 +115,8 @@ func _on_TextureButton_mouse_exited():
 	else:
 		$Card/Print.frame = PRINT_CHAR_NORMAL
 	MouseHandler.arrowCursor()
+	if contained != null:
+		contained.outline(false)
 
 func _on_TextureButton_pressed():
 	if isLocked:
@@ -163,6 +169,11 @@ func setPosInList(value: int):
 func setHeroType(type: int):
 	$Card/Hero.frame  = type
 	$Card/Hero/Colors.frame  = type + 9
+	$Card/Outline.modulate = Colors.cyan
 
 func setMonsterType(type: int):
 	$Card/Monster.frame = type
+	$Card/Outline.modulate = Colors.red
+
+func outline(value: bool = true):
+	$Card/Outline.visible = value

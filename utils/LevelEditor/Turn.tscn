@@ -38,6 +38,7 @@ __meta__ = {
 position = Vector2( 4, 2.2 )
 texture = ExtResource( 2 )
 centered = false
+offset = Vector2( -1, -1 )
 hframes = 3
 vframes = 6
 

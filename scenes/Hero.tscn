@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sprites/chars.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Hero.gd" type="Script" id=2]
+[ext_resource path="res://resources/outlineShader.tres" type="Material" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Crumble"
@@ -118,19 +119,26 @@ tracks/2/keys = {
 
 [node name="Hero" type="Node2D" groups=["Entity", "Hero"]]
 script = ExtResource( 2 )
-type = 8
+type = 0
 
 [node name="TextureButton" type="TextureButton" parent="."]
-margin_right = 9.0
+margin_right = 8.0
 margin_bottom = 9.0
 
+[node name="TextureButton2" type="TextureButton" parent="TextureButton"]
+margin_left = -1.0
+margin_right = 8.0
+margin_bottom = 9.0
+mouse_filter = 1
+button_mask = 2
+
 [node name="Body" type="Sprite" parent="."]
+material = ExtResource( 3 )
 texture = ExtResource( 1 )
 centered = false
 offset = Vector2( -1, -1 )
 hframes = 3
 vframes = 6
-frame = 8
 
 [node name="Colors" type="Sprite" parent="Body"]
 texture = ExtResource( 1 )
@@ -138,7 +146,7 @@ centered = false
 offset = Vector2( -1, -1 )
 hframes = 3
 vframes = 6
-frame = 17
+frame = 9
 __meta__ = {
 "_editor_description_": ""
 }
@@ -153,3 +161,4 @@ anims/RESET = SubResource( 2 )
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]
 [connection signal="mouse_exited" from="TextureButton" to="." method="_on_TextureButton_mouse_exited"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="TextureButton/TextureButton2" to="." method="_on_TextureButton2_pressed"]

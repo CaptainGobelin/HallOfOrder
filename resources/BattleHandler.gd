@@ -1,6 +1,7 @@
 extends Node
 
 var toPlay: Array = []
+var oldTurn
 
 func _ready():
 	Signals.connect("change_scene", self, "resetScene")
@@ -13,6 +14,9 @@ func playBattle():
 	playNext()
 
 func playNext():
+	if oldTurn != null:
+		oldTurn.outline(false)
+	oldTurn = null
 	if toPlay.empty():
 		if checkWin():
 			ProfileData.completeLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y)
@@ -29,8 +33,12 @@ func playNext():
 		return
 	Waiter.flush()
 	if turn.contained is Hero:
+		oldTurn = turn
+		turn.outline()
 		turn.contained.play()
 	elif turn.contained is Monster:
+		oldTurn = turn
+		turn.outline()
 		Monster.playAll(turn.contained.type)
 	endTurnEvents()
 	if not Waiter.isEmpty():

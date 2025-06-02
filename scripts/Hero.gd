@@ -22,6 +22,8 @@ func _ready():
 	poolPos = Ref.heroes.get_child_count() - 1
 	placeOnPool()
 	ButtonHandler.register(self, ButtonHandler.Types.Entity)
+	$Body.set_material($Body.get_material().duplicate())
+	$Body.material.set_shader_param("outLineColor", Colors.transparent)
 
 func setType(value: int):
 	type = value
@@ -73,9 +75,17 @@ func _on_TextureButton_pressed():
 
 func disable():
 	$TextureButton.disabled = true
+	$TextureButton/TextureButton2.disabled = true
 
 func enable():
 	$TextureButton.disabled = false
+	$TextureButton/TextureButton2.disabled = false
+
+func outline(value: bool = true):
+	if value:
+		$Body.material.set_shader_param("outLineColor", Colors.cyan)
+	else:
+		$Body.material.set_shader_param("outLineColor", Colors.transparent)
 
 func play():
 	if isDead:
@@ -121,6 +131,7 @@ func push(dir: Vector2) -> bool:
 		if entity.is_in_group("Scenery"):
 			result = result or entity.activate(self)
 	setPos(newPos)
+	$AnimationPlayer.play("Crumble")
 	return result
 
 func die():
@@ -152,6 +163,13 @@ func _on_TextureButton_mouse_entered():
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Wizard)
 		Data.classes.Barbarian:
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Barbarian)
+	if onBoard:
+		Ref.turnOrder.getTurnOrderObjectByEntity(self).outline()
 
 func _on_TextureButton_mouse_exited():
 	Ref.ui.hideTooltip()
+	if onBoard:
+		Ref.turnOrder.getTurnOrderObjectByEntity(self).outline(false)
+
+func _on_TextureButton2_pressed():
+	placeOnPool(poolPos)
