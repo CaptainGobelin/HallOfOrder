@@ -465,9 +465,6 @@ const DATA: Dictionary = {
 				"Position": Vector2(2, 3),
 			}, {
 				"Type": 1,
-				"Position": Vector2(8, 4),
-			}, {
-				"Type": 1,
 				"Position": Vector2(8, 3),
 			}, {
 				"Type": 1,
@@ -493,6 +490,9 @@ const DATA: Dictionary = {
 			}, {
 				"Type": 0,
 				"Position": Vector2(9, 6),
+			}, {
+				"Type": 1,
+				"Position": Vector2(8, 4),
 			}
 		],
 		"Sceneries": [{
@@ -504,6 +504,9 @@ const DATA: Dictionary = {
 			}, {
 				"Type": 1,
 				"Position": Vector2(4, 6),
+			}, {
+				"Type": 1,
+				"Position": Vector2(6, 1),
 			}
 		],
 		"TurnOrder": {
