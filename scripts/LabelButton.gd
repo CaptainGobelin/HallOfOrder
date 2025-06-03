@@ -10,6 +10,7 @@ export(bool) var enclosed = true setget setEnclosed
 var world: int
 
 func _ready():
+	setLabel(buttonLabel)
 	_on_TextureButton_mouse_exited()
 
 func colorize():
@@ -25,15 +26,21 @@ func setLabel(value: String):
 	if has_node("Label"):
 		$Label.text = value
 		if not enclosed:
-			$TextureButton.margin_left = $Label.margin_left
-			$TextureButton.margin_right = $Label.margin_right
+			$Label.visible = false
+			$Label.visible = true
+			$TextureButton.rect_position = $Label.rect_position - Vector2(4, 0)
+			$TextureButton.rect_size = $Label.rect_size + Vector2(8, 0)
 
 func setEnclosed(value: bool):
 	enclosed = value
-	if not enclosed:
-		$Back.visible = false
-		$TextureButton.margin_left = $Label.margin_left
-		$TextureButton.margin_right = $Label.margin_right
+	if has_node("Label"):
+		if not enclosed:
+			print($Label.text)
+			$Back.visible = false
+			$Label.visible = false
+			$Label.visible = true
+			$TextureButton.rect_position = $Label.rect_position - Vector2(4, 0)
+			$TextureButton.rect_size = $Label.rect_size + Vector2(8, 0)
 
 func disable():
 	$TextureButton.visible = false

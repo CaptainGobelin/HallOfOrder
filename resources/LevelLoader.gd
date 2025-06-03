@@ -62,6 +62,9 @@ func flushCurrentLevel():
 
 func loadLevel(world: int, level: int):
 	while level >= Data.FLOOR_NB:
+		#TODO remove when not in demo
+		Utils.changeScene("res://scenes/EndScreen.tscn")
+		return
 		level -= Data.FLOOR_NB
 		world = (world + 1) % Data.LEVEL_NB
 	var lvlName = String(world) + "_" + String(level)

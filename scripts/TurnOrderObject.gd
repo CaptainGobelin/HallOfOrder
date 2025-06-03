@@ -61,6 +61,7 @@ func freeSlot():
 	$Card/Hero.visible = false
 	$Card/Monster.visible = false
 	$Card/Slot.visible = true
+	$Card/Print.frame = PRINT_CHAR_NORMAL
 	outline(false)
 
 func setPos(size: int, pos: int):
@@ -86,7 +87,7 @@ func hide():
 
 func cancelPick():
 	$TextureButton.visible = true
-	$Card.z_index = 1
+	$Card.z_index = 0
 	ButtonHandler.enableTurnButtons()
 	_on_TextureButton_mouse_exited()
 	$Card.position = Vector2(0, 0)
