@@ -4,9 +4,14 @@ var texture: Texture = preload("res://sprites/pixel.png")
 var pixels: Dictionary = {}
 
 onready var viewport = get_viewport()
+onready var environment = WorldEnvironment.new()
 var minimum_size = Vector2(1920, 1080)
 
 func _ready():
+	environment.environment = Environment.new()
+	environment.environment.background_mode = Environment.BG_CANVAS
+	environment.environment.adjustment_enabled = true
+	add_child(environment)
 	Signals.connect("change_scene", self, "decolorize")
 	var rid: RID = texture.get_rid()
 	VisualServer.black_bars_set_images(rid, rid, rid, rid)
@@ -39,3 +44,6 @@ func window_resize():
 func loadPixels():
 	for biome in Data.BIOMES.keys():
 		pixels[biome] = load("res://sprites/pixel/" + String(biome) +".png")
+
+func setBrightness(value: float):
+	environment.environment.adjustment_brightness = value

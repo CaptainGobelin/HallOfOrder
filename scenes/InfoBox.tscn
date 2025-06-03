@@ -58,20 +58,23 @@ valign = 1
 position = Vector2( 9, 11 )
 scale = Vector2( 0.8, 0.8 )
 
-[node name="Label" type="Label" parent="Tooltip"]
+[node name="TooltipFactory" parent="Tooltip" instance=ExtResource( 7 )]
 visible = false
-margin_left = 15.0
-margin_top = 28.0
-margin_right = 142.0
-margin_bottom = 185.0
+position = Vector2( 28.125, 39.375 )
+
+[node name="TextContainer" type="Node2D" parent="Tooltip"]
+visible = false
+position = Vector2( 3.8147e-06, 0 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Label" type="Label" parent="Tooltip/TextContainer"]
+margin_right = 112.0
+margin_bottom = 152.0
 theme = ExtResource( 5 )
 text = "Si le barbare tue une créature durant son tour, il joue un autre toujours"
 align = 1
-valign = 2
+valign = 1
 autowrap = true
-
-[node name="TooltipFactory" parent="Tooltip" instance=ExtResource( 7 )]
-position = Vector2( 28.125, 39.375 )
 
 [node name="RollButton" parent="." instance=ExtResource( 6 )]
 position = Vector2( 44, 0 )

@@ -20,9 +20,11 @@ func setIcon(value: int):
 
 func _on_TextureButton_mouse_entered():
 	$Icon.frame = buttonIcon - 6
+	Signals.buttonHovered(buttonIcon)
 
 func _on_TextureButton_mouse_exited():
 	$Icon.frame = buttonIcon
+	Signals.buttonUnhovered()
 
 func _on_TextureButton_pressed():
 	emit_signal("pressed")

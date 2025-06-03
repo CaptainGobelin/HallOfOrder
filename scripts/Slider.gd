@@ -50,6 +50,11 @@ func setValue(value: int):
 func getValue() -> int:
 	return $HSlider.value
 
+func disable():
+	for l in $Labels.get_children():
+		l.add_color_override("font_color", Colors.shade4 * Utils.getBiomeColor())
+	$HSlider.editable = false
+
 func _on_HSlider_mouse_exited():
 	$HSlider.release_focus()
 

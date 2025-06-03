@@ -2,6 +2,7 @@ extends Node
 
 func _ready():
 	Signals.connect("cursorSize_changed", self, "applyCursorSize")
+	Signals.connect("brightness_changed", self, "applyBrightness")
 	Signals.connect("fullscreen_changed", self, "applyFullscreen")
 	Signals.connect("screenSize_changed", self, "applyScreenSize")
 
@@ -11,6 +12,9 @@ func applySettings():
 
 func applyCursorSize():
 	MouseHandler.arrowCursor()
+
+func applyBrightness():
+	ScreenHandler.setBrightness(ProfileData.brightness)
 
 func applyFullscreen():
 	OS.window_fullscreen = ProfileData.fullscreen

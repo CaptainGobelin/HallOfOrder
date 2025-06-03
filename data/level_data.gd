@@ -798,6 +798,12 @@ const DATA: Dictionary = {
 			}, {
 				"Type": 1,
 				"Position": Vector2(6, 0),
+			}, {
+				"Type": 1,
+				"Position": Vector2(6, 4),
+			}, {
+				"Type": 1,
+				"Position": Vector2(4, 4),
 			}
 		],
 		"TurnOrder": {

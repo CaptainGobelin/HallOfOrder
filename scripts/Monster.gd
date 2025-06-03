@@ -86,7 +86,8 @@ func push(dir: Vector2) -> bool:
 		if entity.is_in_group("Scenery"):
 			result = result or entity.activate(self)
 	setPos(pos + dir)
-	$AnimationPlayer.play("Crumble")
+	if not isDying:
+		$AnimationPlayer.play("Crumble")
 	return result
 
 func reset():

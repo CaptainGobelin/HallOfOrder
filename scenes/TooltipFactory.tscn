@@ -2779,10 +2779,12 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 1, 2, 0, 2, 65536, 0, 65536, 65537, 0, 
 
 [node name="TooltipPuppet" parent="Image/Puppets" instance=ExtResource( 3 )]
 position = Vector2( 9, 9 )
+category = 0
 heroType = 4
 pos = Vector2( 1, 1 )
 
 [node name="TooltipPuppet2" parent="Image/Puppets" instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 27, 9 )
 category = 1
 heroType = 4
@@ -2791,7 +2793,6 @@ pos = Vector2( 3, 1 )
 [node name="TooltipPuppet3" parent="Image/Puppets" instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 9, 9 )
-category = 2
 sceneryType = 1
 pos = Vector2( 1, 1 )
 
@@ -2804,6 +2805,7 @@ pos = Vector2( 4, 1 )
 [node name="TooltipPuppet5" parent="Image/Puppets" instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 36, 9 )
+category = 0
 pos = Vector2( 4, 1 )
 
 [node name="Effects" type="Node2D" parent="Image"]

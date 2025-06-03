@@ -11,6 +11,8 @@ var entityButtons: Array
 
 func _ready():
 	Signals.connect("change_scene", self, "resetScene")
+	Signals.connect("button_hovered", self, "buttonHovered")
+	Signals.connect("button_unhovered", self, "buttonUnhovered")
 
 func resetScene():
 	menuButtons = []
@@ -93,6 +95,26 @@ func buttonPressed(type: int):
 			Ref.game.pauseGame()
 		_:
 			print("Unknown button")
+
+func buttonHovered(type: int):
+	match type:
+		Icons.Sound:
+			Ref.ui.setTooltip("Mute sounds")
+		Icons.NoSound:
+			Ref.ui.setTooltip("Unmute sounds")
+		Icons.NormalSpeed:
+			Ref.ui.setTooltip("Speed up animations")
+		Icons.DoubleSpeed:
+			Ref.ui.setTooltip("Speed down animation")
+		Icons.Fullscreen:
+			Ref.ui.setTooltip("Windowed mode")
+		Icons.Smallscreen:
+			Ref.ui.setTooltip("Fullscreen mode")
+		Icons.Menu:
+			Ref.ui.setTooltip("Menu")
+
+func buttonUnhovered():
+	Ref.ui.hideTooltip()
 
 func playMode():
 	Ref.ui.get_node("PlayButton").visible = false

@@ -19,6 +19,7 @@ func _ready():
 	Ref.utils = $Utils
 	Ref.monsters = $Monsters
 	Ref.sceneries = $Sceneries
+	set_process_input(true)
 	if ProfileData.skipGamemode:
 		gameMode = 3
 		currentLevel = ProfileData.currentLevel
@@ -41,6 +42,13 @@ func _ready():
 			Utils.changeScene("res://scenes/LevelSelector.tscn")
 			return
 	LevelLoader.loadLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y)
+
+func _input(event):
+	if event.is_action_released("ui_cancel"):
+		if $PauseScreen.visible:
+			$PauseScreen._on_ResumeButton_pressed()
+		else:
+			pauseGame()
 
 func nextLevel():
 	LevelLoader.loadLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y + 1)

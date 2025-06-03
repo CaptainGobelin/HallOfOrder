@@ -33,6 +33,9 @@ func showTooltip(type: int):
 func hideTooltip():
 	$InfoBox.hideTooltip()
 
+func setTooltip(message: String):
+	$InfoBox.setTooltip(message)
+
 func toggleFullscreenButton():
 	if ProfileData.fullscreen:
 		Ref.ui.get_node("FullscreenButton").visible = true

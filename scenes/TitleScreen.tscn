@@ -26,7 +26,7 @@ buttonScale = 2
 position = Vector2( 0, 135 )
 scale = Vector2( 2, 2 )
 buttonScale = 2
-buttonLabel = "Options"
+buttonLabel = "Settings"
 
 [node name="ExitButton" parent="Buttons" instance=ExtResource( 1 )]
 position = Vector2( 0, 198 )

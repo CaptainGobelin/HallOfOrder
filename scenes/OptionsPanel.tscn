@@ -23,7 +23,7 @@ margin_top = 2.0
 margin_right = 306.0
 margin_bottom = 27.0
 theme = ExtResource( 3 )
-text = "Options"
+text = "Settings"
 align = 1
 valign = 1
 
@@ -48,13 +48,35 @@ valign = 1
 position = Vector2( 133.5, 2 )
 
 [node name="Graphics" parent="." instance=ExtResource( 2 )]
-position = Vector2( 36, 198 )
-size = Vector2( 5.4, 2 )
+position = Vector2( 36, 180 )
+size = Vector2( 5.4, 2.4 )
+
+[node name="BrightnessLabel" type="Label" parent="Graphics"]
+margin_left = 9.0
+margin_top = 4.0
+margin_right = 117.0
+margin_bottom = 22.0
+rect_pivot_offset = Vector2( 9, 18 )
+theme = ExtResource( 5 )
+text = "Brightness"
+valign = 1
+
+[node name="BrightnessSlider" type="HSlider" parent="Graphics"]
+margin_left = 133.5
+margin_top = 3.0
+margin_right = 232.5
+margin_bottom = 21.0
+theme = ExtResource( 5 )
+theme_type_variation = "VolumeSlider"
+max_value = 12.0
+value = 8.0
+tick_count = 13
 
 [node name="ScreenSizeLabel" type="Label" parent="Graphics"]
 margin_left = 9.0
+margin_top = 22.0
 margin_right = 117.0
-margin_bottom = 27.0
+margin_bottom = 49.0
 rect_pivot_offset = Vector2( 9, 18 )
 theme = ExtResource( 5 )
 text = "Window size"
@@ -62,9 +84,9 @@ valign = 1
 
 [node name="FullscreenLabel" type="Label" parent="Graphics"]
 margin_left = 9.0
-margin_top = 27.0
+margin_top = 49.0
 margin_right = 117.0
-margin_bottom = 63.0
+margin_bottom = 85.0
 theme = ExtResource( 5 )
 text = "Fullscreen"
 valign = 1
@@ -78,16 +100,16 @@ margin_bottom = 25.0
 theme = ExtResource( 5 )
 
 [node name="FullscreenSlider" parent="Graphics" instance=ExtResource( 8 )]
-position = Vector2( 171, 32 )
+position = Vector2( 171, 54.5 )
 options = PoolStringArray( "No", "Yes" )
 
 [node name="ApplyButton" parent="Graphics" instance=ExtResource( 4 )]
-position = Vector2( 149, 56.5 )
+position = Vector2( 149, 79 )
 size = Vector2( 1.8, 0.5 )
 label = "Apply"
 
 [node name="ScreenSizeChoice" parent="Graphics" instance=ExtResource( 6 )]
-position = Vector2( 133, 2 )
+position = Vector2( 133, 25 )
 
 [node name="Gameplay" parent="." instance=ExtResource( 2 )]
 position = Vector2( 36, 54 )
@@ -138,12 +160,13 @@ options = PoolStringArray( "Click", "Drag" )
 
 [node name="Sounds" parent="." instance=ExtResource( 2 )]
 position = Vector2( 36, 144 )
-size = Vector2( 5.4, 1.2 )
+size = Vector2( 5.4, 0.8 )
 
 [node name="MusicLabel" type="Label" parent="Sounds"]
 margin_left = 9.0
+margin_top = 1.0
 margin_right = 117.0
-margin_bottom = 27.0
+margin_bottom = 19.0
 rect_pivot_offset = Vector2( 9, 18 )
 theme = ExtResource( 5 )
 text = "Music volume"
@@ -151,18 +174,19 @@ valign = 1
 
 [node name="SoundsLabel" type="Label" parent="Sounds"]
 margin_left = 9.0
-margin_top = 27.0
+margin_top = 17.0
 margin_right = 117.0
-margin_bottom = 54.0
+margin_bottom = 35.0
 rect_pivot_offset = Vector2( 9, 18 )
 theme = ExtResource( 5 )
 text = "Sounds volume"
 valign = 1
 
 [node name="MusicSlider" type="HSlider" parent="Sounds"]
-margin_left = 139.0
-margin_right = 235.0
-margin_bottom = 27.0
+margin_left = 134.0
+margin_top = 1.5
+margin_right = 233.0
+margin_bottom = 19.5
 theme = ExtResource( 5 )
 theme_type_variation = "VolumeSlider"
 max_value = 12.0
@@ -170,10 +194,10 @@ value = 8.0
 tick_count = 13
 
 [node name="SoundsSlider" type="HSlider" parent="Sounds"]
-margin_left = 139.0
-margin_top = 27.0
-margin_right = 235.0
-margin_bottom = 54.0
+margin_left = 134.0
+margin_top = 16.0
+margin_right = 233.0
+margin_bottom = 34.0
 theme = ExtResource( 5 )
 theme_type_variation = "VolumeSlider"
 max_value = 12.0
@@ -181,6 +205,7 @@ value = 8.0
 tick_count = 13
 
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="value_changed" from="Graphics/BrightnessSlider" to="." method="_on_BrightnessSlider_value_changed"]
 [connection signal="valueChanged" from="Graphics/FullscreenSlider" to="." method="_on_FullscreenSlider_valueChanged"]
 [connection signal="pressed" from="Graphics/ApplyButton" to="." method="_on_ApplyButton_pressed"]
 [connection signal="valueChanged" from="Gameplay/CursorSlider" to="." method="_on_CursorSlider_valueChanged"]

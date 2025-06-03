@@ -15,6 +15,9 @@ func _ready():
 	$Language/LanguageChoice.addChoice("English")
 	$Language/LanguageChoice.select(0)
 	loadOptions()
+	#TODO remove when implemented
+	$Gameplay/DragSlider.disable()
+	$Gameplay/DragLabel.add_color_override("font_color", Colors.shade4 * Utils.getBiomeColor())
 
 func colorize():
 	var color = Utils.getBiomeColor()
@@ -33,10 +36,15 @@ func colorize():
 	$Sounds.colorize()
 	$Sounds/MusicSlider.modulate = color
 	$Sounds/SoundsSlider.modulate = color
+	$Graphics/BrightnessSlider.modulate = color
+	#TODO remove when implemented
+	$Gameplay/DragSlider.disable()
+	$Gameplay/DragLabel.add_color_override("font_color", Colors.shade4 * Utils.getBiomeColor())
 
 func loadOptions():
 	$Gameplay/CursorSlider.setValue(ProfileData.cursorSize)
 	$Gameplay/AnimSpeedSlider.setValue(ProfileData.animSpeed)
+	$Graphics/BrightnessSlider.value = (ProfileData.brightness - 0.2) * 10.0
 	$Graphics/FullscreenSlider.setValue(int(ProfileData.fullscreen))
 
 func saveOptions():
@@ -84,3 +92,7 @@ func _on_AnimSpeedSlider_valueChanged():
 		ProfileData.animSpeed = ProfileData.ANIM_NORMAL
 	else:
 		ProfileData.animSpeed = ProfileData.ANIM_FAST
+
+func _on_BrightnessSlider_value_changed(value):
+	ProfileData.brightness = (value / 10.0) + 0.2
+	Signals.brightnessChanged()

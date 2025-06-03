@@ -5,10 +5,19 @@ func _ready():
 	unroll()
 
 func showTooltip(type: int):
+	$Tooltip/TooltipFactory.visible = true
+	$Tooltip/TextContainer.visible = false
 	$Tooltip/TooltipFactory.setType(type)
 
 func hideTooltip():
+	$Tooltip/TooltipFactory.visible = true
+	$Tooltip/TextContainer.visible = false
 	$Tooltip/TooltipFactory.setType(TooltipFactory.tooltips.Tuto)
+
+func setTooltip(message: String):
+	$Tooltip/TooltipFactory.visible = false
+	$Tooltip/TextContainer.visible = true
+	$Tooltip/TextContainer/Label.text  = message
 
 func colorize():
 	var color = Utils.getBiomeColor()

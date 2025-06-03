@@ -22,6 +22,7 @@ var levels: Dictionary = {}
 var progress: int = 0
 
 #Settings
+var brightness: float = 1.0
 var fullscreen: bool = false
 var screenSize: Vector2 = Vector2(960, 720)
 const LANG_ENGLISH = 0
@@ -71,6 +72,7 @@ func saveSettings() -> bool:
 	file.open(GENERAL_PATH, File.WRITE)
 	var settings = {
 		"lastProfile": lastProfile,
+		"brightness": brightness,
 		"fullscreen": fullscreen,
 		"screenSize": vecToJson(screenSize),
 		"musicVolume": musicVolume,
@@ -89,6 +91,7 @@ func loadSettings() -> bool:
 	file.open(GENERAL_PATH, File.READ)
 	var settings = file.get_var(true)
 	lastProfile = settings["lastProfile"]
+	brightness = settings["brightness"]
 	fullscreen = settings["fullscreen"]
 	screenSize = jsonToVec(settings["screenSize"])
 	musicVolume = settings["musicVolume"]

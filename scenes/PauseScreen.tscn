@@ -31,7 +31,7 @@ buttonLabel = "Level selection"
 position = Vector2( 432, 324 )
 scale = Vector2( 2, 2 )
 buttonScale = 2
-buttonLabel = "Options"
+buttonLabel = "Settings"
 
 [node name="MenuButton" parent="Buttons" instance=ExtResource( 1 )]
 position = Vector2( 432, 378 )
