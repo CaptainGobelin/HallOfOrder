@@ -51,7 +51,9 @@ func normalMode():
 func selectHeroMode(selectedNode):
 	if currentMode == SELECT_HERO_MODE:
 		if selectedNode.onBoard:
-			placeHero(selectedNode.pos)
+			var p = selectedNode.pos
+			selectedNode.placeOnPool()
+			placeHero(p)
 		else:
 			selection.cancelPick()
 	currentMode = SELECT_HERO_MODE

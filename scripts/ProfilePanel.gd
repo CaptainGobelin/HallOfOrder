@@ -147,6 +147,7 @@ func _on_ConfirmDeleteButton_pressed():
 	ProfileData.delete(toDelete.saveFile)
 	if ProfileData.lastProfile == toDelete.saveFile:
 		ProfileData.lastProfile = ""
+		ProfileData.saveFilename = ""
 		ProfileData.saveSettings()
 	fillData(ProfileData.getAllProfiles())
 	_on_CancelDeleteButton_pressed()

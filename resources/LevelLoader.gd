@@ -65,8 +65,8 @@ func loadLevel(world: int, level: int):
 		#TODO remove when not in demo
 		Utils.changeScene("res://scenes/EndScreen.tscn")
 		return
-		level -= Data.FLOOR_NB
-		world = (world + 1) % Data.LEVEL_NB
+#		level -= Data.FLOOR_NB
+#		world = (world + 1) % Data.LEVEL_NB
 	var lvlName = String(world) + "_" + String(level)
 	if not levels.has(lvlName):
 		return loadLevel(world, level + 1)

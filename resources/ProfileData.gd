@@ -110,6 +110,8 @@ func getLastUsername() -> String:
 	return data[0]
 
 func saveProfile() -> bool:
+	if saveFilename == "":
+		return true
 	var file = File.new()
 	file.open(SAVE_PATH + saveFilename + ".sav", File.WRITE)
 	var data = {
