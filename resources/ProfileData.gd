@@ -4,6 +4,8 @@ var isIngame: bool = false
 var skipGamemode: bool = false
 var firstLaunch: bool = true
 
+var introPlayed: Array = []
+
 const PRO_CHOOSE = 0
 const PRO_CREATE = 1
 var profileMode: int = PRO_CHOOSE
@@ -100,6 +102,7 @@ func loadSettings() -> bool:
 	muted = settings["muted"]
 	language = settings["language"]
 	file.close()
+	introPlayed = []
 	return true
 
 func getLastUsername() -> String:

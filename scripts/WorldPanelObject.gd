@@ -61,7 +61,8 @@ func setColor():
 func _on_TextureButton_pressed():
 	ProfileData.currentLevel = Vector2(world, level)
 	ProfileData.skipGamemode = true
-	Utils.changeScene("res://scenes/TransitionScreen.tscn")
+	emit_signal("pressed", self)
+#	Utils.changeScene("res://scenes/TransitionScreen.tscn")
 
 func _on_TextureButton_mouse_entered():
 	for h in $Heroes.get_children():

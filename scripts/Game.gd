@@ -57,8 +57,7 @@ func _input(event):
 			pauseGame()
 
 func nextLevel():
-	LevelLoader.loadLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y + 1)
-	$AnimationPlayer.play("FadeIn")
+	$AnimationPlayer.play("FadeOut")
 
 func pauseGame():
 	$PauseScreen.visible = true
@@ -73,3 +72,8 @@ func setCameraOffset(value: Vector2):
 func setCameraRotation(value: float):
 	cameraRotation = value
 	ScreenHandler.cameraHolder.rotation_degrees = cameraRotation
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "FadeOut":
+		LevelLoader.loadLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y + 1)
+		$AnimationPlayer.play("FadeIn")

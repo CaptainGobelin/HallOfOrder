@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/PauseScreen.tscn" type="PackedScene" id=2]
@@ -9,7 +9,7 @@ resource_name = "FadeIn"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:cameraOffset")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
@@ -21,7 +21,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:cameraRotation")
 tracks/1/interp = 1
-tracks/1/loop_wrap = true
+tracks/1/loop_wrap = false
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
@@ -31,15 +31,40 @@ tracks/1/keys = {
 "values": [ -105.0, -55.0, -10.0, 0.0, 6.0, 0.0 ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:cameraOffset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -120, 260 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:cameraRotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -6.0, 0.0, 10.0, 55.0, 105.0 ]
+}
+
 [sub_resource type="Animation" id=2]
 length = 0.001
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
-gameMode = 0
-level = 8
+gameMode = 1
 cameraOffset = Vector2( 120, -260 )
-cameraRotation = -105.0
 
 [node name="UI" parent="." instance=ExtResource( 1 )]
 
@@ -65,4 +90,7 @@ visible = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
 anims/FadeIn = SubResource( 1 )
+anims/FadeOut = SubResource( 3 )
 anims/RESET = SubResource( 2 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

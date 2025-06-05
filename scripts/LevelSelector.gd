@@ -23,6 +23,7 @@ func _ready():
 		var panel = Utils.instanciate(panelScene, $Pannels)
 		panel.visible = (w == currentPannel)
 		panel.setWorld(w)
+		panel.connect("pressed", self, "selectLevel")
 		count += 1
 	if ProfileData.currentLevel.x != currentPannel:
 		$Pannels.get_child(currentPannel).visible = false
@@ -40,5 +41,19 @@ func switchPannel(next: int):
 		$Pannels.get_child(next).get_node("AnimationPlayer").play_backwards("FadeLeft")
 	currentPannel = next
 
+func selectLevel(w: Node2D):
+	var p = w.global_position + Vector2(63, 54)
+	$Title.position -= p
+	$Worlds.position -= p
+	$TileMap.position -= p
+	$LargeButton.position -= p
+	$Pannels.position -= p
+	position += p
+	$AnimationPlayer.play("FadeOut")
+
 func _on_LargeButton_pressed():
 	Utils.changeScene("res://scenes/TitleScreen.tscn")
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "FadeOut":
+		Utils.changeScene("res://scenes/TransitionScreen.tscn")
