@@ -93,8 +93,6 @@ func buttonPressed(type: int):
 			Ref.ui.get_node("InfoBox").unroll()
 		Icons.Menu:
 			Ref.game.pauseGame()
-		_:
-			print("Unknown button")
 
 func buttonHovered(type: int):
 	match type:

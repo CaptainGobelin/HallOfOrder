@@ -35,7 +35,6 @@ func setEnclosed(value: bool):
 	enclosed = value
 	if has_node("Label"):
 		if not enclosed:
-			print($Label.text)
 			$Back.visible = false
 			$Label.visible = false
 			$Label.visible = true

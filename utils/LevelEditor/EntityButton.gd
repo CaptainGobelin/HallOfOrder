@@ -98,4 +98,5 @@ func boardMode():
 	$Button.connect("pressed", self, "delete")
 
 func delete():
+	get_parent().remove_child(self)
 	queue_free()

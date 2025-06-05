@@ -28,7 +28,16 @@ var currentMode: int
 
 func _ready():
 	Signals.connect("change_scene", self, "resetScene")
-	loadCursors()
+	var path = "res://sprites/mouse/heroes/"
+	for i in range(9):
+		for j in range(Data.BIOMES.keys().size()):
+			for s in ["S", "M", "L"]:
+				if not heroCursors.has(s):
+					heroCursors[s] = {}
+				if not heroCursors[s].has(String(j)):
+					heroCursors[s][String(j)] = {}
+				var file = String(i) + "_" + String(j) + "_" + s + ".png"
+				heroCursors[s][String(j)][String(i)] = ResourceLoader.load(path + file)
 	normalMode()
 
 func resetScene():
@@ -88,24 +97,6 @@ func _input(event):
 		if currentMode == SELECT_TURN_MODE:
 			var mouse_pos = event.position
 			selection.get_node("Card").global_position = mouse_pos - selectionOffset
-
-func loadCursors():
-	var path = "res://sprites/mouse/heroes/"
-	var dir = Directory.new()
-	if dir.open(path) == OK:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if not file_name.ends_with(".png"):
-				file_name = dir.get_next()
-				continue
-			var info = file_name.trim_suffix(".png").split("_")
-			if not heroCursors.has(info[2]):
-				heroCursors[info[2]] = {}
-			if not heroCursors[info[2]].has(info[1]):
-				heroCursors[info[2]][info[1]] = {}
-			heroCursors[info[2]][info[1]][info[0]] = load(path + file_name)
-			file_name = dir.get_next()
 
 func getHeroCursor(type: int):
 	if ProfileData.cursorSize == ProfileData.CURSOR_S:

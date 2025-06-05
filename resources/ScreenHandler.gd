@@ -20,15 +20,16 @@ func _ready():
 	add_child(environment)
 	add_child(cameraHolder)
 	cameraHolder.add_child(camera)
-	Signals.connect("change_scene", self, "decolorize")
-	var rid: RID = texture.get_rid()
+	Signals.connect("change_scene", self, "reset")
 	window_resize()
 	loadPixels()
 
 func colorize():
 	VisualServer.set_default_clear_color(Colors.shade6 * Utils.getBiomeColor())
 
-func decolorize():
+func reset():
+	camera.offset = Vector2(0, 0)
+	cameraHolder.rotation_degrees = 0.0
 	VisualServer.set_default_clear_color(Colors.shade6)
 
 func window_resize():

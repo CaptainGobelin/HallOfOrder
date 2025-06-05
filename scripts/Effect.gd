@@ -28,6 +28,7 @@ func _ready():
 
 static func killAll():
 	for e in Ref.game.effects.get_children():
+		Ref.game.effects.remove_child(e)
 		e.queue_free()
 
 static func isFatal(effects: Array) -> bool:
@@ -94,6 +95,7 @@ func launch(effectType: int, direction: int, cell: Vector2):
 	yield(animator, "animation_finished")
 	emit_signal("completed")
 	if not Engine.is_editor_hint():
+		get_parent().remove_child(self)
 		queue_free()
 
 func shouldFaceDirection() -> bool:

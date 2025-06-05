@@ -75,5 +75,9 @@ func setCameraRotation(value: float):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "FadeOut":
-		LevelLoader.loadLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y + 1)
+		var biomeChanged = LevelLoader.loadLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y + 1)
+		if biomeChanged:
+			ProfileData.introPlayed.erase(int(ProfileData.currentLevel.x))
+			Utils.changeScene("res://scenes/TransitionScreen.tscn")
+			return
 		$AnimationPlayer.play("FadeIn")

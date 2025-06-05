@@ -60,13 +60,16 @@ func flushCurrentLevel():
 		Ref.sceneries.remove_child(s)
 		s.queue_free()
 
-func loadLevel(world: int, level: int):
-	while level >= Data.FLOOR_NB:
+func loadLevel(world: int, level: int) -> bool:
+	if world == 1 and level == 4:
 		#TODO remove when not in demo
 		Utils.changeScene("res://scenes/EndScreen.tscn")
-		return
-#		level -= Data.FLOOR_NB
-#		world = (world + 1) % Data.LEVEL_NB
+		return false
+	var result = false
+	while level >= Data.FLOOR_NB:
+		level -= Data.FLOOR_NB
+		world = (world + 1) % Data.LEVEL_NB
+		result = true
 	var lvlName = String(world) + "_" + String(level)
 	if not levels.has(lvlName):
 		return loadLevel(world, level + 1)
@@ -89,3 +92,4 @@ func loadLevel(world: int, level: int):
 	ScreenHandler.colorize()
 	MouseHandler.normalMode()
 	ButtonHandler.normalMode()
+	return result

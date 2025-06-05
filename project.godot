@@ -120,7 +120,6 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=960
 window/size/height=720
-window/size/always_on_top=true
 window/vsync/use_vsync=false
 mouse_cursor/custom_image="res://sprites/mouse_arrow.png"
 mouse_cursor/custom_image_hotspot=Vector2( 3, 3 )
