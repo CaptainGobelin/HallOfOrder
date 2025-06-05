@@ -88,6 +88,7 @@ _global_script_class_icons={
 
 config/name="HallOfOrder2025"
 run/main_scene="res://scenes/Game.tscn"
+boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.141176, 0.192157, 0.215686, 1 )
 config/icon="res://icon.png"
 
@@ -123,7 +124,7 @@ window/vsync/use_vsync=false
 mouse_cursor/custom_image="res://sprites/mouse_arrow.png"
 mouse_cursor/custom_image_hotspot=Vector2( 3, 3 )
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/stretch/aspect="expand"
 
 [global]
 

@@ -9,6 +9,7 @@ var toDelete = null
 
 func _ready():
 	position = Vector2(165, 99)
+	$TitleBackground.position = -Vector2(165, 99)/2
 	$Help/MenuBlock/Path.text = OS.get_user_data_dir()
 	fillData(ProfileData.getAllProfiles())
 	unfocus()

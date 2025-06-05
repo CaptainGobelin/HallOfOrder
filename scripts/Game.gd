@@ -4,6 +4,8 @@ class_name Game
 export (int, "Menu", "Level", "Fast", "Normal", "Editor", "Choose") var gameMode = 2
 export (int) var world = 0
 export (int) var level = 0
+export (Vector2) var cameraOffset = Vector2() setget setCameraOffset
+export (float) var cameraRotation = 0.0 setget setCameraRotation
 
 onready var effectScene = preload("res://scenes/Effect.tscn")
 onready var heroScene = preload("res://scenes/Hero.tscn")
@@ -36,12 +38,16 @@ func _ready():
 		3:
 			pass
 		4:
+			ProfileData.firstLaunch = false
 			Utils.changeScene("res://utils/LevelEditor/LevelEditor.tscn")
 			return
 		5:
+			ProfileData.firstLaunch = false
 			Utils.changeScene("res://scenes/LevelSelector.tscn")
 			return
+	ProfileData.firstLaunch = false
 	LevelLoader.loadLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y)
+	$AnimationPlayer.play("FadeIn")
 
 func _input(event):
 	if event.is_action_released("ui_cancel"):
@@ -52,9 +58,18 @@ func _input(event):
 
 func nextLevel():
 	LevelLoader.loadLevel(ProfileData.currentLevel.x, ProfileData.currentLevel.y + 1)
+	$AnimationPlayer.play("FadeIn")
 
 func pauseGame():
 	$PauseScreen.visible = true
 
 func colorize():
 	$PauseScreen.colorize()
+
+func setCameraOffset(value: Vector2):
+	cameraOffset = value
+	ScreenHandler.camera.offset = cameraOffset
+
+func setCameraRotation(value: float):
+	cameraRotation = value
+	ScreenHandler.cameraHolder.rotation_degrees = cameraRotation

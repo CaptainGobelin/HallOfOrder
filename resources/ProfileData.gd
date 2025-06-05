@@ -2,6 +2,7 @@ extends Node
 
 var isIngame: bool = false
 var skipGamemode: bool = false
+var firstLaunch: bool = true
 
 const PRO_CHOOSE = 0
 const PRO_CREATE = 1

@@ -1,16 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/MenuBlock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/MenuHole.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/ui_theme.tres" type="Theme" id=3]
 [ext_resource path="res://scenes/MenuButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/MenuScroller.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/TitleBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/little_theme.tres" type="Theme" id=7]
 [ext_resource path="res://scripts/ProfilePanel.gd" type="Script" id=8]
 
 [node name="ProfilePanel" type="Node2D"]
 scale = Vector2( 2, 2 )
 script = ExtResource( 8 )
+
+[node name="TitleBackground" parent="." instance=ExtResource( 6 )]
+scale = Vector2( 2, 2 )
 
 [node name="Choose" type="Node2D" parent="."]
 
