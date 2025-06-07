@@ -82,6 +82,10 @@ heroType = 3
 position = Vector2( 36, 3.81471e-06 )
 heroType = 4
 
+[node name="EntityButton11" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( 0, 9 )
+heroType = 6
+
 [node name="EntityButton6" parent="Buttons" instance=ExtResource( 2 )]
 position = Vector2( -1.52588e-05, 36 )
 category = 1

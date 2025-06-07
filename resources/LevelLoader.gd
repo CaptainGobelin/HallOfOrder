@@ -61,7 +61,7 @@ func flushCurrentLevel():
 		s.queue_free()
 
 func loadLevel(world: int, level: int) -> bool:
-	if world == 1 and level == 4:
+	if world == 1 and level == 40:
 		#TODO remove when not in demo
 		Utils.changeScene("res://scenes/EndScreen.tscn")
 		return false

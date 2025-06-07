@@ -1,12 +1,9 @@
 tool
-extends Node2D
+extends Entity
 class_name Monster
 
 export (Data.monsters) var type = Data.monsters.Goblin setget setType
 
-var pos: Vector2 = Vector2(0, 0)
-var initPos: Vector2 = Vector2(0, 0)
-var isDead = false
 var isDying = false
 var isFake: bool = false
 
@@ -23,6 +20,7 @@ static func getFakeMonster(monsterType: int) -> Monster:
 	return monster
 
 func _ready():
+	onBoard = true
 	ButtonHandler.register(self, ButtonHandler.Types.Entity)
 	$Body.set_material($Body.get_material().duplicate())
 	$Body.material.set_shader_param("outLineColor", Colors.transparent)
@@ -59,19 +57,14 @@ static func playAll(monsterType: int):
 		if m.isDead:
 			continue
 		if m.type == monsterType:
-			m.play()
-
-func play():
-	match type:
-		Data.monsters.Skeleton:
-			if not $AnimationPlayer.current_animation == "Death":
-				$AnimationPlayer.play("Crumble")
-			Effect.launchAround(Data.effects.Slash, pos, true)
+			m.play(m.type)
 
 func die():
 	if isDead or isDying:
 		return
 	isDying = true
+	if BattleHandler.currentThief != null:
+		BattleHandler.currentThief.thiefKilled = self
 	$AnimationPlayer.play("Death")
 
 func push(dir: Vector2) -> bool:

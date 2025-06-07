@@ -990,4 +990,52 @@ const DATA: Dictionary = {
 			],
 		},
 	},
+	"1_4": {
+		"Heroes": [{
+				"Type": 0,
+				"Pool position": 0,
+			}, {
+				"Type": 1,
+				"Pool position": 1,
+			}, {
+				"Type": 3,
+				"Pool position": 2,
+			}, {
+				"Type": 6,
+				"Pool position": 3,
+			}, {
+				"Type": 3,
+				"Pool position": 4,
+			}, {
+				"Type": 2,
+				"Pool position": 5,
+			}
+		],
+		"Monsters": [{
+				"Type": 0,
+				"Position": Vector2(2, 3),
+			}, {
+				"Type": 1,
+				"Position": Vector2(3, 3),
+			}, {
+				"Type": 3,
+				"Position": Vector2(4, 3),
+			}, {
+				"Type": 0,
+				"Position": Vector2(9, 2),
+			}, {
+				"Type": 0,
+				"Position": Vector2(9, 3),
+			}
+		],
+		"Sceneries": [{
+				"Type": 1,
+				"Position": Vector2(4, 4),
+			}
+		],
+		"TurnOrder": {
+			"Size": 2,
+			"Slots": [],
+		},
+	},
 }

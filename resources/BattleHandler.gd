@@ -1,6 +1,7 @@
 extends Node
 
 var toPlay: Array = []
+var currentThief: Hero = null
 var oldTurn
 
 func _ready():
@@ -40,7 +41,7 @@ func playNext():
 	if turn.contained is Hero:
 		oldTurn = turn
 		turn.outline()
-		turn.contained.play()
+		turn.contained.play(turn.contained.type)
 	elif turn.contained is Monster:
 		oldTurn = turn
 		turn.outline()

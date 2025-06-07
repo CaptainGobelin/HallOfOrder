@@ -1,16 +1,9 @@
 tool
-extends Node2D
+extends Entity
 class_name Hero
 
 export (Data.classes) var type = Data.classes.Fighter setget setType
 export (int) var poolPos = 0 setget placeOnPool
-
-var onBoard: bool = false
-var pos: Vector2 = Vector2(0, 0)
-var initPos: Vector2 = Vector2(0, 0)
-var isDead = false
-var barbarianToSlash: bool = false
-var shouldReplay: bool = false
 
 static func addHero(heroType: int):
 	var hero = Utils.instanciate(Ref.game.heroScene, Ref.heroes)
@@ -87,38 +80,6 @@ func outline(value: bool = true):
 	else:
 		$Body.material.set_shader_param("outLineColor", Colors.transparent)
 
-func play():
-	if isDead:
-		return
-	if not onBoard:
-		return
-	match type:
-		Data.classes.Fighter:
-			$AnimationPlayer.play("Crumble")
-			Effect.launchAround(Data.effects.Slash, pos, true)
-		Data.classes.Paladin:
-			$AnimationPlayer.play("Crumble")
-			Effect.launchAround(Data.effects.Slash, pos, true)
-		Data.classes.Monk:
-			$AnimationPlayer.play("Crumble")
-			Effect.launchAround(Data.effects.Push, pos, true)
-		Data.classes.Barbarian:
-			if barbarianToSlash:
-				$AnimationPlayer.play("Crumble")
-				var e = Effect.launchAt(Data.effects.Slash, Data.DIR_UP, pos + Data.DIRECTIONS[Data.DIR_UP], true)
-				if shouldReplay or Effect.isFatal(e):
-					BattleHandler.toPlay.insert(0, Ref.turnOrder.getHeroSlot(self))
-				shouldReplay = false
-				barbarianToSlash = false
-			else:
-				var e = Effect.launchAt(Data.effects.Push, Data.DIR_UP, pos, true)
-				shouldReplay = Effect.isFatal(e)
-				BattleHandler.toPlay.insert(0, Ref.turnOrder.getHeroSlot(self))
-				barbarianToSlash = true
-		Data.classes.Wizard:
-			Effect.launchOnLine(Data.effects.Fire, Data.DIR_LEFT, pos, true)
-			Effect.launchOnLine(Data.effects.Fire, Data.DIR_RIGHT, pos, true)
-
 func push(dir: Vector2) -> bool:
 	var result = false
 	var newPos = pos + dir
@@ -131,19 +92,24 @@ func push(dir: Vector2) -> bool:
 		if entity.is_in_group("Scenery"):
 			result = result or entity.activate(self)
 	setPos(newPos)
-	$AnimationPlayer.play("Crumble")
+	if not result:
+		$AnimationPlayer.play("Crumble")
 	return result
 
 func die():
 	if isDead:
 		return
 	isDead = true
+	if BattleHandler.currentThief != null:
+		BattleHandler.currentThief.thiefKilled = self
 	$AnimationPlayer.play("Death")
 
 func reset():
 	isDead = false
 	barbarianToSlash = false
-	shouldReplay = false
+	barbarianShouldReplay = false
+	thiefShouldReplay = false
+	thiefKilled = null
 	if onBoard:
 		setPos(initPos)
 	$AnimationPlayer.play("RESET")
@@ -163,6 +129,8 @@ func _on_TextureButton_mouse_entered():
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Wizard)
 		Data.classes.Barbarian:
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Barbarian)
+		Data.classes.Thief:
+			Ref.ui.showTooltip(TooltipFactory.tooltips.Thief)
 	if onBoard:
 		Ref.turnOrder.getTurnOrderObjectByEntity(self).outline()
 
