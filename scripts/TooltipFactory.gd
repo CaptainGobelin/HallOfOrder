@@ -3,7 +3,7 @@ extends Node2D
 class_name TooltipFactory
 
 enum tooltips {Fighter, Paladin, Monk, Wizard, Barbarian, Thief, 
-	Goblin, Skeleton, Slime, Spikes, Tuto}
+	Goblin, Skeleton, Slime, Bat, Spikes, Tuto}
 
 export(tooltips) var type = tooltips.Fighter setget setType
 export(Vector2) var size = Vector2(3,3) setget setSize
@@ -74,6 +74,11 @@ func setType(value: int):
 			$Labels/BotLabel.text = "It will still die if pushed against a wall or spikes."
 			setSize(Vector2(5, 3))
 			$AnimationPlayer.play("Slime")
+		tooltips.Bat:
+			$Labels/TopLabel.text = ""
+			$Labels/BotLabel.text = "If attacked the bat will dodge to the cell on its right if it's empty."
+			setSize(Vector2(3, 3))
+			$AnimationPlayer.play("Bat")
 		tooltips.Spikes:
 			$Labels/TopLabel.text = ""
 			$Labels/BotLabel.text = "The spike trap kills any creature that stand on it."

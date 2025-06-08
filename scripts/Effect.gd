@@ -123,8 +123,7 @@ func applyFire(target) -> bool:
 			target.setType(Data.monsters.SlimeHurt)
 			target.get_node("AnimationPlayer").play("Crumble")
 			return false
-	target.die()
-	return true
+	return target.die()
 
 func applySlash(target) -> bool:
 	if target.is_in_group("Hero"):
@@ -135,8 +134,10 @@ func applySlash(target) -> bool:
 			target.setType(Data.monsters.SlimeHurt)
 			target.get_node("AnimationPlayer").play("Crumble")
 			return false
-	target.die()
-	return true
+		if target.type == Data.monsters.Bat:
+			if target.move(Data.DIRECTIONS[Data.dirs.Right]):
+				return false
+	return target.die()
 
 func applyPush(target) -> bool:
 	return target.push(dir)

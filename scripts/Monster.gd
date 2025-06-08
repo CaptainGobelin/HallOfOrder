@@ -59,20 +59,22 @@ static func playAll(monsterType: int):
 		if m.type == monsterType:
 			m.play(m.type)
 
-func die():
+func die() -> bool:
 	if isDead or isDying:
-		return
+		return false
 	isDying = true
 	if BattleHandler.currentThief != null:
 		BattleHandler.currentThief.thiefKilled = self
 	$AnimationPlayer.play("Death")
+	return true
 
 func push(dir: Vector2) -> bool:
+	if isDead or isDying:
+		return false
 	var result = false
 	var newPos = pos + dir
 	if Board.isBlocked(newPos):
-		die()
-		return true
+		return die()
 	var entity = Board.getCellEntity(newPos)
 	if entity != null:
 		result = result or entity.push(dir)
@@ -82,6 +84,16 @@ func push(dir: Vector2) -> bool:
 	if not isDying:
 		$AnimationPlayer.play("Crumble")
 	return result
+
+func move(dir: Vector2) -> bool:
+	var newPos = pos + dir
+	if Board.isBlocked(newPos):
+		return false
+	var entity = Board.getCellEntity(newPos)
+	if entity != null:
+		return false
+	setPos(pos + dir)
+	return true
 
 func reset():
 	if type == Data.monsters.SlimeHurt:
@@ -113,6 +125,8 @@ func _on_TextureButton_mouse_entered():
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Skeleton)
 		Data.monsters.Slime:
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Slime)
+		Data.monsters.Bat:
+			Ref.ui.showTooltip(TooltipFactory.tooltips.Bat)
 	var slot = Ref.turnOrder.getTurnOrderObjectByEntity(self)
 	if slot != null:
 		slot.outline()

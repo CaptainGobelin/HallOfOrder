@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/TooltipFactory.gd" type="Script" id=1]
 [ext_resource path="res://resources/tooltip_tileset.tres" type="TileSet" id=2]
@@ -227,6 +227,350 @@ tracks/15/keys = {
 "args": [  ],
 "method": "play"
 }, {
+"args": [  ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Bat"
+length = 2.0
+loop = true
+step = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Image/Puppets/TooltipPuppet:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Image/Puppets/TooltipPuppet2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Image/Puppets/TooltipPuppet3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Image/Puppets/TooltipPuppet4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Image/Puppets/TooltipPuppet:heroType")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Image/Puppets/TooltipPuppet:pos")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Image/Puppets/TooltipPuppet2:pos")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 0 ), Vector2( 2, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Image/Puppets/TooltipPuppet2:monsterType")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Image/Puppets/TooltipPuppet3:monsterType")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Image/Puppets/TooltipPuppet3:pos")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, 2 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Image/Puppets/TooltipPuppet4:monsterType")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Image/Puppets/TooltipPuppet4:pos")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 2, 2 ) ]
+}
+tracks/13/type = "method"
+tracks/13/path = NodePath("Image/Puppets/TooltipPuppet")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "crumble"
+} ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath("Image/Puppets/TooltipPuppet3")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "death"
+} ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Image/Effects/TooltipEffect:type")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Image/Effects/TooltipEffect:pos")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Image/Effects/TooltipEffect2:type")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Image/Effects/TooltipEffect2:pos")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 1 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Image/Effects/TooltipEffect3:type")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Image/Effects/TooltipEffect3:pos")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 2 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Image/Effects/TooltipEffect4:type")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Image/Effects/TooltipEffect4:pos")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ) ]
+}
+tracks/23/type = "method"
+tracks/23/path = NodePath("Image/Effects/TooltipEffect")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+} ]
+}
+tracks/24/type = "method"
+tracks/24/path = NodePath("Image/Effects/TooltipEffect2")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+} ]
+}
+tracks/25/type = "method"
+tracks/25/path = NodePath("Image/Effects/TooltipEffect3")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+} ]
+}
+tracks/26/type = "method"
+tracks/26/path = NodePath("Image/Effects/TooltipEffect4")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
 "args": [  ],
 "method": "play"
 } ]
@@ -3180,10 +3524,11 @@ pos = Vector2( 3, 1 )
 
 [node name="TooltipPuppet3" parent="Image/Puppets" instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 9, 9 )
+position = Vector2( 9, 18 )
 category = 1
+monsterType = 5
 sceneryType = 1
-pos = Vector2( 1, 1 )
+pos = Vector2( 1, 2 )
 
 [node name="TooltipPuppet4" parent="Image/Puppets" instance=ExtResource( 3 )]
 visible = false
@@ -3203,7 +3548,7 @@ pos = Vector2( 4, 1 )
 position = Vector2( 27, 9 )
 type = 2
 pos = Vector2( 3, 1 )
-dir = 1
+dir = 0
 
 [node name="TooltipEffect2" parent="Image/Effects" instance=ExtResource( 4 )]
 position = Vector2( 36, 9 )
@@ -3261,6 +3606,7 @@ autowrap = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Barbarian = SubResource( 11 )
+anims/Bat = SubResource( 13 )
 anims/Fighter = SubResource( 1 )
 anims/Goblin = SubResource( 7 )
 anims/Monk = SubResource( 4 )

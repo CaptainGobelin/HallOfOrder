@@ -25,3 +25,5 @@ icon.png.import
 *.sav
 data/*.json
 data/*.txt
+data/*.png
+data/*.png.import

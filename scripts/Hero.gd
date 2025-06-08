@@ -84,8 +84,7 @@ func push(dir: Vector2) -> bool:
 	var result = false
 	var newPos = pos + dir
 	if Board.isBlocked(newPos):
-		die()
-		return true
+		return die()
 	var entity = Board.getCellEntity(newPos)
 	if entity != null:
 		result = result or entity.push(dir)
@@ -96,13 +95,14 @@ func push(dir: Vector2) -> bool:
 		$AnimationPlayer.play("Crumble")
 	return result
 
-func die():
+func die() -> bool:
 	if isDead:
-		return
+		return false
 	isDead = true
 	if BattleHandler.currentThief != null:
 		BattleHandler.currentThief.thiefKilled = self
 	$AnimationPlayer.play("Death")
+	return true
 
 func reset():
 	isDead = false

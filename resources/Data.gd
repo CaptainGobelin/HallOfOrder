@@ -1,7 +1,7 @@
 extends Node
 
 enum classes {Wizard, Monk, Paladin, Barbarian, Fighter, Ranger, Thief, Cleric, Warlock}
-enum monsters {Goblin, Skeleton, DarkWizard, Slime, SlimeHurt}
+enum monsters {Goblin, Skeleton, DarkWizard, Slime, SlimeHurt, Bat}
 enum effects {Slash, Fire, Push}
 enum sceneries {Pillar, Spikes}
 

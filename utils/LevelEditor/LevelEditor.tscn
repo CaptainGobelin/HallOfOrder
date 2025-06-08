@@ -100,6 +100,11 @@ position = Vector2( 18, 36 )
 category = 1
 monsterType = 3
 
+[node name="EntityButton12" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( 27, 36 )
+category = 1
+monsterType = 5
+
 [node name="EntityButton8" parent="Buttons" instance=ExtResource( 2 )]
 position = Vector2( -1.52588e-05, 54 )
 category = 2

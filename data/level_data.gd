@@ -1004,38 +1004,63 @@ const DATA: Dictionary = {
 				"Type": 6,
 				"Pool position": 3,
 			}, {
-				"Type": 3,
+				"Type": 4,
 				"Pool position": 4,
 			}, {
-				"Type": 2,
+				"Type": 4,
 				"Pool position": 5,
 			}
 		],
 		"Monsters": [{
 				"Type": 0,
-				"Position": Vector2(2, 3),
+				"Position": Vector2(3, 4),
 			}, {
 				"Type": 1,
-				"Position": Vector2(3, 3),
+				"Position": Vector2(3, 5),
 			}, {
 				"Type": 3,
-				"Position": Vector2(4, 3),
+				"Position": Vector2(3, 1),
 			}, {
 				"Type": 0,
+				"Position": Vector2(3, 0),
+			}, {
+				"Type": 0,
+				"Position": Vector2(4, 5),
+			}, {
+				"Type": 0,
+				"Position": Vector2(3, 2),
+			}, {
+				"Type": 0,
+				"Position": Vector2(8, 2),
+			}, {
+				"Type": 1,
 				"Position": Vector2(9, 2),
 			}, {
+				"Type": 3,
+				"Position": Vector2(8, 3),
+			}, {
 				"Type": 0,
-				"Position": Vector2(9, 3),
+				"Position": Vector2(6, 2),
+			}, {
+				"Type": 5,
+				"Position": Vector2(6, 4),
 			}
 		],
 		"Sceneries": [{
 				"Type": 1,
-				"Position": Vector2(4, 4),
+				"Position": Vector2(3, 3),
+			}, {
+				"Type": 1,
+				"Position": Vector2(2, 2),
 			}
 		],
 		"TurnOrder": {
-			"Size": 2,
-			"Slots": [],
+			"Size": 7,
+			"Slots": [{
+					"Type": 1,
+					"Order": 2,
+				}
+			],
 		},
 	},
 }

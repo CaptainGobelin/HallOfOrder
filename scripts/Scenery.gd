@@ -40,9 +40,8 @@ func setPos(cell: Vector2):
 func activate(entity: Node) -> bool:
 	match type:
 		Data.sceneries.Spikes:
-			entity.die()
 			$AnimationPlayer.play("Spikes")
-			return true
+			return entity.die()
 	return false
 
 func isBlocking() -> bool:
@@ -55,8 +54,8 @@ func isBlocking() -> bool:
 func push(_dir: Vector2) -> bool:
 	return false
 
-func die():
-	return
+func die() -> bool:
+	return false
 
 func _on_TextureButton_mouse_entered():
 	match type:
