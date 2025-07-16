@@ -28,17 +28,17 @@ size = Vector2( 6.2, 3.2 )
 [node name="CreateButton" parent="Choose" instance=ExtResource( 4 )]
 position = Vector2( 27, 189 )
 size = Vector2( 1.8, 0.6 )
-label = "New profile"
+label = 200
 
 [node name="DeleteButton" parent="Choose" instance=ExtResource( 4 )]
 position = Vector2( 117, 189 )
 size = Vector2( 1.8, 0.6 )
-label = "Delete"
+label = 201
 
 [node name="SelectButton" parent="Choose" instance=ExtResource( 4 )]
 position = Vector2( 207, 189 )
 size = Vector2( 1.8, 0.6 )
-label = "Confirm"
+label = 202
 
 [node name="Title" type="Label" parent="Choose"]
 margin_left = 18.0
@@ -114,12 +114,12 @@ position = Vector2( 268, 6.5 )
 
 [node name="HelpButton" parent="Choose/WindowButtons" instance=ExtResource( 4 )]
 size = Vector2( 0.4, 0.4 )
-label = "?"
+label = 208
 
 [node name="CloseButton" parent="Choose/WindowButtons" instance=ExtResource( 4 )]
 position = Vector2( 22.5, 0 )
 size = Vector2( 0.4, 0.4 )
-label = "X"
+label = 209
 
 [node name="Create" type="Node2D" parent="."]
 visible = false
@@ -144,12 +144,12 @@ valign = 1
 [node name="CancelButton" parent="Create" instance=ExtResource( 4 )]
 position = Vector2( 22.5, 58.5 )
 size = Vector2( 1.4, 0.5 )
-label = "Cancel"
+label = 203
 
 [node name="ConfirmCreateButton" parent="Create" instance=ExtResource( 4 )]
 position = Vector2( 94.5, 58.5 )
 size = Vector2( 1.4, 0.5 )
-label = "Confirm"
+label = 202
 
 [node name="LineEdit" type="LineEdit" parent="Create"]
 margin_left = 13.0
@@ -194,12 +194,12 @@ autowrap = true
 [node name="CancelDeleteButton" parent="Delete/MenuBlock" instance=ExtResource( 4 )]
 position = Vector2( 22.6667, 58.5 )
 size = Vector2( 1.4, 0.5 )
-label = "Cancel"
+label = 203
 
 [node name="ConfirmDeleteButton" parent="Delete/MenuBlock" instance=ExtResource( 4 )]
 position = Vector2( 94.5, 58.5 )
 size = Vector2( 1.4, 0.5 )
-label = "Confirm"
+label = 202
 
 [node name="Help" type="Node2D" parent="."]
 visible = false
@@ -238,12 +238,12 @@ clip_text = true
 [node name="CopyButton" parent="Help/MenuBlock" instance=ExtResource( 4 )]
 position = Vector2( 22.5, 76.5 )
 size = Vector2( 1.4, 0.5 )
-label = "Copy"
+label = 204
 
 [node name="ConfirmHelpButton" parent="Help/MenuBlock" instance=ExtResource( 4 )]
 position = Vector2( 94.5, 76.5 )
 size = Vector2( 1.4, 0.5 )
-label = "Confirm"
+label = 202
 
 [connection signal="pressed" from="Choose/CreateButton" to="." method="_on_CreateButton_pressed"]
 [connection signal="pressed" from="Choose/DeleteButton" to="." method="_on_DeleteButton_pressed"]

@@ -19,31 +19,31 @@ position = Vector2( 48, 0 )
 position = Vector2( 432, 216 )
 scale = Vector2( 2, 2 )
 buttonScale = 2
-buttonLabel = "Resume"
+buttonLabel = 106
 
 [node name="LevelButton" parent="Buttons" instance=ExtResource( 1 )]
 position = Vector2( 432, 270 )
 scale = Vector2( 2, 2 )
 buttonScale = 2
-buttonLabel = "Level selection"
+buttonLabel = 104
 
 [node name="OptionsButton" parent="Buttons" instance=ExtResource( 1 )]
 position = Vector2( 432, 324 )
 scale = Vector2( 2, 2 )
 buttonScale = 2
-buttonLabel = "Settings"
+buttonLabel = 102
 
 [node name="MenuButton" parent="Buttons" instance=ExtResource( 1 )]
 position = Vector2( 432, 378 )
 scale = Vector2( 2, 2 )
 buttonScale = 2
-buttonLabel = "Main menu"
+buttonLabel = 105
 
 [node name="ExitButton" parent="Buttons" instance=ExtResource( 1 )]
 position = Vector2( 432, 432 )
 scale = Vector2( 2, 2 )
 buttonScale = 2
-buttonLabel = "Exit game"
+buttonLabel = 103
 
 [node name="OptionsPanel" parent="." instance=ExtResource( 3 )]
 visible = false

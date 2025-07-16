@@ -121,7 +121,7 @@ tile_data = PoolIntArray( 327684, 1, 0, 327685, 1, 1, 327686, 1, 1, 327687, 1, 1
 position = Vector2( 360, 648 )
 scale = Vector2( 5, 5 )
 buttonScale = 5
-buttonLabel = "Menu"
+buttonLabel = 2
 
 [node name="Pannels" type="Node2D" parent="."]
 position = Vector2( 144, 270 )

@@ -7,6 +7,7 @@ func _ready():
 	Signals.connect("screenSize_changed", self, "applyScreenSize")
 
 func applySettings():
+	GlobalTranslation.changeLanguage()
 	applyFullscreen()
 	applyScreenSize()
 

@@ -29,23 +29,137 @@ const LEVEL_NB = 3
 
 const BI_NAME = 0
 const BI_COLOR = 1
+const BI_TRANSITION = 2
 const BIOMES = {
-	0: ["Cavern", COLOR_GREEN],
-	1: ["Volcano", COLOR_ORANGE],
-	2: ["Abyss", COLOR_BLUE],
+	0: ["BIOME_0", COLOR_GREEN, "TRANSITION_0"],
+	1: ["BIOME_1", COLOR_ORANGE, "TRANSITION_1"],
+	2: ["BIOME_2", COLOR_BLUE, "TRANSITION_2"],
 }
 
 const TUTOS = {
-	"0_0": "Place your fighter on the board then click PLAY to play the turn.",
-	"0_1": "You need to kill every monster on the board to complete the level.",
-	"0_2": "Some monsters, like the Skeleton, also play during the turn.\n\nYou can drag hero portraits in the TURN ORDER to modify the order in which your heroes will play.",
-	"0_3": "Your heroes can also kill other heroes, but they don't all need to survive to complete the level.",
-	"0_4": "Monsters can kill other monsters too.\n\nUse that to your avantage to complete the level.",
-	"0_5": "The monk does not kill monsters but can move them.\n\nUse that ability to kill all monsters with your fighter.",
-	"0_6": "Monsters can also be killed by pushing them against a wall.",
+	"0_0": "TUTO_0",
+	"0_1": "TUTO_1",
+	"0_2": "TUTO_2",
+	"0_3": "TUTO_3",
+	"0_4": "TUTO_4",
+	"0_5": "TUTO_5",
+	"0_6": "TUTO_6",
 }
 
 func getTutorial() -> String:
 	if not TUTOS.has(String(ProfileData.currentLevel.x) + "_" + String(ProfileData.currentLevel.y)):
 		return ""
-	return TUTOS[String(ProfileData.currentLevel.x) + "_" + String(ProfileData.currentLevel.y)]
+	return tr(TUTOS[String(ProfileData.currentLevel.x) + "_" + String(ProfileData.currentLevel.y)])
+
+const LABEL_PLAY 			= 0
+const LABEL_RESET 			= 1
+const LABEL_MENU 			= 2
+const LABEL_STOP 			= 3
+
+const LABEL_START_GAME 		= 100
+const LABEL_CHANGE_PROFILE 	= 101
+const LABEL_OPTIONS 		= 102
+const LABEL_EXIT 			= 103
+const LABEL_LEVELS 			= 104
+const LABEL_EXIT_MENU		= 105
+const LABEL_RESUME			= 106
+
+const LABEL_NEW			 	= 200
+const LABEL_DELETE		 	= 201
+const LABEL_CONFIRM		 	= 202
+const LABEL_CANCEL		 	= 203
+const LABEL_COPY		 	= 204
+const LABEL_APPLY			= 205
+const LABEL_BACK			= 206
+const LABEL_UNKNOWN			= 207
+const LABEL_HELP			= 208
+const LABEL_CLOSE			= 209
+
+const LABEL_BIOME			= 300
+
+const LABEL_YES				= 400
+const LABEL_NO				= 401
+const LABEL_DRAG			= 402
+const LABEL_CLICK			= 403
+const LABEL_x05				= 404
+const LABEL_x1				= 405
+const LABEL_x2				= 406
+
+var BUTTON_LABELS = {
+	LABEL_PLAY: "BUTTONS_PLAY",
+	LABEL_RESET: "BUTTONS_RESET",
+	LABEL_MENU: "BUTTONS_MENU",
+	LABEL_STOP: "BUTTONS_STOP",
+	
+	LABEL_START_GAME: "TITLE_BUTTON_PLAY",
+	LABEL_CHANGE_PROFILE: "TITLE_BUTTON_PROFILE",
+	LABEL_OPTIONS: "TITLE_BUTTON_OPTIONS",
+	LABEL_EXIT: "TITLE_BUTTON_EXIT",
+	LABEL_LEVELS: "LEVELS_TITLE",
+	LABEL_EXIT_MENU: "PAUSE_MENU",
+	LABEL_RESUME: "PAUSE_RESUME",
+	
+	LABEL_NEW: "PROFILE_BUTTON_NEW",
+	LABEL_DELETE: "PROFILE_BUTTON_DELETE",
+	LABEL_CONFIRM: "PROFILE_BUTTON_CONFIRM",
+	LABEL_CANCEL: "PROFILE_BUTTON_CANCEL",
+	LABEL_COPY: "PROFILE_BUTTON_COPY",
+	LABEL_APPLY: "SETTINGS_APPLY",
+	LABEL_BACK: "SETTINGS_BACK",
+	LABEL_UNKNOWN: "LEVEL_UNKNOWN",
+	LABEL_HELP: "?",
+	LABEL_CLOSE: "X",
+	
+	LABEL_YES: "SETTINGS_YES",
+	LABEL_NO: "SETTINGS_NO",
+	LABEL_DRAG: "SETTINGS_DRAG",
+	LABEL_CLICK: "SETTINGS_CLICK",
+	LABEL_x05: "x0.5",
+	LABEL_x1: "x1",
+	LABEL_x2: "x2",
+}
+
+enum LargeButtonLabels {
+	Play = LABEL_PLAY,
+	Reset = LABEL_RESET,
+	Menu = LABEL_MENU,
+	Stop = LABEL_STOP,
+}
+
+enum MenuButtonLabels {
+	New = LABEL_NEW,
+	Delete = LABEL_DELETE,
+	Confirm = LABEL_CONFIRM,
+	Cancel = LABEL_CANCEL,
+	Copy = LABEL_COPY,
+	Apply = LABEL_APPLY,
+	Back = LABEL_BACK,
+	Unknown = LABEL_UNKNOWN,
+	Help = LABEL_HELP,
+	Close = LABEL_CLOSE,
+}
+
+enum LabelButtonLabels {
+	Play = LABEL_START_GAME,
+	ChooseProfile = LABEL_CHANGE_PROFILE,
+	Options = LABEL_OPTIONS,
+	Exit = LABEL_EXIT,
+	ChooseLevel = LABEL_LEVELS,
+	Menu = LABEL_EXIT_MENU,
+	Resume = LABEL_RESUME,
+	Unknown = LABEL_UNKNOWN,
+}
+
+enum SliderLabels {
+	Yes = LABEL_YES,
+	No = LABEL_NO,
+	Drag = LABEL_DRAG,
+	Click = LABEL_CLICK,
+	x05 = LABEL_x05,
+	x1 = LABEL_x1,
+	x2 = LABEL_x2,
+}
+
+func _ready():
+	for b in BIOMES.keys():
+		BUTTON_LABELS[LABEL_BIOME+b] = "BIOME_" + String(b)

@@ -46,6 +46,7 @@ var muted: bool = false
 func _ready():
 	loadSettings()
 	loadProfile(lastProfile)
+	OptionsHandler.applySettings()
 	Signals.allSettings()
 
 func createProfile(name: String) -> bool:

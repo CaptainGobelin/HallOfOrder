@@ -7,7 +7,6 @@
 position = Vector2( 169, 80 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
-buttonLabel = "Change profile"
 enclosed = false
 
 [node name="Back" type="ColorRect" parent="."]
@@ -32,13 +31,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0.807843, 0.858824, 0.882353, 1 )
-text = "Change profile"
+text = "TITLE_BUTTON_PLAY"
 align = 1
 valign = 1
 
 [node name="TextureButton" type="TextureButton" parent="."]
-margin_left = -59.0
-margin_right = 59.0
+margin_left = -83.5
+margin_right = 83.5
 margin_bottom = 27.0
 
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]

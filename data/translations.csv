@@ -1,0 +1,85 @@
+key,en,fr
+TOOLTIP_MUTE,Mute sounds,Couper le son
+TOOLTIP_UNMUTE,Unmute sounds,Rétablir le son
+TOOLTIP_SPEED_UP,Speed up animations,Accélérer les animations
+TOOLTIP_SPEED_DOWN,Speed down animations,Ralentir les animations
+TOOLTIP_WINDOWED,Windowed mode,Mode fenêtré
+TOOLTIP_FULLSCREEN,Fullscreen mode,Mode plein écran
+TOOLTIP_MENU,Menu,Menu
+BIOME_0,Caverns,Cavernes
+TRANSITION_0,The Caverns,Les Cavernes
+BIOME_1,Volcano,Volcan
+TRANSITION_1,The Volcano,Le Volcan
+BIOME_2,Abyss,Abysses
+TRANSITION_2,The Abyss,Les Abysses
+TUTO_0,Place your fighter on the board then click PLAY to play the turn.,Place ton guerrier sur la plateau et clique sur PLAY pour jouer le tour.
+TUTO_1,You need to kill every monster on the board to complete the level.,Tu dois tuer tous les monstres du plateau pour compléter le niveau.
+TUTO_2,"Some monsters, like the Skeleton, also play during the turn.\n\nYou can drag hero portraits in the TURN ORDER to modify the order in which your heroes will play.","Certains monstres, comme le SQUELETTE, agissent aussi pendant le tour.\n\nTu peux déplacer les portraits de héros dans le TOUR DE JEU pour modifier l’ordre dans lequel tes héros vont agir."
+TUTO_3,"Your heroes can also kill other heroes, but they don't all need to survive to complete the level.","Tes héros peuvent tuer d’autres héros, mais tous les héros n’ont pas besoin de survivre pour compléter le niveau."
+TUTO_4,Monsters can kill other monsters too.\n\nUse that to your avantage to complete the level.,Les monstres aussi peuvent tuer d’autres monstres.\n\nUtilise-les à ton avantage pour compléter ce niveau.
+TUTO_5,The monk does not kill monsters but can move them.\n\nUse that ability to kill all monsters with your fighter.,Le moine ne tue pas les monstres mais il peut les pousser.\n\nUtilise ses capacité pour tuer les monstres avec ton guerrier.
+TUTO_6,Monsters can also be killed by pushing them against a wall.,Les monstres peuvent aussi être tués en les poussant contre les murs.
+LEVEL_UNKNOWN,?????,?????
+LANGUAGE_en,English,English
+LANGUAGE_fr,Français,Français
+CURRENT_VERSION,Current version,Version actuelle
+FIGHTER_BOT,The fighter hits all cells around him.,Le guerrier frappe toutes les cases autour de lui.
+PALADIN_TOP,The paladin hits all cells around him.,Le paladin frappe toutes les cases autour de lui.
+PALADIN_BOT,The paladin cannot die from any attack.,Le paladin est protégé contre les attaques.
+MONK_TOP,The monk pushes all creatures around him.,Le moine poussent toutes les créatures autour de lui.
+MONK_BOT,Creatures will die if pushed against a wall.,Une créature meurt lorsqu’elle est poussée contre un mur.
+WIZARD_TOP,The wizard burns all creatures on his line.,Le magicien brûle toutes les créatures sur sa ligne.
+WIZARD_BOT,The fire is blocked by walls.,Le feu est bloqué par les murs.
+BARBARIAN_TOP,The barbarian move forward then hits in front of him.,Le barbare se déplace devant lui et frappe la case du dessus.
+BARBARIAN_BOT,If he kills a creature during his turn he will play again.,S’il tue une créature pendant son tour il jouera un nouveau tour.
+THIEF_TOP,The thief hits the cell two times below him.,Le voleur frappe la case deux cases au-dessous de lui.
+THIEF_BOT,If he kills a creature he will play again imitating the killed creature attack.,S’il tue une créature avec cette attaque alors il jouera un autre tour en imitant la créature tuée.
+GOBLIN_BOT,The goblin do not attack during his turn and don't have any special ability.,Le gobelin n’attaque pas durant le tour et n’a aucune capacité spéciale.
+SKELETON_BOT,The skeleton hits all cells around him.,Le squelette frappe toutes les cases autour de lui.
+SLIME_TOP,The slime does not attack during its turn. But it take two hits to kill it.,"La gelée n’attaque pas durant son tour, mais il faut deux coups pour la tuer."
+SLIME_BOT,It will still die if pushed against a wall or spikes.,La gelée meurt immédiatement si elle est poussée contre un mur ou des pieux.
+BAT_BOT,If attacked the bat will dodge to the cell on its right if it's empty.,"Lorsqu’elle est attaquée, la chauve-souris esquive l’attaque vers la case à sa droite si elle est libre."
+SPIKES_BOT,The spike trap kills any creature that stand on it.,Le piège à pieux tue n’importe qu’elle créature qui se retrouve sur sa case.
+USE_ROMAN,true,true
+TITLE_BUTTON_PLAY,Play,Jouer
+TITLE_BUTTON_PROFILE,Choose profile,Choisir le profil
+TITLE_BUTTON_OPTIONS,Settings,Options
+TITLE_BUTTON_EXIT,Exit game,Quitter le jeu
+TITLE_PROFILE,Profile,Profil
+TITLE_GAME_BY,A game by,Créé par
+TITLE_VERSION,Current version,Version actuelle
+PROFILE_NAME,Name,Nom
+PROFILE_PROGRESS,Progress,Progrès
+PROFILE_BUTTON_NEW,New,Nouveau
+PROFILE_BUTTON_DELETE,Delete,Supprimer
+PROFILE_BUTTON_CONFIRM,Confirm,Valider
+PROFILE_BUTTON_CANCEL,Cancel,Annuler
+PROFILE_NAME_WINDOW,Choose a name,Entrez un nom
+PROFILE_DELETE_WINDOW,Are you sure you want to delete this profile:,Voulez-vous vraiment supprimer ce profil:
+PROFILE_HELP_WINDOW,Your save folder is located at:,Le chemin du dossier de sauvegardes est:
+PROFILE_BUTTON_COPY,Copy,Copier
+LEVELS_TITLE,Level Selection,Choix du niveau
+SETTINGS_LANGUAGE,Language,Langue
+SETTINGS_CURSOR,Cursor size,Taille du curseur
+SETTINGS_SPEED,Animation speed,Vitesse des animations
+SETTINGS_HERO,Hero selection,Sélection des héros
+SETTINGS_DRAG,Drag,Maintenir
+SETTINGS_CLICK,Click,Cliquer
+SETTINGS_MUSIC,Music volume,Musique
+SETTINGS_SOUNDS,Sounds volume,Sons
+SETTINGS_BRIGHTNESS,Brightness,Luminosité
+SETTINGS_SIZE,Window size,Taille de la fenêtre
+SETTINGS_FULLSCREEN,Fullscreen,Plein écran
+SETTINGS_YES,Yes,Oui
+SETTINGS_NO,No,Non
+SETTINGS_APPLY,Apply,Appliquer
+SETTINGS_BACK,Back,Retour
+GAME_HEROES,Heroes,Héros
+GAME_HELP,Help,Infos
+GAME_TURN_ORDER,Turn Order,Ordre du Tour
+PAUSE_RESUME,Resume,Continuer
+PAUSE_MENU,Main menu,Retour au menu
+BUTTONS_PLAY,Play,Jouer
+BUTTONS_RESET,Reset,Reset
+BUTTONS_MENU,Menu,Menu
+BUTTONS_STOP,Stop,Stop

@@ -4,19 +4,24 @@ extends Node2D
 signal pressed
 
 export(Vector2) var size = Vector2(1, 1) setget setSize
-export(String) var label = "Button" setget setLabel
+export(Data.MenuButtonLabels) var label = Data.MenuButtonLabels.Apply setget setLabel
 
 var enabled: bool = true
 
 func _ready():
+	Signals.connect("language_changed", self, "updateTranslations")
 	$Light.color = Colors.shade3
 	$Shadow.color = Colors.shade5
+	setLabel(label)
 
 func colorize():
 	var color = Utils.getBiomeColor()
 	$Light.self_modulate = color
 	$Shadow.self_modulate = color
 	$Block.self_modulate = color
+
+func updateTranslations():
+	setLabel(label)
 
 func setSize(v: Vector2):
 	size = v
@@ -33,11 +38,11 @@ func setSize(v: Vector2):
 	$TextureButton.margin_right = v.x * 45
 	$TextureButton.margin_bottom = v.y * 45
 
-func setLabel(value: String):
+func setLabel(value: int):
 	label = value
 	if not has_node("Block"):
 		return
-	$Label.text = value
+	$Label.text = tr(Data.BUTTON_LABELS[value])
 
 func disable():
 	$Label.add_color_override("font_color", Colors.shade3)

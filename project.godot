@@ -114,6 +114,7 @@ ButtonHandler="*res://resources/ButtonHandler.gd"
 MouseHandler="*res://resources/MouseHandler.gd"
 BattleHandler="*res://resources/BattleHandler.gd"
 Signals="*res://resources/Signals.gd"
+GlobalTranslation="*res://resources/translation.gd"
 LevelLoader="*res://resources/LevelLoader.gd"
 LevelData="*res://data/level_data.gd"
 ProfileData="*res://resources/ProfileData.gd"
@@ -190,6 +191,10 @@ right_click={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[locale]
+
+translations=PoolStringArray( "res://data/translations.en.translation", "res://data/translations.fr.translation" )
 
 [physics]
 

@@ -7,10 +7,13 @@ enum tooltips {Fighter, Paladin, Monk, Wizard, Barbarian, Thief,
 
 export(tooltips) var type = tooltips.Fighter setget setType
 export(Vector2) var size = Vector2(3,3) setget setSize
+export(bool) var isDisplayingTuto: bool = false
 
 func _ready():
+	Signals.connect("language_changed", self, "updateTranslations")
 	for p in $Image/Puppets.get_children():
 		p.visible = false
+	updateTranslations()
 
 func colorize():
 	var color = Utils.getBiomeColor()
@@ -18,6 +21,10 @@ func colorize():
 		p.colorize()
 	$Image/Board.modulate = color
 	$Image/Shadow.modulate = color
+
+func updateTranslations():
+	if isDisplayingTuto:
+		$Labels/TopLabel.text = Data.getTutorial()
 
 func setType(value: int):
 	type = value
@@ -31,57 +38,57 @@ func setType(value: int):
 	match type:
 		tooltips.Fighter:
 			$Labels/TopLabel.text = ""
-			$Labels/BotLabel.text = "The fighter hits all cells around him."
+			$Labels/BotLabel.text = tr("FIGHTER_BOT")
 			setSize(Vector2(3, 3))
 			$AnimationPlayer.play("Fighter")
 		tooltips.Paladin:
-			$Labels/TopLabel.text = "The paladin hits all cells around him."
-			$Labels/BotLabel.text = "The paladin cannot die from any attack."
+			$Labels/TopLabel.text = tr("PALADIN_TOP")
+			$Labels/BotLabel.text = tr("PALADIN_BOT")
 			setSize(Vector2(4, 3))
 			$AnimationPlayer.play("Paladin")
 		tooltips.Monk:
-			$Labels/TopLabel.text = "The pushes all creatures around him."
-			$Labels/BotLabel.text = "Creatures will die if pushed against a wall."
+			$Labels/TopLabel.text = tr("MONK_TOP")
+			$Labels/BotLabel.text = tr("MONK_BOT")
 			setSize(Vector2(5, 3))
 			$AnimationPlayer.play("Monk")
 		tooltips.Wizard:
-			$Labels/TopLabel.text = "The wizard burns all creatures on his line."
-			$Labels/BotLabel.text = "The fire is blocked by walls."
+			$Labels/TopLabel.text = tr("WIZARD_TOP")
+			$Labels/BotLabel.text = tr("WIZARD_BOT")
 			setSize(Vector2(5, 3))
 			$AnimationPlayer.play("Wizard")
 		tooltips.Barbarian:
-			$Labels/TopLabel.text = "The barbarian move forward then hits in front of him."
-			$Labels/BotLabel.text = "If he kills a creature during his turn, he will play again."
+			$Labels/TopLabel.text = tr("BARBARIAN_TOP")
+			$Labels/BotLabel.text = tr("BARBARIAN_BOT")
 			setSize(Vector2(3, 4))
 			$AnimationPlayer.play("Barbarian")
 		tooltips.Thief:
-			$Labels/TopLabel.text = "The thief hits the cell two times below him."
-			$Labels/BotLabel.text = "If he kills a creature he will play again imitating the killed creature attack."
+			$Labels/TopLabel.text = tr("THIEF_TOP")
+			$Labels/BotLabel.text = tr("THIEF_BOT")
 			setSize(Vector2(3, 4))
 			$AnimationPlayer.play("Thief")
 		tooltips.Goblin:
 			$Labels/TopLabel.text = ""
-			$Labels/BotLabel.text = "The goblin do not attack during his turn and don't have any special ability."
+			$Labels/BotLabel.text = tr("GOBLIN_BOT")
 			setSize(Vector2(3, 3))
 			$AnimationPlayer.play("Goblin")
 		tooltips.Skeleton:
 			$Labels/TopLabel.text = ""
-			$Labels/BotLabel.text = "The skeleton hits all cells around him."
+			$Labels/BotLabel.text = tr("SKELETON_BOT")
 			setSize(Vector2(3, 3))
 			$AnimationPlayer.play("Skeleton")
 		tooltips.Slime:
-			$Labels/TopLabel.text = "The slime does not attack during its turn. But it take two hits to kill it."
-			$Labels/BotLabel.text = "It will still die if pushed against a wall or spikes."
+			$Labels/TopLabel.text = tr("SLIME_TOP")
+			$Labels/BotLabel.text = tr("SLIME_BOT")
 			setSize(Vector2(5, 3))
 			$AnimationPlayer.play("Slime")
 		tooltips.Bat:
 			$Labels/TopLabel.text = ""
-			$Labels/BotLabel.text = "If attacked the bat will dodge to the cell on its right if it's empty."
+			$Labels/BotLabel.text = tr("BAT_BOT")
 			setSize(Vector2(3, 3))
 			$AnimationPlayer.play("Bat")
 		tooltips.Spikes:
 			$Labels/TopLabel.text = ""
-			$Labels/BotLabel.text = "The spike trap kills any creature that stand on it."
+			$Labels/BotLabel.text = tr("SPIKES_BOT")
 			setSize(Vector2(5, 3))
 			$AnimationPlayer.play("Spikes")
 		tooltips.Tuto:

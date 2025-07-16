@@ -7,10 +7,15 @@ var currentPosList: int = -1
 func _ready():
 	Ref.turnOrder = self
 	set_process_input(false)
+	Signals.connect("language_changed", self, "updateTranslations")
+	updateTranslations()
 
 func colorize():
 	for c in $Objects.get_children():
 		c.colorize()
+
+func updateTranslations():
+	$Label.text = tr("GAME_TURN_ORDER")
 
 func getHeroSlot(hero: Node):
 	for c in $Objects.get_children():

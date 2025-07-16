@@ -57,6 +57,8 @@ func changeScene(path: String):
 	get_tree().change_scene(path)
 
 static func toRoman(number: int) -> String:
+	if TranslationServer.tr("USE_ROMAN") != "true":
+		return String(number)
 	var result = ""
 	while number > 9:
 		result += "X"

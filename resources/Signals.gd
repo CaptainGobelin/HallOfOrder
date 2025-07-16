@@ -8,6 +8,7 @@ signal animSpeed_changed
 signal brightness_changed
 signal fullscreen_changed
 signal screenSize_changed
+signal language_changed
 
 signal button_hovered
 signal button_unhovered
@@ -19,6 +20,7 @@ func changeSceneSignal():
 	emit_signal("change_scene")
 
 func allSettings():
+	languageChanged()
 	cursorSizeChanged()
 	animSpeedChanged()
 	brightnessChanged()
@@ -39,6 +41,9 @@ func fullscreenChanged():
 
 func screenSizeChanged():
 	emit_signal("screenSize_changed")
+
+func languageChanged():
+	emit_signal("language_changed")
 
 func buttonHovered(type: int):
 	emit_signal("button_hovered", type)

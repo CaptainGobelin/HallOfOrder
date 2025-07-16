@@ -5,6 +5,8 @@ signal exit
 var screenOptions: PoolVector2Array
 
 func _ready():
+	Signals.connect("language_changed", self, "updateTranslations")
+	updateTranslations()
 	screenOptions = OptionsHandler.getResolutionOptions()
 	var i = 0
 	for r in screenOptions:
@@ -12,8 +14,9 @@ func _ready():
 		if r == ProfileData.screenSize:
 			$Graphics/ScreenSizeChoice.select(i)
 		i += 1
-	$Language/LanguageChoice.addChoice("English")
-	$Language/LanguageChoice.select(0)
+	for l in TranslationServer.get_loaded_locales():
+		$Language/LanguageChoice.addChoice(tr("LANGUAGE_" + l))
+	$Language/LanguageChoice.select(ProfileData.language)
 	loadOptions()
 	#TODO remove when implemented
 	$Gameplay/DragSlider.disable()
@@ -40,6 +43,18 @@ func colorize():
 	#TODO remove when implemented
 	$Gameplay/DragSlider.disable()
 	$Gameplay/DragLabel.add_color_override("font_color", Colors.shade4 * Utils.getBiomeColor())
+
+func updateTranslations():
+	$MenuBlock/Title.text = tr("TITLE_BUTTON_OPTIONS")
+	$Language/LanguageLabel.text = tr("SETTINGS_LANGUAGE")
+	$Graphics/BrightnessLabel.text = tr("SETTINGS_BRIGHTNESS")
+	$Graphics/ScreenSizeLabel.text = tr("SETTINGS_SIZE")
+	$Graphics/FullscreenLabel.text = tr("SETTINGS_FULLSCREEN")
+	$Gameplay/CursorLabel.text = tr("SETTINGS_CURSOR")
+	$Gameplay/AnimSpeedLabel.text = tr("SETTINGS_SPEED")
+	$Gameplay/DragLabel.text = tr("SETTINGS_HERO")
+	$Sounds/MusicLabel.text = tr("SETTINGS_MUSIC")
+	$Sounds/SoundsLabel.text = tr("SETTINGS_SOUNDS")
 
 func loadOptions():
 	$Gameplay/CursorSlider.setValue(ProfileData.cursorSize)
@@ -96,3 +111,7 @@ func _on_AnimSpeedSlider_valueChanged():
 func _on_BrightnessSlider_value_changed(value):
 	ProfileData.brightness = (value / 10.0) + 0.2
 	Signals.brightnessChanged()
+
+func _on_LanguageChoice_item_selected():
+	ProfileData.language = $Language/LanguageChoice.getSelected()
+	GlobalTranslation.changeLanguage()

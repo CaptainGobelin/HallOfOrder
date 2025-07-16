@@ -113,7 +113,7 @@ margin_right = 97.0
 margin_bottom = 14.0
 theme = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
-text = "A game by Jéeremy Morel"
+text = "A game by Jeremy Morel"
 
 [node name="Title" type="Node2D" parent="."]
 position = Vector2( 100, 45 )
@@ -174,27 +174,27 @@ scale = Vector2( 0.5, 0.5 )
 position = Vector2( 0, 9 )
 scale = Vector2( 2, 2 )
 buttonScale = 2
-buttonLabel = "Play"
 enclosed = true
 
 [node name="ProfileButton" parent="MenuBlock/Buttons" instance=ExtResource( 1 )]
 position = Vector2( 0, 68 )
 scale = Vector2( 2, 2 )
 buttonScale = 2
+buttonLabel = 101
 enclosed = true
 
 [node name="OptionsButton" parent="MenuBlock/Buttons" instance=ExtResource( 1 )]
 position = Vector2( 0, 127 )
 scale = Vector2( 2, 2 )
 buttonScale = 2
-buttonLabel = "Settings"
+buttonLabel = 102
 enclosed = true
 
 [node name="ExitButton" parent="MenuBlock/Buttons" instance=ExtResource( 1 )]
 position = Vector2( 0, 186 )
 scale = Vector2( 2, 2 )
 buttonScale = 2
-buttonLabel = "Exit"
+buttonLabel = 103
 enclosed = true
 
 [node name="ProfileContainer" type="Node2D" parent="MenuBlock"]

@@ -97,19 +97,19 @@ func buttonPressed(type: int):
 func buttonHovered(type: int):
 	match type:
 		Icons.Sound:
-			Ref.ui.setTooltip("Mute sounds")
+			Ref.ui.setTooltip(tr("TOOLTIP_MUTE"))
 		Icons.NoSound:
-			Ref.ui.setTooltip("Unmute sounds")
+			Ref.ui.setTooltip("TOOLTIP_UNMUTE")
 		Icons.NormalSpeed:
-			Ref.ui.setTooltip("Speed up animations")
+			Ref.ui.setTooltip("TOOLTIP_SPEED_UP")
 		Icons.DoubleSpeed:
-			Ref.ui.setTooltip("Speed down animation")
+			Ref.ui.setTooltip("TOOLTIP_SPEED_DOWN")
 		Icons.Fullscreen:
-			Ref.ui.setTooltip("Windowed mode")
+			Ref.ui.setTooltip("TOOLTIP_WINDOWED")
 		Icons.Smallscreen:
-			Ref.ui.setTooltip("Fullscreen mode")
+			Ref.ui.setTooltip("TOOLTIP_FULLSCREEN")
 		Icons.Menu:
-			Ref.ui.setTooltip("Menu")
+			Ref.ui.setTooltip("TOOLTIP_MENU")
 
 func buttonUnhovered():
 	Ref.ui.hideTooltip()

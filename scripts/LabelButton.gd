@@ -4,12 +4,13 @@ extends Node2D
 signal pressed
 
 export(int) var buttonScale = 3 setget setScale
-export(String) var buttonLabel = "Play" setget setLabel
+export(Data.LabelButtonLabels) var buttonLabel = Data.LabelButtonLabels.Play setget setLabel
 export(bool) var enclosed = true setget setEnclosed
 
 var world: int
 
 func _ready():
+	Signals.connect("language_changed", self, "updateTranslations")
 	setLabel(buttonLabel)
 	_on_TextureButton_mouse_exited()
 
@@ -17,14 +18,17 @@ func colorize():
 	var color = Utils.getBiomeColor()
 	$Back.modulate = color
 
+func updateTranslations():
+	setLabel(buttonLabel)
+
 func setScale(value: int):
 	buttonScale = value
 	scale = Vector2(value, value)
 
-func setLabel(value: String):
+func setLabel(value: int):
 	buttonLabel = value
 	if has_node("Label"):
-		$Label.text = value
+		$Label.text = tr(Data.BUTTON_LABELS[value])
 		if not enclosed:
 			$Label.visible = false
 			$Label.visible = true

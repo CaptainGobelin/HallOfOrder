@@ -8,6 +8,7 @@ var currentFocus = null
 var toDelete = null
 
 func _ready():
+	updateTranslations()
 	position = Vector2(165, 99)
 	$TitleBackground.position = -Vector2(165, 99)/2
 	$Help/MenuBlock/Path.text = OS.get_user_data_dir()
@@ -38,6 +39,15 @@ func _input(event):
 			r.setStarter(rowStarter, rowStarter + 6)
 			$Choose/Table/MenuScroller.setArrows(rowStarter, maxElements)
 			$Choose/Table/TextureButton.visible = $Choose/Table/MenuScroller.isActive
+
+func updateTranslations():
+	$Choose/Title.text = tr("TITLE_BUTTON_PROFILE")
+	$Choose/Table/Header/NameHeader/Label.text = tr("PROFILE_NAME")
+	$Choose/Table/Header/ProgressHeader/Label.text = tr("PROFILE_PROGRESS")
+	$Create/Label.text = tr("PROFILE_NAME_WINDOW")
+	$Create/LineEdit.placeholder_text = tr("PROFILE_NAME")
+	$Delete/MenuBlock/Label.text = tr("PROFILE_DELETE_WINDOW")
+	$Help/MenuBlock/Label.text = tr("PROFILE_HELP_WINDOW")
 
 func fillData(profiles: Array):
 	for r in $Choose/Table/Rows.get_children():

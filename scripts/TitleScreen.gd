@@ -1,7 +1,5 @@
 extends Node2D
 
-const profilePrefix = "Profile: "
-
 func _ready():
 	$AnimationPlayer.playback_speed = 0.65
 	if ProfileData.firstLaunch:
@@ -9,8 +7,9 @@ func _ready():
 		ProfileData.firstLaunch = false
 	else:
 		$AnimationPlayer.play("RESET")
-	$VersionContainer/Label.text = "Current version: v"
+	$VersionContainer/Label.text = tr("TITLE_VERSION") + ": v"
 	$VersionContainer/Label.text += String(VersionControl.CURRENT_VERSION)
+	$AuthorContainer/Label.text = tr("TITLE_GAME_BY") + " Jérémy Morel"
 	var username = ProfileData.getLastUsername()
 	if username == "":
 		$MenuBlock/ProfileContainer.visible = false
@@ -19,11 +18,11 @@ func _ready():
 		else:
 			ProfileData.profileMode = ProfileData.PRO_CHOOSE
 		$MenuBlock/Buttons/PlayButton.visible = false
-		$MenuBlock/Buttons/ProfileButton.setLabel("Play")
+		$MenuBlock/Buttons/ProfileButton.setLabel(Data.LABEL_PLAY)
 	else:
 		ProfileData.profileMode = ProfileData.PRO_CHOOSE
 		$MenuBlock/ProfileContainer.visible = true
-		$MenuBlock/ProfileContainer/Label.text = profilePrefix + username
+		$MenuBlock/ProfileContainer/Label.text = tr("TITLE_PROFILE") + ": " + username
 
 func fadeIn():
 	$AnimationPlayer.play("FadeIn")

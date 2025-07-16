@@ -1,10 +1,11 @@
 tool
 extends Node2D
 
-export(String) var title = "Cavern" setget setTitle
+export(String) var title = "BIOME_0" setget setTitle
 export(int) var level = 1 setget setLevel
 
 func _ready():
+	Signals.connect("language_changed", self, "drawTitle")
 	drawTitle()
 
 func colorize():
@@ -23,7 +24,7 @@ func setLevel(value: int):
 func drawTitle():
 	if not has_node("Label"):
 		return
-	$Label.text = title + " - " + Utils.toRoman(level)
+	$Label.text = tr(title) + " - " + Utils.toRoman(level)
 
 func _on_Label_resized():
 	$LeftLeaves.position.x = -$Label.rect_size.x/2 - 4.5

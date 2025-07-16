@@ -6,6 +6,8 @@ var panelScene = preload("res://scenes/WorldPanel.tscn")
 var currentPannel: int = 0
 
 func _ready():
+	Signals.connect("language_changed", self, "updateTranslations")
+	updateTranslations()
 	var count = 0
 	for w in Data.BIOMES.keys():
 		var label = Utils.instanciate(labelScene, $Worlds)
@@ -14,9 +16,9 @@ func _ready():
 		label.setScale(2)
 		label.setEnclosed(false)
 		if ProfileData.isUnlockedWorld(w):
-			label.setLabel(Data.BIOMES[w][Data.BI_NAME])
+			label.setLabel(Data.LABEL_BIOME + w)
 		else:
-			label.setLabel("?????")
+			label.setLabel(Data.LABEL_UNKNOWN)
 			label.disable()
 		label.position.y = 18
 		label.position.x = (558.0/(Data.BIOMES.keys().size()-1)) * count + 81
@@ -29,6 +31,9 @@ func _ready():
 		$Pannels.get_child(currentPannel).visible = false
 		currentPannel = int(ProfileData.currentLevel.x)
 		$Pannels.get_child(currentPannel).get_node("AnimationPlayer").play("RESET")
+
+func updateTranslations():
+	$Title/Label.text = tr("LEVELS_TITLE")
 
 func switchPannel(next: int):
 	if next == currentPannel:

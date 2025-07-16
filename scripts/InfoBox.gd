@@ -1,8 +1,13 @@
 extends Node2D
 
 func _ready():
+	Signals.connect("language_changed", self, "updateTranslations")
+	updateTranslations()
 	hideTooltip()
 	unroll()
+
+func updateTranslations():
+	$TextContainer/Label.text = tr("GAME_HELP")
 
 func showTooltip(type: int):
 	$Tooltip/TooltipFactory.visible = true
