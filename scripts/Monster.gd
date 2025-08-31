@@ -132,6 +132,8 @@ func _on_TextureButton_mouse_entered():
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Slime)
 		Data.monsters.Bat:
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Bat)
+		Data.monsters.Spider:
+			Ref.ui.showTooltip(TooltipFactory.tooltips.Spider)
 	var slot = Ref.turnOrder.getTurnOrderObjectByEntity(self)
 	if slot != null:
 		slot.outline()
