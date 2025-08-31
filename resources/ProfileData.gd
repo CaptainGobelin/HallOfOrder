@@ -54,6 +54,11 @@ func createProfile(name: String) -> bool:
 	currentLevel = Vector2(0, 0)
 	biomes = { 0: [true] }
 	levels = { "0_0": [true, false]}
+	if username == "debug":
+		for b in Data.BIOMES.keys():
+			biomes[b] = [true]
+			for f in range(Data.FLOOR_NB):
+				levels[String(b)+"_"+String(f)] = [true, true]
 	progress = 0
 	animSpeed = ANIM_NORMAL
 	cursorSize = CURSOR_M

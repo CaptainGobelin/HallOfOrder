@@ -23,6 +23,13 @@ func getHeroSlot(hero: Node):
 			return c.posInList
 	return null
 
+func getMonsterSlot(type: int):
+	for c in $Objects.get_children():
+		if c.isActive and c.contained is Monster:
+			if c.contained.type == type:
+				return c.posInList
+	return null
+
 func getTurnOrderObjectByEntity(entity: Node):
 	if entity is Hero:
 		for c in $Objects.get_children():

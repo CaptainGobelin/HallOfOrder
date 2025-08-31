@@ -110,6 +110,8 @@ func reset():
 	barbarianShouldReplay = false
 	thiefShouldReplay = false
 	thiefKilled = null
+	spiderShouldReplay = false
+	spiderToSlash = false
 	if onBoard:
 		setPos(initPos)
 	$AnimationPlayer.play("RESET")

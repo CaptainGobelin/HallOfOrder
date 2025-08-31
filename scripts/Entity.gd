@@ -9,8 +9,10 @@ var barbarianToSlash: bool = false
 var barbarianShouldReplay: bool = false
 var thiefKilled: Node2D = null
 var thiefShouldReplay: bool = false
+var spiderShouldReplay: bool = false
+var spiderToSlash: bool = false
 
-func play(simulatedType: int, forceMonsterPlay: bool = false):
+func play(simulatedType: int, isFirst: bool = true, forceMonsterPlay: bool = false):
 	if is_in_group("Monster") or forceMonsterPlay:
 		playMonster(simulatedType)
 	else:
@@ -64,7 +66,7 @@ func playHero(simaltedType: int):
 				if thiefKilled.is_in_group("Hero"):
 					play(thiefKilled.type)
 				elif thiefKilled.is_in_group("Monster"):
-					play(thiefKilled.type, true)
+					play(thiefKilled.type, true, true)
 
 func playMonster(simulatedType: int):
 	match simulatedType:
@@ -72,3 +74,15 @@ func playMonster(simulatedType: int):
 			if not $AnimationPlayer.current_animation == "Death":
 				$AnimationPlayer.play("Crumble")
 			Effect.launchAround(Data.effects.Slash, pos, true)
+		Data.monsters.Spider:
+			if spiderToSlash:
+				$AnimationPlayer.play("Crumble")
+				Effect.launchAt(Data.effects.Slash, Data.DIR_DOWN, pos + Vector2(0, 1), true)
+				spiderShouldReplay = false
+			else:
+				Effect.launchAt(Data.effects.Push, Data.DIR_DOWN, pos, true)
+				spiderToSlash = true
+				spiderShouldReplay = true
+				if is_in_group("Hero"):
+					thiefShouldReplay = true
+					BattleHandler.toPlay.insert(0, Ref.turnOrder.getHeroSlot(self))

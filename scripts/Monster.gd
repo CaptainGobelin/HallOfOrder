@@ -4,6 +4,7 @@ class_name Monster
 
 export (Data.monsters) var type = Data.monsters.Goblin setget setType
 
+var pushedTo = null
 var isDying = false
 var isFake: bool = false
 
@@ -53,6 +54,8 @@ func enable():
 	$TextureButton.disabled = false
 
 static func playAll(monsterType: int):
+	if monsterType == Data.monsters.Spider:
+		BattleHandler.addSpiderTurn()
 	for m in Ref.monsters.get_children():
 		if m.isDead:
 			continue
@@ -100,6 +103,8 @@ func reset():
 		setType(Data.monsters.Slime)
 	isDead = false
 	isDying = false
+	spiderShouldReplay = false
+	spiderToSlash = false
 	setPos(initPos)
 	$AnimationPlayer.play("RESET")
 

@@ -1,7 +1,8 @@
 extends Node
 
 var toPlay: Array = []
-var currentThief: Hero = null
+var currentThief = null
+var spiderTurnAdded: bool = false
 var oldTurn
 
 func _ready():
@@ -11,6 +12,7 @@ func resetScene():
 	toPlay = []
 
 func playBattle():
+	spiderTurnAdded = false
 	toPlay = range(Ref.turnOrder.size)
 	playNext()
 
@@ -74,3 +76,9 @@ func checkWin() -> bool:
 		if not m.isDead:
 			return false
 	return true
+
+func addSpiderTurn():
+	if spiderTurnAdded:
+		return
+	spiderTurnAdded = true
+	toPlay.insert(0, Ref.turnOrder.getMonsterSlot(Data.monsters.Spider))
