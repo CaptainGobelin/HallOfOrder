@@ -1300,4 +1300,96 @@ const DATA: Dictionary = {
 			],
 		},
 	},
+	"1_13": {
+		"Heroes": [{
+				"Type": 1,
+				"Pool position": 0,
+			}, {
+				"Type": 1,
+				"Pool position": 1,
+			}, {
+				"Type": 2,
+				"Pool position": 2,
+			}
+		],
+		"Monsters": [{
+				"Type": 1,
+				"Position": Vector2(1, 3),
+			}, {
+				"Type": 1,
+				"Position": Vector2(3, 3),
+			}, {
+				"Type": 3,
+				"Position": Vector2(4, 2),
+			}, {
+				"Type": 3,
+				"Position": Vector2(4, 4),
+			}, {
+				"Type": 0,
+				"Position": Vector2(2, 2),
+			}
+		],
+		"Sceneries": [{
+				"Type": 0,
+				"Position": Vector2(0, 3),
+			}, {
+				"Type": 1,
+				"Position": Vector2(2, 1),
+			}
+		],
+		"TurnOrder": {
+			"Size": 4,
+			"Slots": [{
+					"Type": 1,
+					"Order": 1,
+				}
+			],
+		},
+	},
+	"1_14": {
+		"Heroes": [{
+				"Type": 1,
+				"Pool position": 0,
+			}, {
+				"Type": 4,
+				"Pool position": 2,
+			}, {
+				"Type": 4,
+				"Pool position": 3,
+			}
+		],
+		"Monsters": [{
+				"Type": 1,
+				"Position": Vector2(1, 3),
+			}, {
+				"Type": 1,
+				"Position": Vector2(3, 3),
+			}, {
+				"Type": 0,
+				"Position": Vector2(4, 4),
+			}, {
+				"Type": 0,
+				"Position": Vector2(4, 2),
+			}, {
+				"Type": 0,
+				"Position": Vector2(2, 2),
+			}
+		],
+		"Sceneries": [{
+				"Type": 0,
+				"Position": Vector2(0, 3),
+			}, {
+				"Type": 1,
+				"Position": Vector2(2, 1),
+			}
+		],
+		"TurnOrder": {
+			"Size": 4,
+			"Slots": [{
+					"Type": 1,
+					"Order": 1,
+				}
+			],
+		},
+	},
 }
