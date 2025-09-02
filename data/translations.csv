@@ -39,7 +39,7 @@ SKELETON_BOT,The skeleton hits all cells around him.,Le squelette frappe toutes 
 SLIME_TOP,The slime does not attack during its turn. But it take two hits to kill it.,"La gelée n’attaque pas durant son tour, mais il faut deux coups pour la tuer."
 SLIME_BOT,It will still die if pushed against a wall or spikes.,La gelée meurt immédiatement si elle est poussée contre un mur ou des pieux.
 BAT_BOT,If attacked the bat will dodge to the cell on its right if it's empty.,"Lorsqu’elle est attaquée, la chauve-souris esquive l’attaque vers la case à sa droite si elle est libre."
-SPIDER_BOT,The spider move downward and then hits the cell below.,L’araignée se déplace vers le bas et attaque ensuite la case du dessous.
+SPIDER_BOT,The spider moves downward and then hits the cell below.,L’araignée se déplace vers le bas et attaque ensuite la case du dessous.
 SPIKES_BOT,The spike trap kills any creature that stand on it.,Le piège à pieux tue n’importe qu’elle créature qui se retrouve sur sa case.
 USE_ROMAN,true,true
 TITLE_BUTTON_PLAY,Play,Jouer

@@ -1113,39 +1113,58 @@ const DATA: Dictionary = {
 				"Type": 1,
 				"Pool position": 1,
 			}, {
-				"Type": 6,
+				"Type": 1,
 				"Pool position": 2,
 			}, {
 				"Type": 6,
 				"Pool position": 3,
+			}, {
+				"Type": 6,
+				"Pool position": 4,
 			}
 		],
 		"Monsters": [{
 				"Type": 3,
-				"Position": Vector2(4, 0),
-			}, {
-				"Type": 0,
-				"Position": Vector2(3, 1),
-			}, {
-				"Type": 0,
-				"Position": Vector2(5, 1),
-			}, {
-				"Type": 0,
-				"Position": Vector2(4, 2),
+				"Position": Vector2(6, 6),
 			}, {
 				"Type": 0,
 				"Position": Vector2(6, 3),
 			}, {
 				"Type": 1,
-				"Position": Vector2(6, 5),
+				"Position": Vector2(4, 3),
+			}, {
+				"Type": 0,
+				"Position": Vector2(1, 3),
+			}, {
+				"Type": 0,
+				"Position": Vector2(2, 0),
+			}, {
+				"Type": 3,
+				"Position": Vector2(2, 4),
+			}, {
+				"Type": 3,
+				"Position": Vector2(2, 2),
 			}
 		],
-		"Sceneries": [],
+		"Sceneries": [{
+				"Type": 1,
+				"Position": Vector2(6, 2),
+			}, {
+				"Type": 1,
+				"Position": Vector2(5, 2),
+			}, {
+				"Type": 1,
+				"Position": Vector2(7, 2),
+			}, {
+				"Type": 1,
+				"Position": Vector2(2, 5),
+			}
+		],
 		"TurnOrder": {
-			"Size": 5,
+			"Size": 6,
 			"Slots": [{
 					"Type": 1,
-					"Order": 0,
+					"Order": 4,
 				}
 			],
 		},
@@ -1385,6 +1404,79 @@ const DATA: Dictionary = {
 		],
 		"TurnOrder": {
 			"Size": 4,
+			"Slots": [{
+					"Type": 1,
+					"Order": 1,
+				}
+			],
+		},
+	},
+	"1_11": {
+		"Heroes": [{
+				"Type": 4,
+				"Pool position": 0,
+			}, {
+				"Type": 1,
+				"Pool position": 1,
+			}, {
+				"Type": 6,
+				"Pool position": 2,
+			}, {
+				"Type": 6,
+				"Pool position": 3,
+			}
+		],
+		"Monsters": [{
+				"Type": 1,
+				"Position": Vector2(5, 4),
+			}, {
+				"Type": 1,
+				"Position": Vector2(4, 3),
+			}, {
+				"Type": 3,
+				"Position": Vector2(3, 2),
+			}, {
+				"Type": 0,
+				"Position": Vector2(3, 0),
+			}, {
+				"Type": 0,
+				"Position": Vector2(7, 4),
+			}, {
+				"Type": 0,
+				"Position": Vector2(7, 0),
+			}, {
+				"Type": 0,
+				"Position": Vector2(7, 3),
+			}, {
+				"Type": 1,
+				"Position": Vector2(6, 5),
+			}, {
+				"Type": 1,
+				"Position": Vector2(4, 5),
+			}
+		],
+		"Sceneries": [{
+				"Type": 1,
+				"Position": Vector2(7, 2),
+			}, {
+				"Type": 1,
+				"Position": Vector2(6, 2),
+			}, {
+				"Type": 1,
+				"Position": Vector2(8, 2),
+			}, {
+				"Type": 0,
+				"Position": Vector2(6, 6),
+			}, {
+				"Type": 0,
+				"Position": Vector2(5, 6),
+			}, {
+				"Type": 0,
+				"Position": Vector2(4, 6),
+			}
+		],
+		"TurnOrder": {
+			"Size": 5,
 			"Slots": [{
 					"Type": 1,
 					"Order": 1,

@@ -89,7 +89,7 @@ tracks/1/keys = {
 script = ExtResource( 3 )
 gameMode = 1
 world = 1
-level = 14
+level = 6
 
 [node name="UI" parent="." instance=ExtResource( 1 )]
 
