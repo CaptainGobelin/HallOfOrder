@@ -290,7 +290,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"0_8": {
+	"0_14": {
 		"Heroes": [{
 				"Type": 1,
 				"Pool position": 0,
@@ -366,7 +366,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"0_9": {
+	"0_12": {
 		"Heroes": [{
 				"Type": 4,
 				"Pool position": 0,
@@ -430,7 +430,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"0_10": {
+	"0_13": {
 		"Heroes": [{
 				"Type": 1,
 				"Pool position": 0,
@@ -579,7 +579,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"0_12": {
+	"1_0": {
 		"Heroes": [{
 				"Type": 0,
 				"Pool position": 0,
@@ -648,7 +648,7 @@ const DATA: Dictionary = {
 			"Slots": [],
 		},
 	},
-	"0_13": {
+	"1_1": {
 		"Heroes": [{
 				"Type": 0,
 				"Pool position": 0,
@@ -696,7 +696,7 @@ const DATA: Dictionary = {
 			"Slots": [],
 		},
 	},
-	"0_14": {
+	"1_2": {
 		"Heroes": [{
 				"Type": 0,
 				"Pool position": 0,
@@ -778,7 +778,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"1_0": {
+	"1_3": {
 		"Heroes": [{
 				"Type": 4,
 				"Pool position": 0,
@@ -818,7 +818,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"1_1": {
+	"1_4": {
 		"Heroes": [{
 				"Type": 0,
 				"Pool position": 0,
@@ -869,7 +869,7 @@ const DATA: Dictionary = {
 			"Slots": [],
 		},
 	},
-	"1_3": {
+	"1_6": {
 		"Heroes": [{
 				"Type": 0,
 				"Pool position": 0,
@@ -938,7 +938,7 @@ const DATA: Dictionary = {
 			"Slots": [],
 		},
 	},
-	"1_2": {
+	"1_5": {
 		"Heroes": [{
 				"Type": 1,
 				"Pool position": 0,
@@ -990,7 +990,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"1_4": {
+	"1_13": {
 		"Heroes": [{
 				"Type": 1,
 				"Pool position": 0,
@@ -1057,7 +1057,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"1_5": {
+	"1_8": {
 		"Heroes": [{
 				"Type": 4,
 				"Pool position": 0,
@@ -1105,7 +1105,7 @@ const DATA: Dictionary = {
 			"Slots": [],
 		},
 	},
-	"1_6": {
+	"1_11": {
 		"Heroes": [{
 				"Type": 4,
 				"Pool position": 0,
@@ -1169,7 +1169,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"1_7": {
+	"0_10": {
 		"Heroes": [{
 				"Type": 1,
 				"Pool position": 0,
@@ -1238,46 +1238,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"1_8": {
-		"Heroes": [{
-				"Type": 1,
-				"Pool position": 0,
-			}, {
-				"Type": 2,
-				"Pool position": 1,
-			}
-		],
-		"Monsters": [{
-				"Type": 6,
-				"Position": Vector2(5, 1),
-			}, {
-				"Type": 1,
-				"Position": Vector2(5, 3),
-			}, {
-				"Type": 0,
-				"Position": Vector2(5, 4),
-			}, {
-				"Type": 0,
-				"Position": Vector2(6, 4),
-			}, {
-				"Type": 0,
-				"Position": Vector2(4, 2),
-			}
-		],
-		"Sceneries": [],
-		"TurnOrder": {
-			"Size": 4,
-			"Slots": [{
-					"Type": 6,
-					"Order": 0,
-				}, {
-					"Type": 1,
-					"Order": 2,
-				}
-			],
-		},
-	},
-	"1_9": {
+	"1_10": {
 		"Heroes": [{
 				"Type": 4,
 				"Pool position": 0,
@@ -1319,7 +1280,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"1_13": {
+	"0_8": {
 		"Heroes": [{
 				"Type": 1,
 				"Pool position": 0,
@@ -1365,7 +1326,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"1_14": {
+	"0_9": {
 		"Heroes": [{
 				"Type": 1,
 				"Pool position": 0,
@@ -1411,7 +1372,7 @@ const DATA: Dictionary = {
 			],
 		},
 	},
-	"1_11": {
+	"1_9": {
 		"Heroes": [{
 				"Type": 4,
 				"Pool position": 0,
@@ -1480,6 +1441,45 @@ const DATA: Dictionary = {
 			"Slots": [{
 					"Type": 1,
 					"Order": 1,
+				}
+			],
+		},
+	},
+	"2_0": {
+		"Heroes": [{
+				"Type": 1,
+				"Pool position": 0,
+			}, {
+				"Type": 2,
+				"Pool position": 1,
+			}
+		],
+		"Monsters": [{
+				"Type": 6,
+				"Position": Vector2(5, 1),
+			}, {
+				"Type": 1,
+				"Position": Vector2(5, 3),
+			}, {
+				"Type": 0,
+				"Position": Vector2(5, 4),
+			}, {
+				"Type": 0,
+				"Position": Vector2(6, 4),
+			}, {
+				"Type": 0,
+				"Position": Vector2(4, 2),
+			}
+		],
+		"Sceneries": [],
+		"TurnOrder": {
+			"Size": 4,
+			"Slots": [{
+					"Type": 6,
+					"Order": 0,
+				}, {
+					"Type": 1,
+					"Order": 2,
 				}
 			],
 		},
