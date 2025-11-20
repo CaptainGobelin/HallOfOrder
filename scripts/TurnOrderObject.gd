@@ -74,9 +74,11 @@ func setPos(size: int, pos: int):
 func enable():
 	if isActive:
 		$TextureButton.visible = true
+	outline(false)
 
 func disable():
 	$TextureButton.visible = false
+	outline(false)
 
 func hide():
 	$TextureButton.visible = false
