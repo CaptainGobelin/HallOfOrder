@@ -53,6 +53,10 @@ func isBlocking() -> bool:
 			return true
 		Data.sceneries.PillarOn:
 			return true
+		Data.sceneries.LeverOff:
+			return true
+		Data.sceneries.LeverOn:
+			return true
 		_:
 			return false
 
@@ -81,6 +85,11 @@ func trigger(recursive: bool):
 				setType(Data.sceneries.LeverOff, false)
 
 func push(_dir: Vector2) -> bool:
+	match type:
+		Data.sceneries.LeverOff:
+			trigger(true)
+		Data.sceneries.LeverOn:
+			trigger(true)
 	return false
 
 func die() -> bool:
