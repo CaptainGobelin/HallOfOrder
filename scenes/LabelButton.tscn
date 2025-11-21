@@ -1,32 +1,69 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/LabelButton.gd" type="Script" id=2]
 
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Button:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Splash"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Button:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
 [node name="LabelButton" type="Node2D"]
-position = Vector2( 169, 80 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
 enclosed = false
 
-[node name="Back" type="ColorRect" parent="."]
+[node name="Button" type="Node2D" parent="."]
+position = Vector2( 0, 12.6667 )
+scale = Vector2( 0.9, 0.9 )
+
+[node name="Back" type="ColorRect" parent="Button"]
 visible = false
 margin_left = -80.0
+margin_top = -12.6667
 margin_right = 80.0
-margin_bottom = 27.0
+margin_bottom = 14.3333
 color = Color( 0.462745, 0.517647, 0.282353, 1 )
 
-[node name="Back2" type="ColorRect" parent="Back"]
+[node name="Back2" type="ColorRect" parent="Button/Back"]
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 159.0
 margin_bottom = 26.0
 color = Color( 0.141176, 0.192157, 0.215686, 1 )
 
-[node name="Label" type="Label" parent="."]
-margin_left = -24.0
-margin_right = 24.0
-margin_bottom = 27.0
+[node name="Label" type="Label" parent="Button"]
+margin_left = -12.0
+margin_top = -12.6667
+margin_right = 12.0
+margin_bottom = 14.3333
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource( 1 )
@@ -35,11 +72,17 @@ text = "TITLE_BUTTON_PLAY"
 align = 1
 valign = 1
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="TextureButton" type="TextureButton" parent="Button"]
 margin_left = -83.5
+margin_top = -12.6667
 margin_right = 83.5
-margin_bottom = 27.0
+margin_bottom = 14.3333
+expand = true
 
-[connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]
-[connection signal="mouse_exited" from="TextureButton" to="." method="_on_TextureButton_mouse_exited"]
-[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/Splash = SubResource( 2 )
+
+[connection signal="mouse_entered" from="Button/TextureButton" to="." method="_on_TextureButton_mouse_entered"]
+[connection signal="mouse_exited" from="Button/TextureButton" to="." method="_on_TextureButton_mouse_exited"]
+[connection signal="pressed" from="Button/TextureButton" to="." method="_on_TextureButton_pressed"]

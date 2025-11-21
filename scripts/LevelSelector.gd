@@ -31,6 +31,11 @@ func _ready():
 		$Pannels.get_child(currentPannel).visible = false
 		currentPannel = int(ProfileData.currentLevel.x)
 		$Pannels.get_child(currentPannel).get_node("AnimationPlayer").play("RESET")
+	for l in $Worlds.get_children():
+		if l.world == currentPannel:
+			l.setScale(3, true)
+		else:
+			l.setScale(2, true)
 
 func updateTranslations():
 	$Title/Label.text = tr("LEVELS_TITLE")
@@ -38,6 +43,12 @@ func updateTranslations():
 func switchPannel(next: int):
 	if next == currentPannel:
 		return
+	for l in $Worlds.get_children():
+		if l.world == next:
+			l.setScale(3, true)
+			l.splash()
+		else:
+			l.setScale(2, true)
 	if next > currentPannel:
 		$Pannels.get_child(currentPannel).get_node("AnimationPlayer").play("FadeLeft")
 		$Pannels.get_child(next).get_node("AnimationPlayer").play_backwards("FadeRight")
