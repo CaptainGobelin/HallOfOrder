@@ -40,6 +40,8 @@ static func getCellEntity(cell: Vector2) -> Node:
 		if m.pos == cell:
 			return m
 	for s in Ref.sceneries.get_children():
+		if s.type == Data.sceneries.PillarOff:
+			continue
 		if s.pos == cell:
 			return s
 	return null
@@ -62,6 +64,8 @@ static func getAllEntities(skipDeads: bool = false) -> Array:
 		if m.isDead and skipDeads:
 			continue
 		result.append(m)
+	for s in Ref.sceneries.get_children():
+		result.append(s)
 	return result
 
 static func isOOB(cell: Vector2) -> bool:

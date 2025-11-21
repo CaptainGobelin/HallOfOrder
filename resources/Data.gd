@@ -3,7 +3,7 @@ extends Node
 enum classes {Wizard, Monk, Paladin, Barbarian, Fighter, Ranger, Thief, Cleric, Warlock}
 enum monsters {Goblin, Skeleton, DarkWizard, Slime, SlimeHurt, Bat, Spider, Doppleganger}
 enum effects {Slash, Fire, Push}
-enum sceneries {Pillar, Spikes}
+enum sceneries {Pillar, Spikes, LeverOff, LeverOn, PillarOff, PillarOn}
 
 const DIR_UP = 0
 const DIR_RIGHT = 1

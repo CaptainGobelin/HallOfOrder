@@ -115,9 +115,24 @@ position = Vector2( -1.52588e-05, 54 )
 category = 2
 
 [node name="EntityButton9" parent="Buttons" instance=ExtResource( 2 )]
-position = Vector2( 8.99998, 54 )
+position = Vector2( 9, 54 )
 category = 2
 sceneryType = 1
+
+[node name="EntityButton14" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( 18, 54 )
+category = 2
+sceneryType = 2
+
+[node name="EntityButton15" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( 27, 54 )
+category = 2
+sceneryType = 4
+
+[node name="EntityButton16" parent="Buttons" instance=ExtResource( 2 )]
+position = Vector2( 36, 54 )
+category = 2
+sceneryType = 5
 
 [node name="Entities" type="Node2D" parent="."]
 position = Vector2( 90, 135 )

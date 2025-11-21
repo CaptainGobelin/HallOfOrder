@@ -69,6 +69,8 @@ func stopBattle():
 			e.reset()
 		if e is Monster:
 			e.reset()
+		if e is Scenery:
+			e.reset()
 	ButtonHandler.normalMode()
 
 func checkWin() -> bool:

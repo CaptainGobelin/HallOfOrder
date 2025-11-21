@@ -137,6 +137,11 @@ func applySlash(target) -> bool:
 		if target.type == Data.monsters.Bat:
 			if target.move(Data.DIRECTIONS[Data.dirs.Right]):
 				return false
+	elif target.is_in_group("Scenery"):
+		if target.type == Data.sceneries.LeverOff:
+			target.trigger(true)
+		elif target.type == Data.sceneries.LeverOn:
+			target.trigger(true)
 	return target.die()
 
 func applyPush(target) -> bool:
