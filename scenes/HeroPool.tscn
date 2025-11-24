@@ -45,5 +45,6 @@ valign = 1
 
 [node name="Heroes" type="Node2D" parent="."]
 position = Vector2( 9, 9 )
+z_index = 4
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

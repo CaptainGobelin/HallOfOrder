@@ -83,13 +83,13 @@ func outline(value: bool = true):
 func push(dir: Vector2) -> bool:
 	var result = false
 	var newPos = pos + dir
+	if Board.isBlocked(newPos):
+		return die()
 	var entity = Board.getCellEntity(newPos)
 	if entity != null:
 		result = result or entity.push(dir)
 		if entity.is_in_group("Scenery"):
 			result = result or entity.activate(self)
-	if Board.isBlocked(newPos):
-		return die()
 	setPos(newPos)
 	if not result:
 		$AnimationPlayer.play("Crumble")

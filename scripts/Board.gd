@@ -22,6 +22,8 @@ static func isCellTaken(cell: Vector2) -> bool:
 		if m.pos == cell:
 			return true
 	for s in Ref.sceneries.get_children():
+		if s.isIgnored():
+			continue
 		if s.pos == cell:
 			return true
 	return false
@@ -40,13 +42,13 @@ static func getCellEntity(cell: Vector2) -> Node:
 		if m.pos == cell:
 			return m
 	for s in Ref.sceneries.get_children():
-		if s.type == Data.sceneries.PillarOff:
+		if s.isIgnored():
 			continue
 		if s.pos == cell:
 			return s
 	return null
 
-static func getCellScenery(cell: Vector2) -> Scenery:
+static func getCellScenery(cell: Vector2) -> Node:
 	for s in Ref.sceneries.get_children():
 		if s.pos == cell:
 			return s

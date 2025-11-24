@@ -74,6 +74,22 @@ static func launchAround(effectType: int, cell: Vector2, addToWaiter: bool = fal
 		result.append(effect)
 	return result
 
+static func launchAroundWithDiag(effectType: int, cell: Vector2, addToWaiter: bool = false) -> Array:
+	var result = launchAround(effectType, cell, addToWaiter)
+	for i in range(0, 4):
+		var effectPos = cell + Data.DIAGONALS[i]
+		if effectPos.x < 0 or effectPos.y < 0:
+			continue
+		if effectPos.x >= Data.BOARD_X or effectPos.y >= Data.BOARD_Y:
+			continue
+		var effect = Utils.instanciate(Ref.game.effectScene, Ref.game.effects) as Effect
+		if addToWaiter:
+			Waiter.add(effect.launch(effectType, i, effectPos))
+		else:
+			effect.launch(effectType, i, effectPos)
+		result.append(effect)
+	return result
+
 func launch(effectType: int, direction: int, cell: Vector2):
 	pos = cell
 	dir = Data.DIRECTIONS[direction]

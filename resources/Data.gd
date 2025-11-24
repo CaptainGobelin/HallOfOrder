@@ -2,8 +2,8 @@ extends Node
 
 enum classes {Wizard, Monk, Paladin, Barbarian, Fighter, Ranger, Thief, Cleric, Warlock}
 enum monsters {Goblin, Skeleton, DarkWizard, Slime, SlimeHurt, Bat, Spider, Doppleganger}
-enum effects {Slash, Fire, Push}
-enum sceneries {Pillar, Spikes, LeverOff, LeverOn, PillarOff, PillarOn}
+enum effects {Slash, Fire, Push, Explode, Teleport}
+enum sceneries {Pillar, Spikes, LeverOff, LeverOn, PillarOff, PillarOn, Barrel, Exploded, TeleportA, TeleportB}
 
 const DIR_UP = 0
 const DIR_RIGHT = 1
@@ -12,6 +12,7 @@ const DIR_LEFT = 3
 
 enum dirs {Up, Right, Down, Left}
 const DIRECTIONS = [Vector2(0, -1), Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0)]
+const DIAGONALS = [Vector2(-1, -1), Vector2(1, -1), Vector2(1, 1), Vector2(-1, 1)]
 
 const CELL_SIZE = 9
 const BOARD_X = 11

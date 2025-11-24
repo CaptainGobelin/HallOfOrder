@@ -97,7 +97,7 @@ run/main_scene="res://scenes/Game.tscn"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.141176, 0.192157, 0.215686, 1 )
 config/icon="res://icon.png"
-config/windows_native_icon="res://icon.ico"
+config/windows_native_icon="res://icon_small.ico"
 
 [autoload]
 

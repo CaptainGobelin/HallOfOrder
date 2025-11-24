@@ -1671,6 +1671,9 @@ const DATA: Dictionary = {
 			}, {
 				"Type": 3,
 				"Pool position": 3,
+			}, {
+				"Type": 1,
+				"Pool position": 4,
 			}
 		],
 		"Monsters": [{
@@ -1696,10 +1699,31 @@ const DATA: Dictionary = {
 			}, {
 				"Type": 2,
 				"Position": Vector2(9, 1),
+			}, {
+				"Type": 6,
+				"Position": Vector2(1, 2),
+			}, {
+				"Type": 8,
+				"Position": Vector2(3, 1),
+			}, {
+				"Type": 8,
+				"Position": Vector2(7, 5),
+			}, {
+				"Type": 9,
+				"Position": Vector2(8, 5),
+			}, {
+				"Type": 9,
+				"Position": Vector2(6, 1),
+			}, {
+				"Type": 0,
+				"Position": Vector2(3, 0),
+			}, {
+				"Type": 0,
+				"Position": Vector2(1, 0),
 			}
 		],
 		"TurnOrder": {
-			"Size": 5,
+			"Size": 6,
 			"Slots": [{
 					"Type": 1,
 					"Order": 4,
