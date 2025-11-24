@@ -18,7 +18,8 @@ func wait(callback: FuncRef, args: Array = []):
 		if not is_instance_valid(s):
 			continue
 		if s is GDScriptFunctionState:
-			yield(s, "completed")
+			if s.is_valid():
+				yield(s, "completed")
 	if callback.is_valid():
 		if args.size() == 0:
 			callback.call_func()
