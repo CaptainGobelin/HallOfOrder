@@ -22,13 +22,6 @@ func setType(value: int, isOriginal: bool = true):
 	type = value
 	if isOriginal:
 		originalType = value
-	match type:
-		Data.sceneries.Pillar:
-			z_index = 10
-		Data.sceneries.PillarOn:
-			z_index = 10
-		_:
-			z_index = 0
 	if not has_node("Sprite"):
 		return
 	$TextureButton.visible = not isIgnored()
@@ -117,10 +110,6 @@ func trigger(recursive: bool) -> bool:
 					s.trigger(false)
 			else:
 				setType(Data.sceneries.LeverOff, false)
-		Data.sceneries.Barrel:
-			setType(Data.sceneries.Exploded, false)
-			Effect.launchAt(Data.effects.Explode, Data.DIR_RIGHT, pos, true)
-			return Effect.isFatal(Effect.launchAroundWithDiag(Data.effects.Fire, pos, true))
 		Data.sceneries.TeleportA, Data.sceneries.TeleportB:
 			if pair != null:
 				var entity1 = Board.getCellEntity(pos)
@@ -161,7 +150,9 @@ func realPush(dir: Vector2) -> bool:
 func die() -> bool:
 	match type:
 		Data.sceneries.Barrel:
-			return trigger(false)
+			setType(Data.sceneries.Exploded, false)
+			Effect.launchAt(Data.effects.Explode, Data.DIR_RIGHT, pos, true)
+			return Effect.isFatal(Effect.launchAroundWithDiag(Data.effects.Fire, pos, true))
 	return false
 
 func reset():

@@ -91,6 +91,10 @@ static func launchAroundWithDiag(effectType: int, cell: Vector2, addToWaiter: bo
 	return result
 
 func launch(effectType: int, direction: int, cell: Vector2):
+	var s = Board.getCellScenery(cell)
+	if s != null:
+		if s.type == Data.sceneries.PillarOn or s.type == Data.sceneries.Pillar:
+			visible = false
 	pos = cell
 	dir = Data.DIRECTIONS[direction]
 	position = cell * Data.CELL_SIZE

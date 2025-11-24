@@ -1720,6 +1720,12 @@ const DATA: Dictionary = {
 			}, {
 				"Type": 0,
 				"Position": Vector2(1, 0),
+			}, {
+				"Type": 6,
+				"Position": Vector2(6, 5),
+			}, {
+				"Type": 1,
+				"Position": Vector2(1, 5),
 			}
 		],
 		"TurnOrder": {
