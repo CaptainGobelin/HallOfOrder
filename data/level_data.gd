@@ -1737,4 +1737,56 @@ const DATA: Dictionary = {
 			],
 		},
 	},
+	"2_2": {
+		"Heroes": [{
+				"Type": 1,
+				"Pool position": 0,
+			}, {
+				"Type": 3,
+				"Pool position": 1,
+			}, {
+				"Type": 4,
+				"Pool position": 2,
+			}
+		],
+		"Monsters": [{
+				"Type": 1,
+				"Position": Vector2(3, 2),
+			}, {
+				"Type": 0,
+				"Position": Vector2(4, 3),
+			}, {
+				"Type": 1,
+				"Position": Vector2(3, 4),
+			}, {
+				"Type": 0,
+				"Position": Vector2(8, 5),
+			}, {
+				"Type": 0,
+				"Position": Vector2(8, 3),
+			}, {
+				"Type": 1,
+				"Position": Vector2(8, 4),
+			}
+		],
+		"Sceneries": [{
+				"Type": 8,
+				"Position": Vector2(3, 1),
+			}, {
+				"Type": 2,
+				"Position": Vector2(3, 0),
+			}, {
+				"Type": 8,
+				"Position": Vector2(8, 4),
+			}
+		],
+		"TurnOrder": {
+			"Size": 4,
+			"Slots": [{
+					"Type": 1,
+					"Order": 2,
+				}
+			],
+		},
+	},
 }

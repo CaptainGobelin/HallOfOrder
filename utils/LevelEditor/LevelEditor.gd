@@ -80,15 +80,15 @@ func saveLevel():
 	LevelLoader.levels[String(world) + "_" + String(level)] = levelDict
 	LevelLoader.saveLevels()
 
-func _on_TextureButton_pressed():
+func _on_TextureButton_pressed(forceNoStack: bool = false):
 	if selected == -1:
 		return
 	var pos = $Board.get_local_mouse_position() / 9
 	pos.x = floor(pos.x - 1)
 	pos.y = floor(pos.y - 1)
-	placeEntity(pos)
+	placeEntity(pos, -1, 0, forceNoStack)
 
-func placeEntity(pos: Vector2, type: int = -1, category: int = 0):
+func placeEntity(pos: Vector2, type: int = -1, category: int = 0, forceNoStack: bool = false):
 	if type == -1:
 		type = selected
 	else:
@@ -98,6 +98,7 @@ func placeEntity(pos: Vector2, type: int = -1, category: int = 0):
 	entity.pos = pos
 	entity.position = pos * 9
 	entity.boardMode()
+	entity.forceNoStack = forceNoStack
 
 func _on_ExportButton_pressed():
 	$ExportConfirm.popup()

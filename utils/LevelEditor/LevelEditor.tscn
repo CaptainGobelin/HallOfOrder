@@ -57,7 +57,6 @@ margin_left = 9.0
 margin_top = 9.0
 margin_right = 108.0
 margin_bottom = 72.0
-button_mask = 3
 
 [node name="Buttons" type="Node2D" parent="."]
 position = Vector2( 675, 90 )

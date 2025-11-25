@@ -15,6 +15,7 @@ var currentState = States.NO
 var isHero: bool = false
 var isMonster: bool = false
 var isScenery: bool = false
+var forceNoStack: bool = false
 
 func _ready():
 	setType(type + 100 * category)
@@ -92,11 +93,32 @@ func setScenery():
 	isMonster = false
 	isScenery = true
 
+func isStackable() -> bool:
+	if forceNoStack:
+		return false
+	if isScenery:
+		if sceneryType == Data.sceneries.TeleportA:
+			return true
+		if sceneryType == Data.sceneries.TeleportB:
+			return true
+		if sceneryType == Data.sceneries.PillarOff:
+			return true
+	return false
+
 func boardMode():
 	currentState = States.BOARD
-	$Button.button_mask =  BUTTON_RIGHT
-	$Button.connect("pressed", self, "delete")
+	if isStackable():
+		$Button2.button_mask = BUTTON_LEFT | BUTTON_RIGHT
+	$Button.visible = false
+	$Button2.visible = true
 
 func delete():
 	get_parent().remove_child(self)
 	queue_free()
+
+func _on_Button2_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and isStackable() and not event.pressed:
+			get_parent().get_parent()._on_TextureButton_pressed(true)
+		elif event.button_index == BUTTON_RIGHT:
+			delete()

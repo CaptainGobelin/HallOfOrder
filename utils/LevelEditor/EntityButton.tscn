@@ -45,3 +45,11 @@ vframes = 8
 [node name="Button" type="TextureButton" parent="."]
 margin_right = 9.0
 margin_bottom = 9.0
+
+[node name="Button2" type="TextureButton" parent="."]
+visible = false
+margin_right = 9.0
+margin_bottom = 9.0
+button_mask = 2
+
+[connection signal="gui_input" from="Button2" to="." method="_on_Button2_gui_input"]
