@@ -12,6 +12,8 @@ func disableButton():
 	$TextureButton.disabled = true
 
 func _on_TextureButton_pressed():
+	if $TextureButton.disabled:
+		return
 	var mousePos = get_local_mouse_position() / Data.CELL_SIZE
 	mousePos.x = int(mousePos.x - 1)
 	mousePos.y = int(mousePos.y - 1)

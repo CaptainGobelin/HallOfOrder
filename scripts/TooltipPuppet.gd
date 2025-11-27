@@ -80,5 +80,25 @@ func death():
 func spikes():
 	$AnimationPlayer.play("Spikes")
 
+func pillarOff():
+	$AnimationPlayer.play("PillarOff")
+
+func pillarOn():
+	$AnimationPlayer.play("PillarOn")
+
+func leverOff():
+	$AnimationPlayer.play("LeverOff")
+
+func leverOn():
+	$AnimationPlayer.play("LeverOn")
+
 func reset():
 	$AnimationPlayer.play("RESET")
+	if category == 2 and sceneryType == Data.sceneries.LeverOff:
+		$Scenery.frame = 2
+	if category == 2 and sceneryType == Data.sceneries.LeverOn:
+		$Scenery.frame = 3
+	if category == 2 and sceneryType == Data.sceneries.PillarOff:
+		$Scenery.frame = 4
+	if category == 2 and sceneryType == Data.sceneries.PillarOn:
+		$Scenery.frame = 5

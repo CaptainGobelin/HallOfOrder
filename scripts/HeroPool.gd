@@ -2,7 +2,7 @@ tool
 extends Node2D
 
 func _ready():
-	Ref.heroes = get_node("Heroes")
+#	Ref.heroes = get_node("Heroes")
 	Signals.connect("language_changed", self, "updateTranslations")
 	updateTranslations()
 

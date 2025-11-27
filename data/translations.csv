@@ -41,6 +41,11 @@ SLIME_BOT,It will still die if pushed against a wall or spikes.,La gelée meurt 
 BAT_BOT,If attacked the bat will dodge to the cell on its right if it's empty.,"Lorsqu’elle est attaquée, la chauve-souris esquive l’attaque vers la case à sa droite si elle est libre."
 SPIDER_BOT,The spider moves downward and then hits the cell below.,L’araignée se déplace vers le bas et attaque ensuite la case du dessous.
 SPIKES_BOT,The spike trap kills any creature that stand on it.,Le piège à pieux tue n’importe qu’elle créature qui se retrouve sur sa case.
+SWITCH_BLOCK_TOP,"When raised, the switch block acts as a wall.","Une fois déployé, le pilier rétractable fait office mur."
+SWITCH_BLOCK_BOT,You can raise and lower all switch blocks by switching a lever.,Actionner un levier inverse tous les piliers rétractables.
+TELEPORT_TOP,Activating the teleporter sends any creature standing on it to the corresponding teleporter. ,Activer le téléporteur envoie toute créature qui se tient dessus vers le téléporteur correspondant. 
+TELEPORT_BOT,All teleporters trigger when you switch a lever.,"Lorsqu’un levier est actionné, tous les téléporteurs s’activent."
+LEVER_TOP,To switch a lever you can hit it or push it.\n\nSwitching a lever trigger all mechanisms on the floor.,Un levier s’actionne lorsqu’il est poussé ou frappé.\n\nActionner un levier active tous les mécanismes de l’étage.
 USE_ROMAN,true,true
 TITLE_BUTTON_PLAY,Play,Jouer
 TITLE_BUTTON_PROFILE,Choose profile,Choisir le profil

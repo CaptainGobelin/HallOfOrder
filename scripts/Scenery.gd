@@ -8,6 +8,7 @@ var originalType: int = 0
 var pos: Vector2 = Vector2(0, 0)
 var initPos: Vector2 = Vector2(0, 0)
 var pair = null
+var isMain: bool = false
 
 static func addScenery(sceneryType: int, cell: Vector2):
 	var scenery = Utils.instanciate(Ref.game.sceneryScene, Ref.sceneries)
@@ -17,6 +18,7 @@ static func addScenery(sceneryType: int, cell: Vector2):
 
 func _ready():
 	setType(type)
+	$Sprite.set_material($Sprite.get_material().duplicate())
 
 func setType(value: int, isOriginal: bool = true):
 	type = value
@@ -24,8 +26,17 @@ func setType(value: int, isOriginal: bool = true):
 		originalType = value
 	if not has_node("Sprite"):
 		return
-	$TextureButton.visible = not isIgnored()
+	if $TextureButton/TextureButton2.is_connected("pressed", Ref.board, "_on_TextureButton_pressed"):
+		$TextureButton/TextureButton2.disconnect("pressed", Ref.board, "_on_TextureButton_pressed")
+	if isIgnored():
+		$TextureButton/TextureButton2.visible = true
+		$TextureButton/TextureButton2.connect("pressed", Ref.board, "_on_TextureButton_pressed")
 	$Sprite.frame  = value
+	match type:
+		Data.sceneries.TeleportA:
+			$Sprite.material.set_shader_param("outLineColor", Colors.purple)
+		Data.sceneries.TeleportB:
+			$Sprite.material.set_shader_param("outLineColor", Colors.cyan)
 
 func colorize():
 	var color = Utils.getBiomeColor()
@@ -52,6 +63,8 @@ func getPair():
 		if s.type == type:
 			if s.get_instance_id() != get_instance_id():
 				pair = s
+				isMain = true
+				pair.pair = self
 				return s
 	return null
 
@@ -111,7 +124,7 @@ func trigger(recursive: bool) -> bool:
 			else:
 				setType(Data.sceneries.LeverOff, false)
 		Data.sceneries.TeleportA, Data.sceneries.TeleportB:
-			if pair != null:
+			if isMain:
 				var entity1 = Board.getCellEntity(pos)
 				var entity2 = Board.getCellEntity(pair.pos)
 				if entity1 != null or entity2 != null:
@@ -164,6 +177,28 @@ func _on_TextureButton_mouse_entered():
 	match type:
 		Data.sceneries.Spikes:
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Spikes)
-
+		Data.sceneries.PillarOff, Data.sceneries.PillarOn:
+			Ref.ui.showTooltip((TooltipFactory.tooltips.SwitchBlock))
+		Data.sceneries.LeverOff, Data.sceneries.LeverOn:
+			Ref.ui.showTooltip((TooltipFactory.tooltips.Lever))
+		Data.sceneries.TeleportA, Data.sceneries.TeleportB:
+			Ref.ui.showTooltip(TooltipFactory.tooltips.Teleporter)
 func _on_TextureButton_mouse_exited():
 	Ref.ui.hideTooltip()
+
+func _on_TextureButton2_mouse_entered():
+	_on_TextureButton_mouse_entered()
+	match type:
+		Data.sceneries.TeleportA:
+			$Sprite.material.set_shader_param("disabled", false)
+			pair.get_node("Sprite").material.set_shader_param("disabled", false)
+		Data.sceneries.TeleportB:
+			$Sprite.material.set_shader_param("disabled", false)
+			pair.get_node("Sprite").material.set_shader_param("disabled", false)
+
+func _on_TextureButton2_mouse_exited():
+	_on_TextureButton_mouse_exited()
+	match type:
+		Data.sceneries.TeleportA, Data.sceneries.TeleportB:
+			$Sprite.material.set_shader_param("disabled", true)
+			pair.get_node("Sprite").material.set_shader_param("disabled", true)

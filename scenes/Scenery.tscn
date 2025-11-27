@@ -1,7 +1,28 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sprites/sceneries.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Scenery.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4  outLineColor = vec4(0, 0, 0, 1.0);
+uniform bool disabled = false;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if (!disabled) {
+		if (texture(TEXTURE, UV).a != 0.0) {
+			COLOR = outLineColor;
+		}
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 1 )
+shader_param/outLineColor = Color( 0.690196, 0.192157, 0.690196, 1 )
+shader_param/disabled = true
 
 [sub_resource type="Animation" id=4]
 resource_name = "Crumble"
@@ -61,7 +82,7 @@ tracks/2/keys = {
 "values": [ 11 ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Effect:visible")
@@ -157,10 +178,17 @@ script = ExtResource( 2 )
 type = 1
 
 [node name="TextureButton" type="TextureButton" parent="."]
-margin_right = 9.0
+margin_right = 8.0
 margin_bottom = 9.0
 
+[node name="TextureButton2" type="TextureButton" parent="TextureButton"]
+visible = false
+margin_right = 8.0
+margin_bottom = 9.0
+mouse_filter = 1
+
 [node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 7 )
 texture = ExtResource( 1 )
 centered = false
 hframes = 3
@@ -179,8 +207,10 @@ frame = 12
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Crumble = SubResource( 4 )
 anims/PillarUp = SubResource( 3 )
-anims/RESET = SubResource( 1 )
+anims/RESET = SubResource( 6 )
 anims/Spikes = SubResource( 2 )
 
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_TextureButton_mouse_entered"]
 [connection signal="mouse_exited" from="TextureButton" to="." method="_on_TextureButton_mouse_exited"]
+[connection signal="mouse_entered" from="TextureButton/TextureButton2" to="." method="_on_TextureButton2_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton/TextureButton2" to="." method="_on_TextureButton2_mouse_exited"]

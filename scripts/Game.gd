@@ -21,6 +21,7 @@ func _ready():
 	Ref.utils = $Utils
 	Ref.monsters = $Monsters
 	Ref.sceneries = $Sceneries
+	Ref.heroes = $Heroes
 	set_process_input(true)
 	if ProfileData.skipGamemode:
 		gameMode = 3

@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4  outLineColor = vec4(0, 0, 0, 1.0);
+uniform bool disabled = false;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if (!disabled) {
+		if (texture(TEXTURE, UV).a != 0.0) {
+			COLOR = outLineColor;
+		}
+	}
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/outLineColor = Plane( 0, 0, 0, 1 )
+shader_param/disabled = true
