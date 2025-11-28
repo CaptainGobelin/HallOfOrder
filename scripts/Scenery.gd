@@ -183,6 +183,8 @@ func _on_TextureButton_mouse_entered():
 			Ref.ui.showTooltip((TooltipFactory.tooltips.Lever))
 		Data.sceneries.TeleportA, Data.sceneries.TeleportB:
 			Ref.ui.showTooltip(TooltipFactory.tooltips.Teleporter)
+		Data.sceneries.Barrel:
+			Ref.ui.showTooltip(TooltipFactory.tooltips.Barrel)
 func _on_TextureButton_mouse_exited():
 	Ref.ui.hideTooltip()
 

@@ -4,7 +4,7 @@ class_name TooltipFactory
 
 enum tooltips {Fighter, Paladin, Monk, Wizard, Barbarian, Thief, 
 	Goblin, Skeleton, Slime, Bat, Spider, Spikes, SwitchBlock, Lever,
-	Teleporter, Tuto}
+	Teleporter, Barrel, Tuto}
 
 export(tooltips) var type = tooltips.Fighter setget setType
 export(Vector2) var size = Vector2(3,3) setget setSize
@@ -112,6 +112,11 @@ func setType(value: int):
 			$Labels/TopLabel.text = tr("LEVER_TOP")
 			setSize(Vector2(0, 0))
 			$AnimationPlayer.play("Tuto")
+		tooltips.Barrel:
+			$Labels/TopLabel.text = ""
+			$Labels/BotLabel.text = tr("BARREL_BOT")
+			setSize(Vector2(3, 3))
+			$AnimationPlayer.play("Barrel")
 		tooltips.Tuto:
 			$Labels/BotLabel.text = ""
 			$Labels/TopLabel.text = Data.getTutorial()

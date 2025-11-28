@@ -28,7 +28,7 @@ PALADIN_TOP,The paladin hits all cells around him.,Le paladin frappe toutes les 
 PALADIN_BOT,The paladin cannot die from any attack.,Le paladin est protégé contre les attaques.
 MONK_TOP,The monk pushes all creatures around him.,Le moine poussent toutes les créatures autour de lui.
 MONK_BOT,Creatures will die if pushed against a wall.,Une créature meurt lorsqu’elle est poussée contre un mur.
-WIZARD_TOP,The wizard burns all creatures on his line.,Le magicien brûle toutes les créatures sur sa ligne.
+WIZARD_TOP,The wizard burns all creatures on his line.,Le magicien enflamme toutes les créatures sur sa ligne.
 WIZARD_BOT,The fire is blocked by walls.,Le feu est bloqué par les murs.
 BARBARIAN_TOP,The barbarian move forward then hits in front of him.,Le barbare se déplace devant lui et frappe la case du dessus.
 BARBARIAN_BOT,If he kills a creature during his turn he will play again.,S’il tue une créature pendant son tour il jouera un nouveau tour.
@@ -46,6 +46,7 @@ SWITCH_BLOCK_BOT,You can raise and lower all switch blocks by switching a lever.
 TELEPORT_TOP,Activating the teleporter sends any creature standing on it to the corresponding teleporter. ,Activer le téléporteur envoie toute créature qui se tient dessus vers le téléporteur correspondant. 
 TELEPORT_BOT,All teleporters trigger when you switch a lever.,"Lorsqu’un levier est actionné, tous les téléporteurs s’activent."
 LEVER_TOP,To switch a lever you can hit it or push it.\n\nSwitching a lever trigger all mechanisms on the floor.,Un levier s’actionne lorsqu’il est poussé ou frappé.\n\nActionner un levier active tous les mécanismes de l’étage.
+BARREL_BOT,"When destroyed, the barrel explode, bruning surrounding cells.","Lorsqu’il est détruit, le baril explose et enflamme les cases voisines."
 USE_ROMAN,true,true
 TITLE_BUTTON_PLAY,Play,Jouer
 TITLE_BUTTON_PROFILE,Choose profile,Choisir le profil
